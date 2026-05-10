@@ -63,7 +63,7 @@ jobs:
 
       - name: Attach to release (on release events only)
         if: github.event_name == 'release'
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           files: |
             submission/artifacts/*.pdf
