@@ -1,0 +1,73 @@
+{
+  "_about": "Input fixture for case 034-successor-attestation — the §10.39 envelope byte-form pin for an acquirer-target M&A close where the target operated baseline-diary records. Composes with case 035-backfill-seal (the cryptographic complement) via companion_backfill_seal_run_id.",
+  "envelope": {
+    "acquired_entity_legal_name": "Cape Madeline Bank & Trust",
+    "acquired_entity_lei": "529900CMBT034FFIEC01",
+    "acquirer_hsm_key_fingerprint": "192f993a79e006034df6479a87336a5097fc5b2228c6ceb60ba2ea0653beda81",
+    "baseline_manifest_kind": "baseline_diary",
+    "baseline_manifest_sha256": "880f875178fce4c3b55ee5503c755457d1b820e24a5a90d7ad2245797f9c8488",
+    "companion_backfill_seal_run_id": "northbridge-cape-madeline-close-2026-04-15",
+    "dual_signatures": [
+      {
+        "entity_affiliation": "from_entity",
+        "name": "Helena R. Vasquez",
+        "role": "CISO",
+        "signature_b64": "VqK9NvDpFmK0Dc/oM7lY30+JsgcDEx8/UMDuFY3hjkJK/yNfjhMCk1ZQqPHt8FgLKp5dzGzCyc6f3Qd0XpLq8w=="
+      },
+      {
+        "entity_affiliation": "to_entity",
+        "name": "Marcus K. Tan",
+        "role": "CISO",
+        "signature_b64": "Qq2L4HtIfBp9KrM6w0aXyEcBkM8RzfL2VbCnDjY1nXh/oTpFxKsYbWmUrLkPvNcGdHgQzSjOaWeRtUiAsBfDqE=="
+      }
+    ],
+    "effective_utc": "2026-04-15T14:00:00Z"
+  },
+  "synthetic_baseline_manifest": {
+    "tuples": [
+      {
+        "identifier": "cape-madeline-loan-orig-0000",
+        "kind": "baseline_diary_record",
+        "sha256": "2a6d45a99e2936419d438f5d7af8cbf853b745f5d4769e38c0adfd28e4ea7aaf"
+      },
+      {
+        "identifier": "cape-madeline-loan-orig-0001",
+        "kind": "baseline_diary_record",
+        "sha256": "f731e805d0030c5f41084a54ed7d09bc395a41129cfe5b72d7fd098917552f5c"
+      },
+      {
+        "identifier": "cape-madeline-loan-orig-0002",
+        "kind": "baseline_diary_record",
+        "sha256": "d0ed75a54a9e7ed5aff08637faa4a1180cbe49e7eeff65f8d8a35f6d41a8d1d7"
+      },
+      {
+        "identifier": "cape-madeline-loan-orig-0003",
+        "kind": "baseline_diary_record",
+        "sha256": "28986df4e4e8e46905e4b4364eef51f06ed8ba6e9f214cbfa7fa53b3c10402c9"
+      },
+      {
+        "identifier": "cape-madeline-loan-orig-0004",
+        "kind": "baseline_diary_record",
+        "sha256": "e396987bc85349786cfe7c41e59e1617fc23be1f75f08ad8204a3e07616cfffd"
+      },
+      {
+        "identifier": "cape-madeline-loan-orig-0005",
+        "kind": "baseline_diary_record",
+        "sha256": "949923921614ddc1a73a38fbbe678403d1b1b0230775ca65ba589832eb32aaa4"
+      },
+      {
+        "identifier": "cape-madeline-loan-orig-0006",
+        "kind": "baseline_diary_record",
+        "sha256": "8b9d68cf868e5da99c3284473197d9ad56677402a2125f0c602aa730a0354f86"
+      },
+      {
+        "identifier": "cape-madeline-loan-orig-0007",
+        "kind": "baseline_diary_record",
+        "sha256": "f2965004a359841fa1b6b69583d9f8226a37070f60ee1b72c54a42ad5beb3d70"
+      }
+    ],
+    "canonical_byte_length": 1225,
+    "sha256": "880f875178fce4c3b55ee5503c755457d1b820e24a5a90d7ad2245797f9c8488"
+  },
+  "synthetic_acquirer_hsm_pubkey_sha256_hex": "192f993a79e006034df6479a87336a5097fc5b2228c6ceb60ba2ea0653beda81"
+}

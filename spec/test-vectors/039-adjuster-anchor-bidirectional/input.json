@@ -1,0 +1,42 @@
+{
+  "_about": "Input fixture for case 039-adjuster-anchor-bidirectional — pins the §10.45 chain-entry byte form for both sides of a bidirectional adjuster anchor. The cedent-side and reinsurer-side entries share activity_record_sha256 (verifier check c) and cross-reference each other via peer_party_chain_entries (verifier check b).",
+  "cedent_anchor": {
+    "audit.adjuster_anchor.activity_record_sha256": "a3cc053d910b28372127a755df5499c556d7bfeac7e37a7b55541b876df4010a",
+    "audit.adjuster_anchor.activity_record_signature_b64": "MK1H131ssOk/2JK9Ui6S+AJPAn3xovMh8CgMD/r5cNR8TM9zn0viFhCXgcRcexdL6arrZbwmZiFghAdA0GCbwg==",
+    "audit.adjuster_anchor.activity_utc": "2026-04-12T13:30:00Z",
+    "audit.adjuster_anchor.adjuster_id": "marsh-adjusters-license-NY-2718281",
+    "audit.adjuster_anchor.adjuster_legal_name": "Marsh Adjusting Services LLC",
+    "audit.adjuster_anchor.adjuster_role": "loss_adjuster",
+    "audit.adjuster_anchor.peer_party_chain_entries": [
+      {
+        "party_identifier": "polaris-reinsurance-bermuda",
+        "party_role": "reinsurer",
+        "peer_run_id": "polaris-cession-claim-2026-04-payment-loss-12847",
+        "peer_seq": 4
+      }
+    ]
+  },
+  "reinsurer_anchor": {
+    "audit.adjuster_anchor.activity_record_sha256": "a3cc053d910b28372127a755df5499c556d7bfeac7e37a7b55541b876df4010a",
+    "audit.adjuster_anchor.activity_record_signature_b64": "MK1H131ssOk/2JK9Ui6S+AJPAn3xovMh8CgMD/r5cNR8TM9zn0viFhCXgcRcexdL6arrZbwmZiFghAdA0GCbwg==",
+    "audit.adjuster_anchor.activity_utc": "2026-04-12T13:30:00Z",
+    "audit.adjuster_anchor.adjuster_id": "marsh-adjusters-license-NY-2718281",
+    "audit.adjuster_anchor.adjuster_legal_name": "Marsh Adjusting Services LLC",
+    "audit.adjuster_anchor.adjuster_role": "loss_adjuster",
+    "audit.adjuster_anchor.peer_party_chain_entries": [
+      {
+        "party_identifier": "cape-madeline-bank-and-trust",
+        "party_role": "cedent",
+        "peer_run_id": "cape-madeline-claim-12847",
+        "peer_seq": 8
+      }
+    ]
+  },
+  "expected": {
+    "cedent_canonical_byte_length": 727,
+    "cedent_sha256": "d8df3fe5cd69eb7bb408a5eacdeb31a22e0861cc6ac3ae8a862548c0d03b4101",
+    "reinsurer_canonical_byte_length": 702,
+    "reinsurer_sha256": "03905ac5bbed6c23b86b2a3e76dff35f2d18cb7233f98e29bc7fead929048588",
+    "shared_activity_record_sha256": "a3cc053d910b28372127a755df5499c556d7bfeac7e37a7b55541b876df4010a"
+  }
+}

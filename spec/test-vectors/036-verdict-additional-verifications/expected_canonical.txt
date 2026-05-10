@@ -1,0 +1,3 @@
+{"additional_verifications":[],"exit_code":0}
+{"additional_verifications":["backfill_seal_verified"],"exit_code":0}
+{"additional_verifications":["backfill_seal_verified","hybrid_pqc_dual_signature_verified"],"exit_code":0}

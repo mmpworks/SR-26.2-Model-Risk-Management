@@ -1,0 +1,60 @@
+# Python / MkDocs
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+*.egg-info/
+.venv/
+venv/
+env/
+.tox/
+.pytest_cache/
+
+# MkDocs build output
+site/
+.cache/
+
+# Build artifacts (PDF renders, etc.)
+build/
+dist/
+out/
+*.aux
+*.log
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+
+# Submission PDF build outputs (regenerable from markdown source)
+submission/artifacts/*.pdf
+!submission/artifacts/.gitkeep
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Local config / secrets
+.env
+.env.local
+*.pem
+*.key
+*.crt
+secrets/
+local/
+
+# Working notes (forward-needs, gap manifest, etc. — not part of the published artifact set)
+docs/future-needs/
+
+# Personal knowledge-base tooling (separate clone of coleam00/claude-memory-compiler)
+claude-memory-compiler/
+
+# Publisher's cached working trees for downstream targets (always re-cloned)
+.publish-cache/

@@ -1,0 +1,70 @@
+name: Render submission PDFs
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "submission/**"
+      - "spec/chain-of-custody-DRAFT-*.md"
+      - ".github/workflows/render-pdf.yml"
+  pull_request:
+    paths:
+      - "submission/**"
+      - "spec/chain-of-custody-DRAFT-*.md"
+  workflow_dispatch:
+  release:
+    types: [published]
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install pandoc and TeX Live
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            pandoc \
+            texlive-xetex \
+            texlive-fonts-recommended \
+            texlive-fonts-extra \
+            texlive-latex-extra \
+            fonts-dejavu
+
+      - name: Make render-pdf.sh executable
+        run: chmod +x submission/build/render-pdf.sh
+
+      - name: Render all PDFs
+        working-directory: submission/build
+        run: ./render-pdf.sh all
+
+      - name: List artifacts
+        working-directory: submission/artifacts
+        run: ls -lh
+
+      - name: Compute artifact hashes
+        working-directory: submission/artifacts
+        run: |
+          echo "## SHA-256 manifest" > MANIFEST.txt
+          echo "" >> MANIFEST.txt
+          sha256sum *.pdf | tee -a MANIFEST.txt
+
+      - name: Upload PDFs as workflow artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: submission-pdfs
+          path: |
+            submission/artifacts/*.pdf
+            submission/artifacts/MANIFEST.txt
+          retention-days: 90
+
+      - name: Attach to release (on release events only)
+        if: github.event_name == 'release'
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            submission/artifacts/*.pdf
+            submission/artifacts/MANIFEST.txt

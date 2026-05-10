@@ -1,0 +1,100 @@
+{
+  "_about": "Input fixture for case 042-retrieval-set-merkle — pins the §10.49 chain-entry byte form for four per-document anchor events plus the Merkle root over their document_sha256 leaves under canonical RFC 6962. Composes with case 041 (generation four-tuple): the Merkle root pinned here appears as audit.generation.retrieval_set_merkle_root_sha256 on case 041's parent event.",
+  "parent_run_id": "lyceum-medsynth-2026-04-12-clinical-query-12847",
+  "retrieved_at_utc": "2026-04-12T10:30:00Z",
+  "retrieved_documents": [
+    {
+      "pmid": "38420190",
+      "content_label": "post-mi-statin-therapy-guidelines-2024",
+      "relevance_score": 0.92
+    },
+    {
+      "pmid": "37123456",
+      "content_label": "high-intensity-statin-secondary-prevention",
+      "relevance_score": 0.87
+    },
+    {
+      "pmid": "39001234",
+      "content_label": "lipid-management-acs-2026-update",
+      "relevance_score": 0.81
+    },
+    {
+      "pmid": "37890123",
+      "content_label": "statin-intolerance-alternative-strategies",
+      "relevance_score": 0.65
+    }
+  ],
+  "anchor_events": [
+    {
+      "audit.retrieval.document_anchor.canonical_identifier_kind": "pmid",
+      "audit.retrieval.document_anchor.canonical_identifier_value": "38420190",
+      "audit.retrieval.document_anchor.document_sha256": "95b2785c9fc44576a365a9fe175733cb6ea84c7e2819d111e0ad0612108285d7",
+      "audit.retrieval.document_anchor.parent_run_id": "lyceum-medsynth-2026-04-12-clinical-query-12847",
+      "audit.retrieval.document_anchor.parent_seq": 1,
+      "audit.retrieval.document_anchor.retrieval_relevance_score": 0.92,
+      "audit.retrieval.document_anchor.retrieved_at_utc": "2026-04-12T10:30:00Z"
+    },
+    {
+      "audit.retrieval.document_anchor.canonical_identifier_kind": "pmid",
+      "audit.retrieval.document_anchor.canonical_identifier_value": "37123456",
+      "audit.retrieval.document_anchor.document_sha256": "76fb1b8e5466dfd7f56875d1beb05f68a5b7f01bdf570e8962bdea9b287f6dda",
+      "audit.retrieval.document_anchor.parent_run_id": "lyceum-medsynth-2026-04-12-clinical-query-12847",
+      "audit.retrieval.document_anchor.parent_seq": 1,
+      "audit.retrieval.document_anchor.retrieval_relevance_score": 0.87,
+      "audit.retrieval.document_anchor.retrieved_at_utc": "2026-04-12T10:30:00Z"
+    },
+    {
+      "audit.retrieval.document_anchor.canonical_identifier_kind": "pmid",
+      "audit.retrieval.document_anchor.canonical_identifier_value": "39001234",
+      "audit.retrieval.document_anchor.document_sha256": "0c2f6b706cfbe9f66159f18b1e284eb219f7d72466df5e7bd541ae242f776da0",
+      "audit.retrieval.document_anchor.parent_run_id": "lyceum-medsynth-2026-04-12-clinical-query-12847",
+      "audit.retrieval.document_anchor.parent_seq": 1,
+      "audit.retrieval.document_anchor.retrieval_relevance_score": 0.81,
+      "audit.retrieval.document_anchor.retrieved_at_utc": "2026-04-12T10:30:00Z"
+    },
+    {
+      "audit.retrieval.document_anchor.canonical_identifier_kind": "pmid",
+      "audit.retrieval.document_anchor.canonical_identifier_value": "37890123",
+      "audit.retrieval.document_anchor.document_sha256": "8500b52c4aee3d05b859a914d4e5a3947af7bfd6730d521b010bb206e30476b8",
+      "audit.retrieval.document_anchor.parent_run_id": "lyceum-medsynth-2026-04-12-clinical-query-12847",
+      "audit.retrieval.document_anchor.parent_seq": 1,
+      "audit.retrieval.document_anchor.retrieval_relevance_score": 0.65,
+      "audit.retrieval.document_anchor.retrieved_at_utc": "2026-04-12T10:30:00Z"
+    }
+  ],
+  "per_event_results": [
+    {
+      "index": 0,
+      "pmid": "38420190",
+      "content_label": "post-mi-statin-therapy-guidelines-2024",
+      "document_sha256": "95b2785c9fc44576a365a9fe175733cb6ea84c7e2819d111e0ad0612108285d7",
+      "canonical_byte_length": 541,
+      "canonical_sha256": "2f161466d3ba5cae0b86f38e49de6ba31fc856d49431b360f48030695116e345"
+    },
+    {
+      "index": 1,
+      "pmid": "37123456",
+      "content_label": "high-intensity-statin-secondary-prevention",
+      "document_sha256": "76fb1b8e5466dfd7f56875d1beb05f68a5b7f01bdf570e8962bdea9b287f6dda",
+      "canonical_byte_length": 541,
+      "canonical_sha256": "64103d0bc77c286c7f04808d9613cf6b67395b6c350ffaeb79640777c4fd2089"
+    },
+    {
+      "index": 2,
+      "pmid": "39001234",
+      "content_label": "lipid-management-acs-2026-update",
+      "document_sha256": "0c2f6b706cfbe9f66159f18b1e284eb219f7d72466df5e7bd541ae242f776da0",
+      "canonical_byte_length": 541,
+      "canonical_sha256": "9ce8bdd6646aa3a545f47ecca236e74a73b9915b548909616d9746e9c5ac8a15"
+    },
+    {
+      "index": 3,
+      "pmid": "37890123",
+      "content_label": "statin-intolerance-alternative-strategies",
+      "document_sha256": "8500b52c4aee3d05b859a914d4e5a3947af7bfd6730d521b010bb206e30476b8",
+      "canonical_byte_length": 541,
+      "canonical_sha256": "580ce887cfce1ada7530f130471cb91f8a0f07e563a032d7408415a07c04acfc"
+    }
+  ],
+  "retrieval_set_merkle_root_hex": "2aefda83d3521600b0b408d2c3d66e0e7d6e962490703774084f57323874a148"
+}

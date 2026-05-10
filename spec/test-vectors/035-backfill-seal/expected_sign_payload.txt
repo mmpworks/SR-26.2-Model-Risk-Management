@@ -1,0 +1,12 @@
+ffiec.chain-of-custody.v1
+v1.0b
+ed25519
+v1
+northbridge-federal-savings
+2026-04-15
+8943b16ee4fdb413e849c6909c5d79b71fa96962a5710cdd6a763bf09342c340
+0a1b2c3d4e5f60718293a4b5c6d7e8f90a1b2c3d4e5f60718293a4b5c6d7e8f9
+daily
+0
+1
+5d4f1e9c2b8a7f6e3d0c1b2a3f4e5d6c7b8a9f0e1d2c3b4a5f6e7d8c9b0a1f2e

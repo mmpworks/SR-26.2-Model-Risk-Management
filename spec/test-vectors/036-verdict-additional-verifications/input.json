@@ -1,0 +1,46 @@
+{
+  "_about": "Input fixture for case 036-verdict-additional-verifications — pins the verdict-object JCS-canonical bytes for three sub-cases. The conformance contract is that all three sub-cases produce byte-identical output across implementations.",
+  "known_additional_verifications": [
+    "backfill_seal_verified"
+  ],
+  "subcases": [
+    {
+      "label": "036a",
+      "description": "PASS with no bonus verifications (the steady-state shape)",
+      "verdict": {
+        "additional_verifications": [],
+        "exit_code": 0
+      },
+      "canonical_byte_length": 45,
+      "canonical_sha256": "c79490211ce76c721560fe28d1a781e70b391353ebe3c4cf3d6aa743ab4895ba",
+      "canonical_bytes_utf8": "{\"additional_verifications\":[],\"exit_code\":0}"
+    },
+    {
+      "label": "036b",
+      "description": "PASS with a §10.42 backfill-seal bonus verification",
+      "verdict": {
+        "additional_verifications": [
+          "backfill_seal_verified"
+        ],
+        "exit_code": 0
+      },
+      "canonical_byte_length": 69,
+      "canonical_sha256": "18f280814c89104f1c728a8dbd99e87ae8d5202b6cd4a0c890e1eabccd6f6972",
+      "canonical_bytes_utf8": "{\"additional_verifications\":[\"backfill_seal_verified\"],\"exit_code\":0}"
+    },
+    {
+      "label": "036c",
+      "description": "PASS with two bonus verifications (forward-compat composition test — the second string is a placeholder demonstrating the two-entry array byte form)",
+      "verdict": {
+        "additional_verifications": [
+          "backfill_seal_verified",
+          "hybrid_pqc_dual_signature_verified"
+        ],
+        "exit_code": 0
+      },
+      "canonical_byte_length": 106,
+      "canonical_sha256": "8062495801460b1ed1969788ebe7bcf40dce63cc9d734a3ceaea43e2cd6316a4",
+      "canonical_bytes_utf8": "{\"additional_verifications\":[\"backfill_seal_verified\",\"hybrid_pqc_dual_signature_verified\"],\"exit_code\":0}"
+    }
+  ]
+}

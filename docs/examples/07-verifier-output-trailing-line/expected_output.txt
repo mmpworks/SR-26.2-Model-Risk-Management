@@ -1,0 +1,40 @@
+--- vector-036 byte-equivalence assertion ---
+  036a: SHA-256 = c79490211ce76c721560fe28d1a781e70b391353ebe3c4cf3d6aa743ab4895ba  PASS
+  036b: SHA-256 = 18f280814c89104f1c728a8dbd99e87ae8d5202b6cd4a0c890e1eabccd6f6972  PASS
+  036c: SHA-256 = 8062495801460b1ed1969788ebe7bcf40dce63cc9d734a3ceaea43e2cd6316a4  PASS
+
+--- 036a: PASS, additional_verifications=[] ---
+Status: PASS
+Verdict-Object: {"additional_verifications":[],"exit_code":0}
+
+--- 036b: PASS, additional_verifications=['backfill_seal_verified'] ---
+Status: PASS
+Verdict-Object: {"additional_verifications":["backfill_seal_verified"],"exit_code":0}
+
+--- 036c: PASS, additional_verifications=['backfill_seal_verified', 'hybrid_pqc_dual_signature_verified'] ---
+Status: PASS
+Verdict-Object: {"additional_verifications":["backfill_seal_verified","hybrid_pqc_dual_signature_verified"],"exit_code":0}
+
+--- FAIL example ---
+Status: FAIL
+Step: 9
+Reason: payload_hash MAC mismatch at seq 17
+Verdict-Object: {"additional_verifications":[],"exit_code":1}
+
+--- PASS-with-anomaly example ---
+Status: PASS
+unknown wire-format kind present: cross_domain_transition (count: 1)
+Verdict-Object: {"additional_verifications":["unknown_kind_present"],"exit_code":0}
+
+--- round-trip: parse Verdict-Object from stdout text ---
+  parsed: {'additional_verifications': [], 'exit_code': 0}
+  match: PASS
+
+--- round-trip: parse Verdict-Object from stdout text ---
+  parsed: {'additional_verifications': [], 'exit_code': 1}
+  match: PASS
+
+--- round-trip: parse Verdict-Object from stdout text ---
+  parsed: {'additional_verifications': ['unknown_kind_present'], 'exit_code': 0}
+  match: PASS
+
