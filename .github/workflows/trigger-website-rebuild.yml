@@ -1,0 +1,22 @@
+name: trigger-website-rebuild
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'spec/**'
+      - 'docs/**'
+      - '*.md'
+
+permissions:
+  contents: read
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Cloudflare deploy hook
+        run: |
+          curl -fsS -X POST "${{ secrets.CF_DEPLOY_HOOK }}" \
+            -H 'Content-Type: application/json' \
+            -d '{"reason":"ffiec-public push"}'

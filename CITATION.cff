@@ -1,0 +1,37 @@
+cff-version: 1.2.0
+title: "FFIEC AI Chain-of-Custody &mdash; Proposed Standard"
+message: "If you reference this specification, please cite it as below."
+type: software
+authors:
+  - family-names: Muchow
+    given-names: Steven
+    email: smuchow1962@gmail.com
+repository-code: "https://github.com/smuchow1962/ffiec-chain-of-custody"
+url: "https://github.com/smuchow1962/ffiec-chain-of-custody"
+abstract: >
+  A proposed open standard for tamper-evident logging of AI-driven decisions
+  in regulated financial institutions. Defines a four-primitive chain of
+  custody (per-event HMAC chain, daily Merkle seal, HSM-rooted root signature,
+  OpenTelemetry-native wire) designed to satisfy the integrity-of-logging
+  requirements in the FFIEC IT Examination Handbook (Information Security
+  and Architecture, Infrastructure, and Operations booklets) and related
+  model-risk-management guidance (SR 26-2, OCC Bulletin 2026-13). Currently
+  Public Review Draft 1 (PRD-1).
+keywords:
+  - FFIEC
+  - chain of custody
+  - AI audit
+  - model risk management
+  - tamper-evident logging
+  - Merkle seal
+  - HMAC
+  - HSM
+  - OpenTelemetry
+  - banking regulation
+license: Apache-2.0
+version: "0.1.0-draft.1"
+date-released: "2026-05-08"
+identifiers:
+  - description: "Public Review Draft 1 (PRD-1)"
+    type: other
+    value: "PRD-1"

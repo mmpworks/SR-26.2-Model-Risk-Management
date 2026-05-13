@@ -1,0 +1,19 @@
+{
+  "_about": "Input fixture for case 045-public-transparency-dp-aggregate — pins the §10.51 chain-entry byte form for a Helvetian-shape VAT-audits-initiated DP-noised monthly aggregate.",
+  "event": {
+    "audit.public_transparency.aggregate_kind": "vat_audits_initiated_count",
+    "audit.public_transparency.aggregate_published_value": 12046,
+    "audit.public_transparency.cohort_subtree_root_sha256": "2e8ffae03e65312f5b8ec4da9c2704277e258c1108c10318f6ab37c478c8af76",
+    "audit.public_transparency.coverage_period_end_utc": "2026-05-31T23:59:59Z",
+    "audit.public_transparency.coverage_period_start_utc": "2026-05-01T00:00:00Z",
+    "audit.public_transparency.dp_epsilon": 1.0,
+    "audit.public_transparency.dp_mechanism": "laplace",
+    "audit.public_transparency.dp_mechanism_version_sha256": "bb79c1b5493fbe2473296e97cb9309968e058277f862f0f228fe504bf13056f3",
+    "audit.public_transparency.dp_seed": 4242,
+    "audit.public_transparency.published_at_utc": "2026-06-15T09:00:00Z"
+  },
+  "expected": {
+    "canonical_byte_length": 731,
+    "canonical_sha256": "9900eff01bce842a2a5e11ea0caa67065dc006faf355c37675a1627250e185d4"
+  }
+}

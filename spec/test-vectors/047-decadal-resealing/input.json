@@ -1,0 +1,16 @@
+{
+  "_about": "Input fixture for case 047-decadal-resealing — pins the §10.54 metadata-leaf byte form for a Helvetian-shape first-decadal re-seal at the 2036-12-31 boundary under Dilithium3 (generation 1). Mirrors §10.42 backfill-seal's annotated-seal pattern. The full seal record (the v1.0b sign_payload + signatures list) is built around this metadata leaf via the Merkle composition and signing path; case 047 pins the metadata-leaf canonical bytes only.",
+  "metadata_leaf": {
+    "seal.resealed_at_decadal_boundary": true,
+    "seal.resealed_baseline_manifest_sha256": "518010463d0b8097fdaa32d66acf9e21164577cf517ade48446c0ff5c3b44e52",
+    "seal.resealed_generation_index": 1,
+    "seal.resealed_previous_generation_anchor_sha256": "4bd76d1d17fcdabd40fe6b2dea4b288af60ab8ae6f2734908076ff6fa3d48bf6",
+    "seal.resealed_under_algorithm": "dilithium3",
+    "seal.resealed_window_end_utc": "2036-12-31T23:59:59Z",
+    "seal.resealed_window_start_utc": "2026-12-31T23:59:59Z"
+  },
+  "expected": {
+    "canonical_byte_length": 457,
+    "canonical_sha256": "0f47bc32665a8d021a2a5243508d2a18e2d7ed1add54c55fa0431722d35112de"
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "_about": "Input fixture for case 037-state-machine-transition-validator — pins the GAP-2 minimal primitive's transition-validator and walk-validator output byte form. Four walks exercise (A) the happy path, (B) an invalid transition (skipping pending), (C) transition out of a terminal state, and (D) a history gap (prior to_state != current from_state).",
+  "fixture": {
+    "transitions_table": {
+      "opened": [
+        "pending",
+        "closed"
+      ],
+      "pending": [
+        "decided",
+        "closed"
+      ],
+      "decided": [
+        "closed"
+      ],
+      "closed": []
+    },
+    "walks": {
+      "walk_a_happy_path": {
+        "input": [
+          {
+            "from_state": "opened",
+            "to_state": "pending"
+          },
+          {
+            "from_state": "pending",
+            "to_state": "decided"
+          },
+          {
+            "from_state": "decided",
+            "to_state": "closed"
+          }
+        ],
+        "result": {
+          "valid": true,
+          "first_failure_index": null,
+          "reason": "all transitions valid"
+        }
+      },
+      "walk_b_skips_pending": {
+        "input": [
+          {
+            "from_state": "opened",
+            "to_state": "decided"
+          }
+        ],
+        "result": {
+          "valid": false,
+          "first_failure_index": 0,
+          "reason": "transition ('opened' -> 'decided') not in transitions table"
+        }
+      },
+      "walk_c_out_of_terminal": {
+        "input": [
+          {
+            "from_state": "closed",
+            "to_state": "opened"
+          }
+        ],
+        "result": {
+          "valid": false,
+          "first_failure_index": 0,
+          "reason": "transition ('closed' -> 'opened') not in transitions table"
+        }
+      },
+      "walk_d_history_gap": {
+        "input": [
+          {
+            "from_state": "opened",
+            "to_state": "pending"
+          },
+          {
+            "from_state": "decided",
+            "to_state": "closed"
+          }
+        ],
+        "result": {
+          "valid": false,
+          "first_failure_index": 1,
+          "reason": "history gap: prior to_state 'pending' != current from_state 'decided'"
+        }
+      }
+    }
+  }
+}

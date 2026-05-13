@@ -1,0 +1,25 @@
+{
+  "_about": "Input fixture for case 041-generation-four-tuple — pins the §10.47 + §10.48 chain-entry byte form for a Lyceum-shape clinical decision support generation event. The retrieval_set_merkle_root_sha256 value is the Merkle root pinned by case 042-retrieval-set-merkle (cross-binding).",
+  "event": {
+    "audit.generation.inference_at_utc": "2026-04-12T10:30:15Z",
+    "audit.generation.model_id": "lyceum-medsynth-2026-04",
+    "audit.generation.model_version": "2026-04-08-rc3",
+    "audit.generation.model_weight_hash": "ab71a9f5e95d3c6c9a4129a719cc57d612f498808d56d1d07b38137d3706569b",
+    "audit.generation.output_sha256": "ef2f978944705ed2d7105c2c76f89b275b7ae7a15e995c298d6d69bb105160b2",
+    "audit.generation.retrieval_set_merkle_root_sha256": "2aefda83d3521600b0b408d2c3d66e0e7d6e962490703774084f57323874a148",
+    "audit.generation.seed": 42,
+    "audit.generation.system_prompt_sha256": "a039446f0b210d95c36426faea64420705810cb91f0d6b4efeba67fd024a5c2a",
+    "audit.generation.temperature": 0.0,
+    "audit.generation.top_k": 0,
+    "audit.generation.top_p": 1.0,
+    "audit.generation.user_prompt_sha256": "96498e3fc727881b396c3c66c34bfd8140820ec47966ed08217af3671d0ce09c"
+  },
+  "expected": {
+    "canonical_byte_length": 813,
+    "canonical_sha256": "dc74a6527ed19078aaa42e325c01b6bb5493a536c95111e87a88e4d11ee1cb30"
+  },
+  "cross_binding_with_042": {
+    "retrieval_set_merkle_root_sha256": "2aefda83d3521600b0b408d2c3d66e0e7d6e962490703774084f57323874a148",
+    "note": "Must match case 042-retrieval-set-merkle's expected_retrieval_set_merkle_root.txt"
+  }
+}

@@ -1,0 +1,14 @@
+--- canonical_binding_input (§5 JCS bytes) ---
+{"component_id":"tpu-3-chassis-7-fpga-12","identity_kind":"puf-response","puf_challenge_id":"challenge-ffiec-prd4-050","puf_response_hex":"5a3c9b2fae4e0d2cf1a8b6473e9d1c8a2bf5e6d4a7c3b1f8e9d2a6c4b7f3e1d5"}
+
+--- chain entry's cryptographic_identity attribute ---
+  identity_kind: puf-response
+  component_id: tpu-3-chassis-7-fpga-12
+  puf_challenge_id: challenge-ffiec-prd4-050
+  puf_response_hex: 5a3c9b2fae4e0d2cf1a8b6473e9d1c8a2bf5e6d4a7c3b1f8e9d2a6c4b7f3e1d5
+  binding_hash: efadad7204770aa2efac5dde0324c34bcb5124b3347fcf18de79c122c3f1170d
+
+--- binding-walk verifier ---
+  Status: PASS
+  additional_verifications: ['component_identity_binding_walk_verified']
+  Exit code: 0 (per §10.12)

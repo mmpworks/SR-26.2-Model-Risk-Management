@@ -1,0 +1,131 @@
+{
+  "_about": "Input fixture for case 038-claim-state-lifecycle — pins the §10.43 chain-entry byte form for a Polaris/Lloyd's-shape 6-transition lifecycle (FNOL → reserve → adjudication → paid → recovery → closed). Each event's canonical bytes are pinned; the lifecycle digest is the SHA-256 over the JCS-canonical sorted array of per-event hashes.",
+  "claim_run_id": "polaris-cession-claim-2026-04-payment-loss-12847",
+  "tenant_id": "polaris-reinsurance-bermuda",
+  "transitions": [
+    {
+      "audit.claim_state.actor": "polaris-intake-bot-v3",
+      "audit.claim_state.authorizing_policy_id": "polaris-policy-intake-v3.2",
+      "audit.claim_state.authorizing_policy_sha256": "b013972aa7ae05abf5d3bee4bed6f86f7bb939b96a4b007d32ba1f76b515ceb0",
+      "audit.claim_state.from": "opened",
+      "audit.claim_state.from_substate": "fnol_received",
+      "audit.claim_state.rationale": "FNOL processed through automated intake; preliminary coverage check passed; routing to reserve-setting.",
+      "audit.claim_state.to": "opened",
+      "audit.claim_state.to_substate": "reserve_set_initial",
+      "audit.claim_state.transition_utc": "2026-04-02T09:14:33Z"
+    },
+    {
+      "audit.claim_state.actor": "claim-handler-id-7392",
+      "audit.claim_state.authorizing_policy_id": "polaris-policy-reserve-v2.1",
+      "audit.claim_state.authorizing_policy_sha256": "d1c3e79afce6b34459a0d402d29d4bd3eee8f4cc0f51965224f00910d21f5d73",
+      "audit.claim_state.from": "opened",
+      "audit.claim_state.from_substate": "reserve_set_initial",
+      "audit.claim_state.rationale": "Initial reserve set per §4.2 of the reserve-setting policy based on loss-bordereau projection. Routing to adjudication.",
+      "audit.claim_state.to": "pending",
+      "audit.claim_state.to_substate": "adjudication_committee_review",
+      "audit.claim_state.transition_utc": "2026-04-08T14:22:11Z"
+    },
+    {
+      "audit.claim_state.actor": "adjudication-committee-id-2026-Q2-N4",
+      "audit.claim_state.authorizing_policy_id": "polaris-policy-adjudication-v4.0",
+      "audit.claim_state.authorizing_policy_sha256": "e797af66c0c17830bb1b5f3da8021b26f2e89bdef684e2dc3d5ddbd014f17e40",
+      "audit.claim_state.from": "pending",
+      "audit.claim_state.from_substate": "adjudication_committee_review",
+      "audit.claim_state.rationale": "Adjudication committee approved cession at full reserve amount per §3 of charter. Cession-payment authorized.",
+      "audit.claim_state.to": "decided",
+      "audit.claim_state.to_substate": "cession_payment_authorized",
+      "audit.claim_state.transition_utc": "2026-04-15T11:00:00Z"
+    },
+    {
+      "audit.claim_state.actor": "payment-officer-id-1184",
+      "audit.claim_state.authorizing_policy_id": "polaris-policy-payment-v1.5",
+      "audit.claim_state.authorizing_policy_sha256": "ed7219e76d42179cb994d56880d115547379b2dc78bddcee0b8cf0f905033733",
+      "audit.claim_state.from": "decided",
+      "audit.claim_state.from_substate": "cession_payment_authorized",
+      "audit.claim_state.rationale": "Payment executed via SWIFT to cedent's bordereau-recorded settlement account. Initiating subrogation review.",
+      "audit.claim_state.to": "decided",
+      "audit.claim_state.to_substate": "recovery_subrogation_review",
+      "audit.claim_state.transition_utc": "2026-04-22T15:45:08Z"
+    },
+    {
+      "audit.claim_state.actor": "recovery-officer-id-3217",
+      "audit.claim_state.authorizing_policy_id": "polaris-policy-recovery-v2.0",
+      "audit.claim_state.authorizing_policy_sha256": "4806f2f8a870a7ad86b1dbd54e825394b3b98a9d9f9e78be695a9e1cb378c8aa",
+      "audit.claim_state.from": "decided",
+      "audit.claim_state.from_substate": "recovery_subrogation_review",
+      "audit.claim_state.rationale": "Subrogation review complete; no recoverable third-party obligation identified. Routing to closure.",
+      "audit.claim_state.to": "decided",
+      "audit.claim_state.to_substate": "recovery_complete_no_recovery",
+      "audit.claim_state.transition_utc": "2026-05-01T10:30:00Z"
+    },
+    {
+      "audit.claim_state.actor": "claim-handler-id-7392",
+      "audit.claim_state.authorizing_policy_id": "polaris-policy-closure-v1.3",
+      "audit.claim_state.authorizing_policy_sha256": "c1b218f665f67ff7d97f425254a5085328c0ebc548470a5b8109c3a76adefac5",
+      "audit.claim_state.bordereau_id": "polaris-bordereau-2026-05",
+      "audit.claim_state.from": "decided",
+      "audit.claim_state.from_substate": "recovery_complete_no_recovery",
+      "audit.claim_state.rationale": "Claim closed; recorded in May 2026 bordereau under cession-payment line item. No further action required.",
+      "audit.claim_state.to": "closed",
+      "audit.claim_state.to_substate": "closed_paid_with_no_recovery",
+      "audit.claim_state.transition_utc": "2026-05-03T16:00:00Z"
+    }
+  ],
+  "per_event_results": [
+    {
+      "index": 0,
+      "from_state": "opened",
+      "to_state": "opened",
+      "from_substate": "fnol_received",
+      "to_substate": "reserve_set_initial",
+      "canonical_byte_length": 599,
+      "canonical_sha256": "9bf730ca86a660ec4d655ea442df2662a22ab30f6bb94c19ddfc8e3d7ba84a98"
+    },
+    {
+      "index": 1,
+      "from_state": "opened",
+      "to_state": "pending",
+      "from_substate": "reserve_set_initial",
+      "to_substate": "adjudication_committee_review",
+      "canonical_byte_length": 634,
+      "canonical_sha256": "818d94fd50451694c86c4027739f7891e3ebaa029b2b345b24476b566c02642b"
+    },
+    {
+      "index": 2,
+      "from_state": "pending",
+      "to_state": "decided",
+      "from_substate": "adjudication_committee_review",
+      "to_substate": "cession_payment_authorized",
+      "canonical_byte_length": 652,
+      "canonical_sha256": "b326c7f80c8726cd4513089ffc99011117d053f8f1dcee3bdfe5bfa013d92c0d"
+    },
+    {
+      "index": 3,
+      "from_state": "decided",
+      "to_state": "decided",
+      "from_substate": "cession_payment_authorized",
+      "to_substate": "recovery_subrogation_review",
+      "canonical_byte_length": 630,
+      "canonical_sha256": "c71cf3e38736c98c6de9e2524cd880b396c6e9d4cdb539fff317b84541cf2725"
+    },
+    {
+      "index": 4,
+      "from_state": "decided",
+      "to_state": "decided",
+      "from_substate": "recovery_subrogation_review",
+      "to_substate": "recovery_complete_no_recovery",
+      "canonical_byte_length": 625,
+      "canonical_sha256": "1b418dee012d73804c582e6d4d8bf75eef4cec536446478878a9433d7f2238a3"
+    },
+    {
+      "index": 5,
+      "from_state": "decided",
+      "to_state": "closed",
+      "from_substate": "recovery_complete_no_recovery",
+      "to_substate": "closed_paid_with_no_recovery",
+      "canonical_byte_length": 689,
+      "canonical_sha256": "4ba5d8809e97428cd72ab3275302bb2d5aa0b63a426305a833e2d860fe9f8c9f"
+    }
+  ],
+  "lifecycle_sha256": "2255016bf1b9b82cf4b6bd86fba51c48ef03504ac9fb92b061dba783201a17d7"
+}

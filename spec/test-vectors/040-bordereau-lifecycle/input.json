@@ -1,0 +1,52 @@
+{
+  "_about": "Input fixture for case 040-bordereau-lifecycle — pins the §10.46 chain-entry byte form for the clean three-event lifecycle (published -> received -> reconciled[clean]). The discrepancy_resolved event is exercised only in the discrepancy branch and is NOT included here.",
+  "bordereau_id": "polaris-bordereau-2026-05",
+  "events": [
+    {
+      "audit.bordereau.bordereau_id": "polaris-bordereau-2026-05",
+      "audit.bordereau.bordereau_sha256": "4b0d460376f50e88cdd320f72bde3e19d9e08564dd91cce5b6b3f3e2cc0eda00",
+      "audit.bordereau.cedent_party_identifier": "cape-madeline-bank-and-trust",
+      "audit.bordereau.event_kind": "published",
+      "audit.bordereau.period_end_utc": "2026-05-31T23:59:59Z",
+      "audit.bordereau.period_start_utc": "2026-05-01T00:00:00Z",
+      "audit.bordereau.published_at_utc": "2026-06-03T09:00:00Z"
+    },
+    {
+      "audit.bordereau.bordereau_id": "polaris-bordereau-2026-05",
+      "audit.bordereau.bordereau_sha256": "4b0d460376f50e88cdd320f72bde3e19d9e08564dd91cce5b6b3f3e2cc0eda00",
+      "audit.bordereau.event_kind": "received",
+      "audit.bordereau.received_at_utc": "2026-06-03T14:22:00Z",
+      "audit.bordereau.receiving_party_identifier": "polaris-reinsurance-bermuda"
+    },
+    {
+      "audit.bordereau.bordereau_id": "polaris-bordereau-2026-05",
+      "audit.bordereau.bordereau_sha256": "4b0d460376f50e88cdd320f72bde3e19d9e08564dd91cce5b6b3f3e2cc0eda00",
+      "audit.bordereau.event_kind": "reconciled",
+      "audit.bordereau.reconciled_at_utc": "2026-06-08T11:45:00Z",
+      "audit.bordereau.reconciliation_outcome": "clean",
+      "audit.bordereau.reconciliation_record_sha256": "a201c9d17075e4070ae05829a22f6e452bd9a14a4f8b780df1a7fcc4a3ea42df",
+      "audit.bordereau.reconciling_party_identifier": "polaris-reinsurance-bermuda"
+    }
+  ],
+  "per_event_results": [
+    {
+      "index": 0,
+      "event_kind": "published",
+      "canonical_byte_length": 448,
+      "canonical_sha256": "84425701453b19eeb7758de5afda62ae85d84234721ffc1802cf07342d97f7d0"
+    },
+    {
+      "index": 1,
+      "event_kind": "received",
+      "canonical_byte_length": 334,
+      "canonical_sha256": "a9f9d612d9b0d2984f2930062c14c6313df8424ef9eb3beced988f6783d28de3"
+    },
+    {
+      "index": 2,
+      "event_kind": "reconciled",
+      "canonical_byte_length": 503,
+      "canonical_sha256": "1f5005247a3e477c74a195443b9e2a3473c527eb008ba2fefe5baf107cae4874"
+    }
+  ],
+  "lifecycle_sha256": "5443f77fdc0bbe1912c2c98bd05d57f248df316562bea5806fe72826bb1342f2"
+}

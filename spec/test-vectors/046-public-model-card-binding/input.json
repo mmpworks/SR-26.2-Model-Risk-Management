@@ -1,0 +1,15 @@
+{
+  "_about": "Input fixture for case 046-public-model-card-binding — pins the §10.52 chain-entry byte form for a Helvetian model-card publication. Uses §10.19 audit.external_artifact.* schema with the institution-named kind value 'model_card' (§10.52 is a normative narrative wrapper around §10.19, NOT a new event family).",
+  "event": {
+    "audit.external_artifact.evidentiary_role": "public_model_card_publication",
+    "audit.external_artifact.identifier": "helvetian-vat-audit-target-model-2026-04",
+    "audit.external_artifact.kind": "model_card",
+    "audit.external_artifact.received_at_utc": "2026-04-15T08:00:00Z",
+    "audit.external_artifact.sha256": "ea3bb5b10902eb8bd5008c4698060a86a350eeb30d28e3ae8bc1a0c425917297",
+    "audit.external_artifact.source_party": "helvetian-federal-tax-authority"
+  },
+  "expected": {
+    "canonical_byte_length": 438,
+    "canonical_sha256": "21183a9e8be95ae8fbfb82171a05ee28e9066c7ea76b5354756754b4e461306f"
+  }
+}

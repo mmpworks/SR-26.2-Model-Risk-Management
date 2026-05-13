@@ -1,0 +1,1 @@
+stub: classifier_scores JCS float canonicalisation conformance witness. Materializes in PRD-2 Phase 11-14. Pins canonical bytes for {"intent_a": 0.99999, "intent_b": 0.5, "intent_c": 1.0} so two SDKs produce byte-identical output under RFC 8785 §3.2.2.3 float canonicalisation.

@@ -1,0 +1,71 @@
+# Python / MkDocs
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+*.egg-info/
+.venv/
+venv/
+env/
+.tox/
+.pytest_cache/
+
+# MkDocs build output
+site/
+.cache/
+
+# Build artifacts (PDF renders, etc.)
+build/
+dist/
+out/
+*.aux
+*.log
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+
+# Submission PDF build outputs (regenerable from markdown source)
+submission/artifacts/*.pdf
+!submission/artifacts/.gitkeep
+
+# IDE / Agent state
+.vscode/
+.idea/
+.claude/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Local config / secrets
+.env
+.env.local
+*.pem
+*.key
+*.crt
+secrets/
+local/
+
+# Working notes (forward-needs, gap manifest, etc. — not part of the published artifact set)
+docs/future-needs/
+
+# Auditor-story synopses — kept as local working drafts going forward.
+# Already-committed synopses remain in history; new synopsis edits stay
+# local unless added with `git add -f`. Stories carry real-world stack
+# coupling (TPB/Prosperity, Jack Henry/Banno/Yello/Insider, Fiserv DNA,
+# etc.) and are deliberately held local rather than auto-tracked.
+docs/synopsis/
+
+# Personal knowledge-base tooling (separate clone of coleam00/claude-memory-compiler)
+claude-memory-compiler/
+
+# Publisher's cached working trees for downstream targets (always re-cloned)
+.publish-cache/
+/docs/review-2026-05-10/
+/docs/review-2026-05-11/
+/docs/submissions/

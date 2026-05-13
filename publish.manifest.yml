@@ -1,0 +1,110 @@
+# publish.manifest.yml
+#
+# Single source-of-truth manifest for ffiec-public CORE → downstream targets.
+# Driven by `scripts/publish.py` (not yet implemented).
+#
+# Targets:
+#   - rfi:    public OCC RFI submission repo (squash-published, public)
+#   - herald: vendor-positioned context routes on herald-website (currently disabled)
+#
+# Path semantics:
+#   - All paths are relative to this repo's root.
+#   - `include` uses gitignore-style globs; `exclude` is applied last.
+#   - `overrides` map a destination path → a source path in CORE (lets you ship
+#     a different file under the destination's name; see README.md below).
+#
+# IMPORTANT:
+#   - Do not hand-edit the public RFI repo or Herald.Website's R2 buckets.
+#   - This manifest is the contract.
+
+# ──────────────────────────────────────────────────────────────────────────
+# RFI: public OCC submission repo
+# ──────────────────────────────────────────────────────────────────────────
+rfi:
+  enabled: true
+  remote: git@github.com:smuchow1962/ffiec-chain-of-custody.git  # NOT YET CREATED
+  branch: main
+  strategy: squashed
+  commit_message: "RFI submission update — {date_iso}"
+
+  include:
+    # ── Spec text + byte-equivalence corpus ──
+    - spec/**
+
+    # ── Submission packet (cover letter, executive summary, proposal, appendices) ──
+    - submission/README.md
+    - submission/cover-letter.md
+    - submission/executive-summary.md
+    - submission/proposal.md
+    - submission/submission-log.md
+    - submission/appendices/**
+
+    # ── Project governance / legal ──
+    - LICENSE
+    - NOTICE
+    - CITATION.cff
+    - GOVERNANCE.md
+    - CONTRIBUTING.md
+    - CODE_OF_CONDUCT.md
+    - SECURITY.md
+    - CHANGELOG.md
+
+    # ── Regulator-facing documentation ──
+    - docs/INDEX.md
+    - docs/*.md                       # top-level docs corpus (filtered by exclude below)
+    - docs/operational-events.schema.json
+    - docs/control-map/**
+    - docs/design/**
+    - docs/regulator-pack/**
+    - docs/scenarios/**
+    - docs/soc-pack/**
+    - docs/templates/**
+
+  exclude:
+    # ── Build / render tooling (CORE-only) ──
+    - submission/build/**
+    - submission/artifacts/**
+
+    # ── Vendor-positioned / pedagogical material (CORE-only; goes to Herald.Website) ──
+    - docs/synopsis/**
+    - docs/examples/**
+
+    # ── Internal working notes ──
+    - docs/future-needs/**
+
+    # ── Vendor-specific exchange docs (e.g., Herald conformance rounds) ──
+    - docs/herald-*.md
+
+    # ── OS / editor turds ──
+    - "**/.DS_Store"
+    - "**/Thumbs.db"
+    - "**/*.swp"
+
+  overrides:
+    # The public RFI repo wants a regulator-facing README, not the dev README
+    # that lives at the CORE root. Source TBD — create submission/public-readme.md
+    # before the first publish, or change this entry to the full path you want.
+    README.md: submission/public-readme.md
+
+# ──────────────────────────────────────────────────────────────────────────
+# Herald.Website: vendor-positioned context (mmpworks.com routes)
+# ──────────────────────────────────────────────────────────────────────────
+# Disabled until the new {public-spec-route} and {spec-context-route} pages
+# exist on herald-website. The previous /ffiec-public/* experiment was removed
+# on 2026-05-10. When the new routes land, define the slice(s) here.
+#
+# Future shape (sketch — replace with real config when pages exist):
+#
+#   herald:
+#     enabled: true
+#     type: r2_sync
+#     herald_root: e:/dev/herald-website
+#     syncs:
+#       - npm_script: r2:sync-spec
+#         env:
+#           FFIEC_SPEC_FILE: spec/chain-of-custody-DRAFT-0.1.0.md
+#       - npm_script: r2:sync-spec-context
+#         env:
+#           FFIEC_CONTEXT_DIR: docs/synopsis
+herald:
+  enabled: false
