@@ -5280,7 +5280,7 @@ Threat model, HMAC chain detail, Merkle seal detail, HSM custody.
 - [`docs/design/02-chain-construction.md`](../docs/design/02-chain-construction.md) — HMAC chain detail
 - [`docs/design/03-merkle-seal.md`](../docs/design/03-merkle-seal.md) — Merkle seal detail
 - [`docs/design/04-hsm-custody.md`](../docs/design/04-hsm-custody.md) — HSM custody
-- [`spec/chain-of-custody-DRAFT-0.1.0.md`](chain-of-custody-DRAFT-0.1.0.md) — this document
+- [`spec/chain-of-custody-DRAFT-0.2.0.md`](chain-of-custody-DRAFT-0.2.0.md) — this document
 
 ### Security researcher / red-team / vulnerability researcher
 
@@ -5302,7 +5302,7 @@ Attack-surface enumeration from the spec alone. Scoping authorized engagements, 
 
 Specifications, design rationale, conformance corpus. The implementer's reading list is split below by role; all three roles read this document and the conformance corpus.
 
-- [`spec/chain-of-custody-DRAFT-0.1.0.md`](chain-of-custody-DRAFT-0.1.0.md) — this document
+- [`spec/chain-of-custody-DRAFT-0.2.0.md`](chain-of-custody-DRAFT-0.2.0.md) — this document
 - [`spec/test-vectors/`](test-vectors/) — conformance corpus
 - [`docs/design/`](../docs/design/) — design rationale (10 docs in reading order)
 - [`docs/design/08-test-vectors.md`](../docs/design/08-test-vectors.md) — test vector design

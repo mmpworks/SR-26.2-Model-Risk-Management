@@ -102,7 +102,7 @@ rfi:
 #     syncs:
 #       - npm_script: r2:sync-spec
 #         env:
-#           FFIEC_SPEC_FILE: spec/chain-of-custody-DRAFT-0.1.0.md
+#           FFIEC_SPEC_FILE: spec/chain-of-custody-DRAFT-0.2.0.md
 #       - npm_script: r2:sync-spec-context
 #         env:
 #           FFIEC_CONTEXT_DIR: docs/synopsis

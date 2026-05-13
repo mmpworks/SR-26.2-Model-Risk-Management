@@ -10,7 +10,7 @@ assignees: []
 
 ## Where
 
-<!-- File path and section number, e.g., spec/chain-of-custody-DRAFT-0.1.0.md §10.4 -->
+<!-- File path and section number, e.g., spec/chain-of-custody-DRAFT-0.2.0.md §10.4 -->
 
 ## Current text
 

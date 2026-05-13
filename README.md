@@ -1,10 +1,10 @@
 # SR 26-2 Model Risk Management &mdash; Implementation Materials
 
-> **Status:** Public Review Draft 1 (PRD-1) &mdash; document version `0.1.0-draft.1`. **This is a public-comment draft, not a finalized standard.**
+> **Status:** Public Review Draft 2 (PRD-2) &mdash; document version `0.2.0`. **This is a public-comment draft, not a finalized standard.**
 
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
-[![Status](https://img.shields.io/badge/status-public%20review%20draft-orange.svg)](spec/chain-of-custody-DRAFT-0.1.0.md)
-[![Spec](https://img.shields.io/badge/spec-PRD--1-informational.svg)](spec/chain-of-custody-DRAFT-0.1.0.md)
+[![Status](https://img.shields.io/badge/status-public%20review%20draft-orange.svg)](spec/chain-of-custody-DRAFT-0.2.0.md)
+[![Spec](https://img.shields.io/badge/spec-PRD--2-informational.svg)](spec/chain-of-custody-DRAFT-0.2.0.md)
 [![Anchor](https://img.shields.io/badge/anchor-SR%2026--2-blueviolet.svg)](https://www.federalreserve.gov/supervisionreg/srletters/SR2602.htm)
 
 ----

@@ -16,7 +16,7 @@ abstract: >
   requirements in the FFIEC IT Examination Handbook (Information Security
   and Architecture, Infrastructure, and Operations booklets) and related
   model-risk-management guidance (SR 26-2, OCC Bulletin 2026-13). Currently
-  Public Review Draft 1 (PRD-1).
+  Public Review Draft 2 (PRD-2).
 keywords:
   - FFIEC
   - chain of custody
@@ -29,9 +29,9 @@ keywords:
   - OpenTelemetry
   - banking regulation
 license: Apache-2.0
-version: "0.1.0-draft.1"
-date-released: "2026-05-08"
+version: "0.2.0"
+date-released: "2026-05-13"
 identifiers:
-  - description: "Public Review Draft 1 (PRD-1)"
+  - description: "Public Review Draft 2 (PRD-2)"
     type: other
-    value: "PRD-1"
+    value: "PRD-2"

@@ -10,7 +10,7 @@ assignees: []
 
 ## PRD affected
 
-<!-- e.g., PRD-1 (0.1.0-draft.1) -->
+<!-- e.g., PRD-2 (0.2.0) -->
 
 ## Where
 

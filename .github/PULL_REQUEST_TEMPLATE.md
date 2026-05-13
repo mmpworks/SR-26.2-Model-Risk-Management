@@ -14,7 +14,7 @@
 ## Version impact
 
 - [ ] Document version unchanged
-- [ ] Document version increment expected (`0.1.0-draft.N` → `0.1.0-draft.N+1`)
+- [ ] Document version increment expected (`0.2.0` → `0.3.0` or later)
 - [ ] Wire-format identifier change (this is a major event — wire-format changes from `"v1"` to `"v2"` rebase every test vector and require a coordinated PRD)
 
 ## The reviewer's-lens summary
@@ -38,7 +38,7 @@ Where applicable, cite:
 ## Spec / docs / submission updates
 
 - [ ] No spec change
-- [ ] `spec/chain-of-custody-DRAFT-0.1.0.md` updated with normative changes
+- [ ] `spec/chain-of-custody-DRAFT-0.2.0.md` updated with normative changes
 - [ ] `docs/design/` updated to reflect the change's rationale
 - [ ] `submission/` updated if the change affects the public-comment package
 - [ ] `CHANGELOG.md` entry added under the current PRD

@@ -6,7 +6,7 @@
 
 | Document | Version | Status |
 |---|---|---|
-| [`chain-of-custody-DRAFT-0.1.0.md`](chain-of-custody-DRAFT-0.1.0.md) | `0.1.0-draft.1` | **Public Review Draft 1 (PRD-1)** |
+| [`chain-of-custody-DRAFT-0.2.0.md`](chain-of-custody-DRAFT-0.2.0.md) | `0.2.0` | **Public Review Draft 2 (PRD-2)** |
 
 This is a public-comment draft, not a finalized standard. Comments and review are invited per [`../GOVERNANCE.md`](../GOVERNANCE.md). The trajectory of changes between PRD-N and PRD-(N+1) is tracked in [`../CHANGELOG.md`](../CHANGELOG.md) and in §12 of the spec.
 
@@ -14,7 +14,7 @@ This is a public-comment draft, not a finalized standard. Comments and review ar
 
 Implementers and reviewers distinguish two versions:
 
-- **Document version** &mdash; `0.1.0-draft.1`. The state of the specification text. Increments per draft revision and finalizes to `1.0.0` when the public-comment process concludes.
+- **Document version** &mdash; `0.2.0`. The state of the specification text. Increments per draft revision and finalizes to `1.0.0` when the public-comment process concludes.
 - **Wire-format identifier** &mdash; `"v1"`. The byte-level construction. Stamped on every chain entry as `format_version`, embedded in the HKDF salt and info constants, and pinned by every test vector. Stable across the draft cycle so implementations build against PRD-N and remain valid under PRD-(N+1).
 
 See §0 of the spec for the full version policy.

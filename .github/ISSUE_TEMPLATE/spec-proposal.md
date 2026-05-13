@@ -6,7 +6,7 @@ labels: ["spec-proposal"]
 assignees: []
 ---
 
-> **A spec proposal is a normative change to `spec/chain-of-custody-DRAFT-0.1.0.md`.** Spec changes follow the unanimous spec-editor approval and 14-day public-comment cadence in [GOVERNANCE.md](../GOVERNANCE.md). Editorial fixes use the `editorial` template; corrections to a published draft use the `errata` template.
+> **A spec proposal is a normative change to `spec/chain-of-custody-DRAFT-0.2.0.md`.** Spec changes follow the unanimous spec-editor approval and 14-day public-comment cadence in [GOVERNANCE.md](../GOVERNANCE.md). Editorial fixes use the `editorial` template; corrections to a published draft use the `errata` template.
 
 ## Summary
 
