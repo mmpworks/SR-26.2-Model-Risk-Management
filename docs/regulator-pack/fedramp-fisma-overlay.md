@@ -11,7 +11,7 @@ companion-docs:
   - docs/incident-response-playbook.md (Scenarios 1–11)
   - docs/supply-chain.md (CISA BOD posture; SSDF alignment)
   - docs/edge-and-federated-ai.md (Cross-Domain Solutions composition)
-  - spec/chain-of-custody-DRAFT-0.1.0.md §1.4, §4.1, §4.3, §4.4, §7, §10.1, §10.5–10.13, §10.15
+  - spec/chain-of-custody-DRAFT-0.2.0.md §1.4, §4.1, §4.3, §4.4, §7, §10.1, §10.5–10.13, §10.15
 date: 2026-05-07
 version: 1.0.0
 ---

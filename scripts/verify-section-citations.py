@@ -6,7 +6,7 @@ Programmatic verifier for spec section citations in companion docs.
 What it does
 ------------
 
-1. Walks `spec/chain-of-custody-DRAFT-0.1.0.md` and builds an index of every
+1. Walks `spec/chain-of-custody-DRAFT-0.2.0.md` and builds an index of every
    section heading: §1, §1.1, §1.2.1, ..., §10.82, Appendix A/B/C/D.
 
 2. Walks every companion markdown file (docs/, the resolution matrix, the
@@ -47,7 +47,7 @@ from pathlib import Path
 
 # Repo root resolved from this script's location: scripts/ -> repo root.
 REPO_ROOT = Path(__file__).resolve().parent.parent
-SPEC_PATH = REPO_ROOT / "spec" / "chain-of-custody-DRAFT-0.1.0.md"
+SPEC_PATH = REPO_ROOT / "spec" / "chain-of-custody-DRAFT-0.2.0.md"
 
 # Companion docs that cite spec sections. Walked recursively under docs/.
 DOCS_DIR = REPO_ROOT / "docs"

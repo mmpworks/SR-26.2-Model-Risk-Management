@@ -274,4 +274,4 @@ The project's posture is **transparent, open-source, and foundation-transfer-bou
 - [Appendix A &mdash; FFIEC handbook mapping](appendices/handbook-mapping.md)
 - [Appendix B &mdash; Control overlay (NIST CSF 2.0 / FS AI RMF / SR 26-2)](appendices/control-overlay.md)
 - [Appendix C &mdash; Conformance test-vector corpus summary](appendices/test-vectors-summary.md)
-- [Specification PRD-1 (`spec/chain-of-custody-DRAFT-0.1.0.md`)](../spec/chain-of-custody-DRAFT-0.1.0.md) &mdash; attached as a separate PDF in the submission package.
+- [Specification PRD-1 (`spec/chain-of-custody-DRAFT-0.2.0.md`)](../spec/chain-of-custody-DRAFT-0.2.0.md) &mdash; attached as a separate PDF in the submission package.

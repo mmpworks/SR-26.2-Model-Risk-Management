@@ -16,7 +16,7 @@ The text below is starter language. Fill in `[bracketed]` items with institution
 
 `[Institution Name]` operates a chain-of-custody implementation for AI agent decisions made within `[scope: e.g., the Customer Service Routing platform]`. The implementation captures every AI agent decision as a structured event, secures the event with cryptographic primitives that defy retroactive alteration, and produces a daily integrity-bearing artifact (the daily Merkle seal) that an independent verifier can validate.
 
-The implementation conforms to the FFIEC AI Chain-of-Custody Specification, version v1.0 (`spec/chain-of-custody-DRAFT-0.1.0.md`).
+The implementation conforms to the FFIEC AI Chain-of-Custody Specification, version v1.0 (`spec/chain-of-custody-DRAFT-0.2.0.md`).
 
 ### B. Principal service commitments and system requirements
 

@@ -42,11 +42,11 @@ This repository contains the **specification, supporting documentation, and subm
 
 | If you are a&hellip; | Start with&hellip; |
 |---|---|
-| First-time reader | [`docs/management-summary.md`](docs/management-summary.md) (5 min), then [`spec/chain-of-custody-DRAFT-0.1.0.md`](spec/chain-of-custody-DRAFT-0.1.0.md) &sect;1&ndash;&sect;4 |
+| First-time reader | [`docs/management-summary.md`](docs/management-summary.md) (5 min), then [`spec/chain-of-custody-DRAFT-0.2.0.md`](spec/chain-of-custody-DRAFT-0.2.0.md) &sect;1&ndash;&sect;4 |
 | Bank examiner | [`docs/examiner-quickstart.md`](docs/examiner-quickstart.md) (5 min), [`docs/regulator-pack/handbook-mapping.md`](docs/regulator-pack/handbook-mapping.md) |
-| MRM officer / model risk manager | [`docs/MRM-COMMITTEE-BRIEF.md`](docs/MRM-COMMITTEE-BRIEF.md), [`docs/management-summary.md`](docs/management-summary.md), [`spec/chain-of-custody-DRAFT-0.1.0.md`](spec/chain-of-custody-DRAFT-0.1.0.md) &sect;1&ndash;&sect;4 |
+| MRM officer / model risk manager | [`docs/MRM-COMMITTEE-BRIEF.md`](docs/MRM-COMMITTEE-BRIEF.md), [`docs/management-summary.md`](docs/management-summary.md), [`spec/chain-of-custody-DRAFT-0.2.0.md`](spec/chain-of-custody-DRAFT-0.2.0.md) &sect;1&ndash;&sect;4 |
 | Cryptographic reviewer | [`docs/design/09-threat-model.md`](docs/design/09-threat-model.md), [`docs/design/02-chain-construction.md`](docs/design/02-chain-construction.md), [`docs/design/03-merkle-seal.md`](docs/design/03-merkle-seal.md), [`docs/design/04-hsm-custody.md`](docs/design/04-hsm-custody.md) |
-| Implementer | [`spec/chain-of-custody-DRAFT-0.1.0.md`](spec/chain-of-custody-DRAFT-0.1.0.md) end-to-end, [`spec/test-vectors/`](spec/test-vectors/) |
+| Implementer | [`spec/chain-of-custody-DRAFT-0.2.0.md`](spec/chain-of-custody-DRAFT-0.2.0.md) end-to-end, [`spec/test-vectors/`](spec/test-vectors/) |
 | Bank executive | [`docs/management-summary.md`](docs/management-summary.md), [`docs/cost-model.md`](docs/cost-model.md), [`docs/MRM-COMMITTEE-BRIEF.md`](docs/MRM-COMMITTEE-BRIEF.md) |
 
 A complete audience-by-audience navigation lives in [`docs/INDEX.md`](docs/INDEX.md) and in &sect;13 of the spec.

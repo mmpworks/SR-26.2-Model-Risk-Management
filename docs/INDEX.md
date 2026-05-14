@@ -120,13 +120,13 @@
 2. [`design/02-chain-construction.md`](design/02-chain-construction.md) — HMAC chain detail
 3. [`design/03-merkle-seal.md`](design/03-merkle-seal.md) — Merkle seal detail
 4. [`design/04-hsm-custody.md`](design/04-hsm-custody.md) — HSM custody
-5. [`spec/chain-of-custody-DRAFT-0.1.0.md`](../spec/chain-of-custody-DRAFT-0.1.0.md) — normative spec
+5. [`spec/chain-of-custody-DRAFT-0.2.0.md`](../spec/chain-of-custody-DRAFT-0.2.0.md) — normative spec
 
 ## By document category
 
 ### Specifications
 
-- [`spec/chain-of-custody-DRAFT-0.1.0.md`](../spec/chain-of-custody-DRAFT-0.1.0.md) — normative spec
+- [`spec/chain-of-custody-DRAFT-0.2.0.md`](../spec/chain-of-custody-DRAFT-0.2.0.md) — normative spec
 - [`spec/test-vectors/`](../spec/test-vectors/) — conformance corpus
 
 ### Design rationale (11 docs in `design/`)

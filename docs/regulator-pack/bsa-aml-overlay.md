@@ -6,7 +6,7 @@ companion-docs:
   - docs/regulator-pack/fdic-occ-examination-overlay.md (FDIC/OCC examination workflow)
   - docs/regulator-pack/examination-response-workflow.md (general PBC list)
   - docs/incident-response-playbook.md (Scenario 4 master-key compromise notification)
-  - spec/chain-of-custody-DRAFT-0.1.0.md §4.4 (audit.* event namespace; routing.* events)
+  - spec/chain-of-custody-DRAFT-0.2.0.md §4.4 (audit.* event namespace; routing.* events)
   - design/12-aml-event-schema.md (AML event-schema reference, planned)
 date: 2026-05-07
 version: 1.0.0

@@ -104,7 +104,7 @@ CSF 2.0 made GOVERN a top-level function. Examiners now expect to see how integr
 
 **GV.RR (Roles, Responsibilities, and Authorities).** The IR playbook `Roles` table names the chain-specific roles; the institution maps these to its existing IR role assignments. The chain-ops team is typically a subset of the institution's broader cyber-ops team, with the chain-specific authority being "request HSM signing operations under the seal-job role" and "operate the IKM custodian's reconciliation procedure."
 
-**GV.PO (Policy).** The institution's information-security policy framework references the spec (`spec/chain-of-custody-DRAFT-0.1.0.md`) as the normative artifact for AI-decision audit-trail integrity. The institution's control description in its SOC opinion or examination response includes the chain's CUEC obligations (`docs/control-map/CUECs.md`).
+**GV.PO (Policy).** The institution's information-security policy framework references the spec (`spec/chain-of-custody-DRAFT-0.2.0.md`) as the normative artifact for AI-decision audit-trail integrity. The institution's control description in its SOC opinion or examination response includes the chain's CUEC obligations (`docs/control-map/CUECs.md`).
 
 **GV.OV (Oversight).** The MRM committee oversight (per `MRM-COMMITTEE-BRIEF.md`) and the audit committee oversight (per `audit-committee-summary.md`) are the institution's GV.OV evidence. Both committees receive verifier output and reconciliation reports on a documented cadence.
 

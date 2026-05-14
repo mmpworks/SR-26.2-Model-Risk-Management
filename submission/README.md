@@ -34,7 +34,7 @@ The same materials retarget with only a swapped cover letter to:
 | [`appendices/control-overlay.md`](appendices/control-overlay.md) | NIST CSF 2.0 + FS AI RMF + SR 26-2 overlay (sourced from `docs/regulator-pack/`) | Placeholder |
 | [`appendices/test-vectors-summary.md`](appendices/test-vectors-summary.md) | Conformance corpus summary | Placeholder |
 
-The full specification (`spec/chain-of-custody-DRAFT-0.1.0.md`) is attached to the submission as a rendered PDF, generated from the markdown source by Pandoc.
+The full specification (`spec/chain-of-custody-DRAFT-0.2.0.md`) is attached to the submission as a rendered PDF, generated from the markdown source by Pandoc.
 
 ## Production rules
 
@@ -42,7 +42,7 @@ The full specification (`spec/chain-of-custody-DRAFT-0.1.0.md`) is attached to t
 - **Executive summary**: PDF, 3&ndash;5 pages.
 - **Proposal**: PDF, mapped to the receiving body's question set.
 - **Appendices**: PDF, attached.
-- **Spec**: PDF render of `spec/chain-of-custody-DRAFT-0.1.0.md`, with the PRD-1 banner intact and a generation-timestamp footer.
+- **Spec**: PDF render of `spec/chain-of-custody-DRAFT-0.2.0.md`, with the PRD-1 banner intact and a generation-timestamp footer.
 
 PDF generation uses Pandoc with a citation-aware LaTeX template. The build is reproducible: same source bytes &rarr; same PDF bytes (modulo embedded timestamp). The PDF render command is in [`build/render-pdf.sh`](build/render-pdf.sh) and is invoked by the `.github/workflows/render-pdf.yml` GitHub Action.
 

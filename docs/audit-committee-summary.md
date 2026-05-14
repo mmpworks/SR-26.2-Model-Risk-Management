@@ -95,7 +95,7 @@ The chain doesn't dictate committee decisions; it provides the input.
 
 ## Reference materials available to the committee
 
-- The full chain spec at `spec/chain-of-custody-DRAFT-0.1.0.md`
+- The full chain spec at `spec/chain-of-custody-DRAFT-0.2.0.md`
 - The chain's threat model at `docs/design/09-threat-model.md`
 - The CUECs at `docs/control-map/CUECs.md`
 - The TSC mapping at `docs/control-map/TSC-mapping.md`

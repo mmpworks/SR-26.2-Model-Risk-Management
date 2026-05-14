@@ -8,7 +8,7 @@ companion-docs:
   - docs/regulator-pack/examiner-training.md (examiner orientation to the chain)
   - docs/regulator-pack/finding-language.md (supervisory-letter phrasing)
   - docs/incident-response-playbook.md (Scenarios 3, 4, 9, 11)
-  - spec/chain-of-custody-DRAFT-0.1.0.md §1.4, §4.1, §4.3, §7, §10.1, §10.5, §10.7
+  - spec/chain-of-custody-DRAFT-0.2.0.md §1.4, §4.1, §4.3, §7, §10.1, §10.5, §10.7
 date: 2026-05-07
 version: 1.0.0
 ---

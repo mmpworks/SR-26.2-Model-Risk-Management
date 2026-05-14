@@ -206,7 +206,7 @@ The conformance contract: a v1.x verifier reproduces both signatures byte-for-by
 
 - `docs/cryptographic-agility-roadmap.md` §5 — the full hybrid signature variant B specification with concrete primitive selections
 - `docs/cryptographic-agility-roadmap.md` §10 — the HNDL response and the dated dual-algorithm seal mandate (2030-01-01)
-- `spec/chain-of-custody-DRAFT-0.1.0.md` §4.2 — the `signatures` list specification
-- `spec/chain-of-custody-DRAFT-0.1.0.md` §4.3 — the per-algorithm `sign_payload` Variant B specification
-- `spec/chain-of-custody-DRAFT-0.1.0.md` §7 step 11 — the dispatch table covering cases (a) through (e)
+- `spec/chain-of-custody-DRAFT-0.2.0.md` §4.2 — the `signatures` list specification
+- `spec/chain-of-custody-DRAFT-0.2.0.md` §4.3 — the per-algorithm `sign_payload` Variant B specification
+- `spec/chain-of-custody-DRAFT-0.2.0.md` §7 step 11 — the dispatch table covering cases (a) through (e)
 - `description.md` (in this directory) — the original recipe targeting Dilithium3 (superseded by ML-DSA-65 under FIPS 204 nomenclature)

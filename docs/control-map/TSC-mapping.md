@@ -24,7 +24,7 @@ The Common Criteria apply to every SOC 2 engagement.
 
 | TSC | Mapping |
 |---|---|
-| CC3.1 (Specifies suitable objectives) | Spec scope statement (`spec/chain-of-custody-DRAFT-0.1.0.md` §1) |
+| CC3.1 (Specifies suitable objectives) | Spec scope statement (`spec/chain-of-custody-DRAFT-0.2.0.md` §1) |
 | CC3.2 (Identifies risks) | Threat model (`09-threat-model.md`) |
 | CC3.4 (Assesses changes) | Spec version change-control; algorithm rotation provisions |
 

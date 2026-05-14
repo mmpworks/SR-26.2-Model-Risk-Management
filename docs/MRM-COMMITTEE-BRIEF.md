@@ -81,7 +81,7 @@ Standard questions for the chain owner:
    - **`audit.deployment.intent = vendor_reroute_observed` triggers a vendor-management escalation when:** (a) the period's `vendor_reroute_observed` count exceeds the institution's documented expected baseline (typically zero for vendors with contractual model-version-change notification, or a low single-digit count for vendors without); OR (b) the reroute pattern correlates with a specific time window (suggesting a vendor-side incident the vendor did not disclose); OR (c) the rerouted-to model has different SR 11-7 reproducibility characteristics than the contracted model (e.g., a different decoding-parameter envelope). The escalation goes to the institution's vendor-management committee with the working-paper from audit-procedures.md P-26 attached.
    - **`audit.deployment.intent = multi_region_drift` warrants a regional-config audit when:** (a) the regional drift was not part of a documented phased-rollout plan; OR (b) the drift persists across more than one period (transient drift during a rollout window is expected; persistent drift is a regional-config-management gap); OR (c) the drift correlates with elevated decision-disagreement rates between regions for the same decision-class (the regional model variants are producing materially different decisions). The regional-config audit goes to the institution's deployment-engineering team with the regional-version inventory and the per-region decision-distribution evidence from the chain.
 
-   **Reference.** The full §4.4.2 schema, including the four-intent disposition table the committee uses, lives in `spec/chain-of-custody-DRAFT-0.1.0.md` §4.4.2. The audit-procedure shape that produces the working-paper the committee reviews lives in `docs/audit-procedures.md` P-26 (extended for deployment-intent stratification).
+   **Reference.** The full §4.4.2 schema, including the four-intent disposition table the committee uses, lives in `spec/chain-of-custody-DRAFT-0.2.0.md` §4.4.2. The audit-procedure shape that produces the working-paper the committee reviews lives in `docs/audit-procedures.md` P-26 (extended for deployment-intent stratification).
 
 ## Specific scenarios
 
@@ -110,7 +110,7 @@ The chain has an operating cost dominated by HSM operations. The mid-size instit
 
 ## Reference materials available to the committee
 
-- The full chain spec at `spec/chain-of-custody-DRAFT-0.1.0.md`
+- The full chain spec at `spec/chain-of-custody-DRAFT-0.2.0.md`
 - The design docs at `docs/design/`
 - The threat model at `docs/design/09-threat-model.md`
 - The cost model at `docs/cost-model.md`

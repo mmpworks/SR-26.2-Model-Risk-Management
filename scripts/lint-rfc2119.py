@@ -29,7 +29,7 @@ candidates; the reviewer judges.
 
 Usage:
     python scripts/lint-rfc2119.py
-    python scripts/lint-rfc2119.py spec/chain-of-custody-DRAFT-0.1.0.md
+    python scripts/lint-rfc2119.py spec/chain-of-custody-DRAFT-0.2.0.md
     python scripts/lint-rfc2119.py --strict   # tighter heuristics
 """
 from __future__ import annotations
@@ -41,7 +41,7 @@ from pathlib import Path
 
 # Default scan target — the spec file. Override via positional args.
 DEFAULT_TARGETS = [
-    "spec/chain-of-custody-DRAFT-0.1.0.md",
+    "spec/chain-of-custody-DRAFT-0.2.0.md",
 ]
 
 # Section-heading regex. H2 or H3 with "(normative)" or
@@ -148,7 +148,7 @@ def main() -> int:
         "targets",
         nargs="*",
         default=DEFAULT_TARGETS,
-        help="Markdown files to lint (default: spec/chain-of-custody-DRAFT-0.1.0.md)",
+        help="Markdown files to lint (default: spec/chain-of-custody-DRAFT-0.2.0.md)",
     )
     parser.add_argument(
         "--strict",

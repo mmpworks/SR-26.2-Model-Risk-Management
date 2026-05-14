@@ -17,7 +17,7 @@ aligned-with:
 date: 2026-05-07
 version: 1.0.0
 companion-documents:
-  - spec/chain-of-custody-DRAFT-0.1.0.md (§4 sign_payload, §10.6 IKM, §10.10 rotation crossing seal boundary)
+  - spec/chain-of-custody-DRAFT-0.2.0.md (§4 sign_payload, §10.6 IKM, §10.10 rotation crossing seal boundary)
   - docs/design/01-primitives-spec.md
   - docs/design/02-chain-construction.md
   - docs/design/03-merkle-seal.md
@@ -604,7 +604,7 @@ The v1.0a substrate is well-built. Ed25519 is the right primitive for v1.0. RFC 
 
 ## 14. Cross-references
 
-- `spec/chain-of-custody-DRAFT-0.1.0.md` — §4 sign_payload, §10.6 IKM, §10.10 rotation crossing seal boundary, §10.13 evidentiary artifacts.
+- `spec/chain-of-custody-DRAFT-0.2.0.md` — §4 sign_payload, §10.6 IKM, §10.10 rotation crossing seal boundary, §10.13 evidentiary artifacts.
 - `docs/design/01-primitives-spec.md` — primitive selections; this roadmap extends the primitive-selection criteria forward.
 - `docs/design/02-chain-construction.md` — chain construction; this roadmap names the per-event hash-algorithm dispatch.
 - `docs/design/03-merkle-seal.md` — Merkle seal; this roadmap names the per-seal `merkle_hash_algorithm` field.

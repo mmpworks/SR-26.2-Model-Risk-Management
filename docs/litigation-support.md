@@ -14,7 +14,7 @@ The scope is U.S. federal litigation under the Federal Rules of Evidence and the
 
 **The single most important framing.** The chain proves what the AI said and proves no one tampered with the record of what it said. The chain does not prove the AI was correct, the AI was unbiased, or the AI's output complied with policy. Those are separate evidentiary claims that require separate proof. Section 14 returns to this in detail; every other section assumes the reader has internalized it.
 
-Cross-references to the spec use the form "spec §N" and resolve to `spec/chain-of-custody-DRAFT-0.1.0.md`.
+Cross-references to the spec use the form "spec §N" and resolve to `spec/chain-of-custody-DRAFT-0.2.0.md`.
 
 ---
 
