@@ -32,7 +32,7 @@ This repository contains the **specification, supporting documentation, and subm
 
 | Path | Purpose |
 |---|---|
-| [`spec/`](spec/) | The normative specification. Currently PRD-1 (`0.1.0-draft.1`). |
+| [`spec/`](spec/) | The normative specification. Currently PRD-2 (`0.2.0`). |
 | [`spec/test-vectors/`](spec/test-vectors/) | The conformance corpus. Positive vectors 001, 002, 003, 008, 010, 015&ndash;019; negative vectors N001 through N022. |
 | [`docs/`](docs/) | Audience-segmented supporting material &mdash; design rationale, regulator-pack overlays (FFIEC, NIST CSF 2.0, NYDFS Part 500, DORA, GDPR, HIPAA, BSA/AML, FedRAMP, APAC/Korea/Bank of Israel, CFPB), control map, SOC pack, audit procedures, incident-response playbook, customer-dispute procedures, eleven auditor-stories. |
 | [`docs/design/`](docs/design/) | The ten design documents (overview, primitives, chain construction, Merkle seal, HSM custody, OTLP wire, ledger server, verifier, test vectors, threat model, glossary). |
@@ -53,7 +53,7 @@ A complete audience-by-audience navigation lives in [`docs/INDEX.md`](docs/INDEX
 
 ## How to comment
 
-Comments on PRD-1 are welcome via:
+Comments on PRD-2 are welcome via:
 
 - **GitHub issues** &mdash; tagged `spec-proposal`, `editorial`, or `errata` per the templates in [`.github/ISSUE_TEMPLATE/`](.github/ISSUE_TEMPLATE/).
 - **Pull requests** against the spec text. Spec-affecting PRs follow the process in [`GOVERNANCE.md`](GOVERNANCE.md) and require spec-editor approval and the public-comment cadence documented there.

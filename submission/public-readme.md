@@ -1,10 +1,10 @@
 # FFIEC AI Chain-of-Custody &mdash; Proposed Standard
 
-> **Status:** Public Review Draft 1 (PRD-1) &mdash; document version `0.1.0-draft.1`. **This is a public-comment draft, not a finalized standard.**
+> **Status:** Public Review Draft 2 (PRD-2) &mdash; document version `0.2.0`. **This is a public-comment draft, not a finalized standard.**
 
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
 [![Status](https://img.shields.io/badge/status-public%20review%20draft-orange.svg)](spec/chain-of-custody-DRAFT-0.2.0.md)
-[![Spec](https://img.shields.io/badge/spec-PRD--1-informational.svg)](spec/chain-of-custody-DRAFT-0.2.0.md)
+[![Spec](https://img.shields.io/badge/spec-PRD--2-informational.svg)](spec/chain-of-custody-DRAFT-0.2.0.md)
 
 ---
 
@@ -40,7 +40,7 @@ These three are separate questions answered with evidence outside the chain (the
 
 | Path | Purpose |
 |---|---|
-| [`spec/`](spec/) | Normative specification (PRD-1, `0.1.0-draft.1`) and the byte-equivalence test-vector corpus. |
+| [`spec/`](spec/) | Normative specification (PRD-2, `0.2.0`) and the byte-equivalence test-vector corpus. |
 | [`spec/test-vectors/`](spec/test-vectors/) | Conformance corpus: positive vectors (001, 002, 003, 008, 010, 015&ndash;019, plus the §10 family) and negative vectors (N001 through N022). |
 | [`submission/`](submission/) | The public-comment submission package &mdash; cover letter, executive summary, proposal body, and appendices A&ndash;C (handbook mapping, control overlay, test-vector corpus summary). |
 | [`docs/`](docs/) | Audience-segmented supporting documentation: regulator-pack overlays (FFIEC, NIST CSF 2.0, NYDFS Part 500, DORA, GDPR, HIPAA, BSA/AML, FedRAMP, APAC/Korea/Bank of Israel, CFPB), SOC pack, control map, audit procedures, incident-response playbook, customer-dispute procedures, M&amp;A handoff, edge/federated AI, cryptographic-agility roadmap, and audience briefs (CEO, audit committee, MRM committee, vendor management, privacy team, legal/IR team). |
@@ -65,7 +65,7 @@ A complete audience-by-audience navigation lives in [`docs/INDEX.md`](docs/INDEX
 
 ## How to comment
 
-Comments on PRD-1 are welcome via:
+Comments on PRD-2 are welcome via:
 
 - **GitHub issues** &mdash; tagged `spec-proposal`, `editorial`, or `errata` per the templates in [`.github/ISSUE_TEMPLATE/`](.github/ISSUE_TEMPLATE/).
 - **Pull requests** against the spec text. Spec-affecting PRs follow the process in [`GOVERNANCE.md`](GOVERNANCE.md) and require the spec-editor approval and public-comment cadence documented there.
@@ -86,7 +86,7 @@ The convergence target between PRD-N and PRD-(N+1) is *zero open gap-class findi
 
 ## Citation
 
-If you reference this specification, please cite it per [`CITATION.cff`](CITATION.cff). The current released version is **PRD-1 (`0.1.0-draft.1`)**.
+If you reference this specification, please cite it per [`CITATION.cff`](CITATION.cff). The current released version is **PRD-2 (`0.2.0`)**.
 
 ## Disclaimer
 

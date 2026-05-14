@@ -63,4 +63,4 @@ Open-source under Apache-2.0. The patent grant matters: the chain-of-custody pri
 
 ## What's enclosed
 
-The proposal body, the FFIEC handbook mapping, the NIST CSF 2.0 / FS AI RMF / SR 26-2 control overlay, the conformance test-vector corpus summary, and the full specification (PRD-1, `0.1.0-draft.1`).
+The proposal body, the FFIEC handbook mapping, the NIST CSF 2.0 / FS AI RMF / SR 26-2 control overlay, the conformance test-vector corpus summary, and the full specification (PRD-2, `0.2.0`).

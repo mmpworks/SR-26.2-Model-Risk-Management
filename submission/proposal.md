@@ -240,7 +240,7 @@ Human-review chain entries are produced by the institution's review system (typi
 
 The proposal asks the agencies to:
 
-1. **Recognize** PRD-1 as a candidate audit-trail integrity standard for AI in regulated banking.
+1. **Recognize** PRD-2 as a candidate audit-trail integrity standard for AI in regulated banking.
 2. **Cite** the chain-of-custody primitive in the AI RFI's response synthesis as one of the candidate solutions on the table.
 3. **Pilot** the verifier on a volunteer institution to evaluate examiner-laptop deployment per [`docs/regulator-pack/deployment-package.md`](../docs/regulator-pack/deployment-package.md).
 4. **Reference** the chain-of-custody primitive in:
@@ -274,4 +274,4 @@ The project's posture is **transparent, open-source, and foundation-transfer-bou
 - [Appendix A &mdash; FFIEC handbook mapping](appendices/handbook-mapping.md)
 - [Appendix B &mdash; Control overlay (NIST CSF 2.0 / FS AI RMF / SR 26-2)](appendices/control-overlay.md)
 - [Appendix C &mdash; Conformance test-vector corpus summary](appendices/test-vectors-summary.md)
-- [Specification PRD-1 (`spec/chain-of-custody-DRAFT-0.2.0.md`)](../spec/chain-of-custody-DRAFT-0.2.0.md) &mdash; attached as a separate PDF in the submission package.
+- [Specification PRD-2 (`spec/chain-of-custody-DRAFT-0.2.0.md`)](../spec/chain-of-custody-DRAFT-0.2.0.md) &mdash; attached as a separate PDF in the submission package.

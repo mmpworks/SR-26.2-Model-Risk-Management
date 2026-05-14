@@ -31,7 +31,7 @@ The two version axes do not move in lockstep. A document-version revision (e.g.,
 
 ## 0.5 How to read this document (informative)
 
-This section is informative. It exists so a first-time reader finds their critical path through PRD-1 in under 30 minutes without reading 2158 lines. Normative content begins at §1.
+This section is informative. It exists so a first-time reader finds their critical path through PRD-2 in under 30 minutes without reading 2158 lines. Normative content begins at §1.
 
 ### 0.5.1 The chain in three paragraphs
 

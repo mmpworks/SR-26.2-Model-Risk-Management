@@ -2,7 +2,7 @@
 
 > **Placeholder.** The formal-submission summary is generated from [`../../spec/test-vectors/`](../../spec/test-vectors/) and presents the corpus in a reviewer-readable form.
 
-## Positive vectors (PRD-1)
+## Positive vectors (PRD-2)
 
 | Vector | Property exercised | Spec sections |
 |---|---|---|

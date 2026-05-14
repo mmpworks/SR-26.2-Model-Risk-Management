@@ -16,7 +16,7 @@
 
 ## Subject
 
-Submitting for the receiving body's consideration the **FFIEC AI Chain-of-Custody Specification, Public Review Draft 1 (PRD-1)** &mdash; a proposed open standard for tamper-evident logging of AI-driven decisions in regulated financial institutions.
+Submitting for the receiving body's consideration the **FFIEC AI Chain-of-Custody Specification, Public Review Draft 2 (PRD-2)** &mdash; a proposed open standard for tamper-evident logging of AI-driven decisions in regulated financial institutions.
 
 ## Why this is responsive to your call
 
@@ -29,7 +29,7 @@ Submitting for the receiving body's consideration the **FFIEC AI Chain-of-Custod
 3. **Appendix A &mdash; Handbook mapping** &mdash; clause-by-clause mapping of the proposal against the FFIEC IT Examination Handbook (Information Security and Architecture, Infrastructure, and Operations booklets).
 4. **Appendix B &mdash; Control overlay** &mdash; mapping to NIST CSF 2.0, Treasury FS AI RMF, and SR 26-2 / OCC Bulletin 2026-13.
 5. **Appendix C &mdash; Conformance test-vector corpus summary** &mdash; the discriminator between conforming and non-conforming implementations.
-6. **Specification &mdash; PRD-1** &mdash; the full normative text. Document version `0.1.0-draft.1`. Available also at the project's open-source repository (Apache-2.0 license).
+6. **Specification &mdash; PRD-2** &mdash; the full normative text. Document version `0.2.0`. Available also at the project's open-source repository (Apache-2.0 license).
 
 ## Project posture
 

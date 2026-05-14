@@ -41,7 +41,7 @@ These extend the cryptographic-controls evidence beyond "HMAC + Ed25519 in HSM c
 | **II.E** | **Change management &mdash; configuration management and change control** | Spec version per event (`ffiec.chain.spec`); chain-stamp `format_version` per entry AND per file header AND per signed seal payload. The `format_version` field is the load-bearing change-management primitive (spec §7 step 1). For algorithm-change events: the institution operates change management on the `algorithm` field, the `signatures` list, and declared algorithm-posture configuration per spec §7 step 11. |
 | III.A | Operations &mdash; operational monitoring | Operational events (spec §10.2 catalog including `audit_file.truncation_detected` and `master_key.retired`). |
 | IV | Outsourcing dependency &mdash; vendor management | BYOC and vendor-hosted topologies; supply chain; IAM permission matrix. |
-| **§VII.D** | **Artificial Intelligence and Machine Learning** | **The booklet currently names AI risks but contains no logging or audit-trail procedure for AI activity. This is the gap PRD-1 closes.** The submission asks the agencies to consider the chain primitive in the next AIO booklet revision's §VII.D, or in an interim sister-agency advisory. |
+| **§VII.D** | **Artificial Intelligence and Machine Learning** | **The booklet currently names AI risks but contains no logging or audit-trail procedure for AI activity. This is the gap PRD-2 closes.** The submission asks the agencies to consider the chain primitive in the next AIO booklet revision's §VII.D, or in an interim sister-agency advisory. |
 
 ---
 
