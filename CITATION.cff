@@ -1,13 +1,13 @@
 cff-version: 1.2.0
-title: "FFIEC AI Chain-of-Custody &mdash; Proposed Standard"
+title: "SR 26-2 Model Risk Management &mdash; Chain-of-Custody Specification"
 message: "If you reference this specification, please cite it as below."
 type: software
 authors:
-  - family-names: Muchow
-    given-names: Steven
-    email: smuchow1962@gmail.com
-repository-code: "https://github.com/smuchow1962/ffiec-chain-of-custody"
-url: "https://github.com/smuchow1962/ffiec-chain-of-custody"
+  - name: "MMPWorks LLC"
+    email: steve@mmpworks.com
+    website: "https://mmpworks.com"
+repository-code: "https://github.com/mmpworks/SR-26.2-Model-Risk-Management"
+url: "https://mmpworks.com/mrm"
 abstract: >
   A proposed open standard for tamper-evident logging of AI-driven decisions
   in regulated financial institutions. Defines a four-primitive chain of
@@ -18,6 +18,7 @@ abstract: >
   model-risk-management guidance (SR 26-2, OCC Bulletin 2026-13). Currently
   Public Review Draft 2 (PRD-2).
 keywords:
+  - SR 26-2
   - FFIEC
   - chain of custody
   - AI audit

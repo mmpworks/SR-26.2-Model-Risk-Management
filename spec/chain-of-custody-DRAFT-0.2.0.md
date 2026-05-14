@@ -6,6 +6,8 @@ version: "0.2.0"
 
 # Chain-of-Custody Specification — Public Review Draft 2 (PRD-2)
 
+> Copyright © 2026 MMPWorks LLC and contributors. Licensed under the Apache License, Version 2.0. See [LICENSE](../LICENSE) and [NOTICE](../NOTICE).
+
 > **Status:** Public Review Draft 2 (PRD-2). Document version `0.2.0`. **This is a draft for public comment, not a finalized standard.** Comments and review are invited per [GOVERNANCE.md](../GOVERNANCE.md). Material changes between PRD-N and PRD-(N+1) are tracked in [CHANGELOG.md](../CHANGELOG.md) and in §12 of this document.
 > **Audience:** implementers of conforming SDKs, ledger servers, and verifiers; auditors and examiners reviewing the proposed standard; regulators evaluating whether to adopt it. Stakeholder navigation is at §13.
 > **Conformance keywords.** The keywords MUST, MUST NOT, SHOULD, SHOULD NOT, and MAY are to be interpreted as described in [RFC 2119](https://www.rfc-editor.org/rfc/rfc2119) and [RFC 8174](https://www.rfc-editor.org/rfc/rfc8174). The keywords are normative for any future finalized version of this specification; in this draft they preview the conformance bar a finalized version is expected to carry.
