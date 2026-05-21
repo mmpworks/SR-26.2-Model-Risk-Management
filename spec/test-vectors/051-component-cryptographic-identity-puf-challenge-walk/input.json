@@ -1,0 +1,35 @@
+{
+  "_about": "Input fixture for case 051-component-cryptographic-identity-puf-challenge-walk. Pins THREE byte-forms: (1) the JCS-canonical bytes of the §10.58 `canonical_binding_input` for the `puf-response` kind (byte-identical to case 050 by design — same synthetic component under both walks); (2) the mocked PUF challenge-response oracle output pinning expected vs live response and the match boolean; (3) the §10.12 verdict object on challenge-walk PASS — exit_code 0 with `additional_verifications: ['component_identity_challenge_walk_verified']`.",
+  "canonical_binding_input": {
+    "identity_kind": "puf-response",
+    "component_id": "as6171-sample-component-2026-05-21-001",
+    "puf_challenge_id": "darpa-shield-puf-challenge-class-A-2026-05",
+    "puf_response_hex": "c8c58f66c5848446cf327add67d53c3c20d8f60940ea4af8536e9a149782b0b1"
+  },
+  "canonical_binding_input_byte_length": 238,
+  "canonical_binding_input_sha256": "8ba3334374f19abc8fab7ac00cf041bc1b9f99c546a7ee68d7c40a0e4de6b753",
+  "canonical_binding_input_bytes_utf8": "{\"component_id\":\"as6171-sample-component-2026-05-21-001\",\"identity_kind\":\"puf-response\",\"puf_challenge_id\":\"darpa-shield-puf-challenge-class-A-2026-05\",\"puf_response_hex\":\"c8c58f66c5848446cf327add67d53c3c20d8f60940ea4af8536e9a149782b0b1\"}",
+  "binding_hash_hex": "8ba3334374f19abc8fab7ac00cf041bc1b9f99c546a7ee68d7c40a0e4de6b753",
+  "challenge_oracle_output": {
+    "puf_challenge_id": "darpa-shield-puf-challenge-class-A-2026-05",
+    "expected_response_hex": "c8c58f66c5848446cf327add67d53c3c20d8f60940ea4af8536e9a149782b0b1",
+    "live_response_hex": "c8c58f66c5848446cf327add67d53c3c20d8f60940ea4af8536e9a149782b0b1",
+    "match": true
+  },
+  "challenge_oracle_canonical_byte_length": 256,
+  "challenge_oracle_canonical_sha256": "478376b6b8d4cd84b3c828d6b5c130c6e17f1ad6f3bb809b8499f20139f15955",
+  "challenge_oracle_canonical_bytes_utf8": "{\"expected_response_hex\":\"c8c58f66c5848446cf327add67d53c3c20d8f60940ea4af8536e9a149782b0b1\",\"live_response_hex\":\"c8c58f66c5848446cf327add67d53c3c20d8f60940ea4af8536e9a149782b0b1\",\"match\":true,\"puf_challenge_id\":\"darpa-shield-puf-challenge-class-A-2026-05\"}",
+  "verdict": {
+    "additional_verifications": [
+      "component_identity_challenge_walk_verified"
+    ],
+    "exit_code": 0,
+    "posture": "ffiec",
+    "trust_anchor_manifest_sha256": "7c2a5f9b1d3e8c6a4b2f1e9d7c5a3b1f8e2d6c4a9b7e5d3c1a8f6e4d2c0b9a8e",
+    "verifier_spec_version_supported": "v1.0c",
+    "verifier_version": "v1.0c-verifier-2026-05-15"
+  },
+  "verdict_canonical_byte_length": 294,
+  "verdict_canonical_sha256": "e8936ea55f7c6011ffd6d8156b2ef79a7920a7046ea33b0d3a142a821bd69e65",
+  "verdict_canonical_bytes_utf8": "{\"additional_verifications\":[\"component_identity_challenge_walk_verified\"],\"exit_code\":0,\"posture\":\"ffiec\",\"trust_anchor_manifest_sha256\":\"7c2a5f9b1d3e8c6a4b2f1e9d7c5a3b1f8e2d6c4a9b7e5d3c1a8f6e4d2c0b9a8e\",\"verifier_spec_version_supported\":\"v1.0c\",\"verifier_version\":\"v1.0c-verifier-2026-05-15\"}"
+}

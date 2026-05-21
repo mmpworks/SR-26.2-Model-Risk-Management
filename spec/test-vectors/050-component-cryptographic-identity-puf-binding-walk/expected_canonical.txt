@@ -1,0 +1,2 @@
+{"component_id":"as6171-sample-component-2026-05-21-001","identity_kind":"puf-response","puf_challenge_id":"darpa-shield-puf-challenge-class-A-2026-05","puf_response_hex":"c8c58f66c5848446cf327add67d53c3c20d8f60940ea4af8536e9a149782b0b1"}
+{"additional_verifications":["component_identity_binding_walk_verified"],"exit_code":0,"posture":"ffiec","trust_anchor_manifest_sha256":"7c2a5f9b1d3e8c6a4b2f1e9d7c5a3b1f8e2d6c4a9b7e5d3c1a8f6e4d2c0b9a8e","verifier_spec_version_supported":"v1.0c","verifier_version":"v1.0c-verifier-2026-05-15"}

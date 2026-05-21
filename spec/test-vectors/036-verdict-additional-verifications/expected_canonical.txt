@@ -1,3 +1,7 @@
 {"additional_verifications":[],"exit_code":0}
 {"additional_verifications":["backfill_seal_verified"],"exit_code":0}
 {"additional_verifications":["backfill_seal_verified","hybrid_pqc_dual_signature_verified"],"exit_code":0}
+{"additional_verifications":[],"exit_code":0,"posture":"ffiec","trust_anchor_manifest_sha256":"7c2a5f9b1d3e8c6a4b2f1e9d7c5a3b1f8e2d6c4a9b7e5d3c1a8f6e4d2c0b9a8e","verifier_spec_version_supported":"v1.0b","verifier_version":"v1.0b-verifier-2026-05-15"}
+{"additional_verifications":["backfill_seal_verified"],"exit_code":0,"posture":"ffiec","trust_anchor_manifest_sha256":"7c2a5f9b1d3e8c6a4b2f1e9d7c5a3b1f8e2d6c4a9b7e5d3c1a8f6e4d2c0b9a8e","verifier_spec_version_supported":"v1.0b","verifier_version":"v1.0b-verifier-2026-05-15"}
+{"additional_verifications":["class_disclosure_subtree_verified","cohort_coverage_attestation_verified"],"exit_code":0,"posture":"ffiec","trust_anchor_manifest_sha256":"7c2a5f9b1d3e8c6a4b2f1e9d7c5a3b1f8e2d6c4a9b7e5d3c1a8f6e4d2c0b9a8e","verifier_spec_version_supported":"v1.0b","verifier_version":"v1.0b-verifier-2026-05-15"}
+{"additional_verifications":["sibling_log_root_verified"],"exit_code":0,"operational_events_log_root":"3e9f7c2a8b1d5e6c4a2f9e1d8c7b5a3f1e8d6c4a9b7e5d3c1a8f6e4d2c0b9a8e","posture":"ffiec","trust_anchor_manifest_sha256":"7c2a5f9b1d3e8c6a4b2f1e9d7c5a3b1f8e2d6c4a9b7e5d3c1a8f6e4d2c0b9a8e","verifier_spec_version_supported":"v1.0c","verifier_version":"v1.0c-verifier-2026-05-15"}

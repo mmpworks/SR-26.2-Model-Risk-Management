@@ -6,7 +6,8 @@
 
 | Document | Version | Status |
 |---|---|---|
-| [`chain-of-custody-DRAFT-0.2.0.md`](chain-of-custody-DRAFT-0.2.0.md) | `0.2.0` | **Public Review Draft 2 (PRD-2)** |
+| [`chain-of-custody-DRAFT-0.3.0.md`](chain-of-custody-DRAFT-0.3.0.md) | `0.3.0` | **Public Review Draft 3 (PRD-3)** |
+| [`chain-of-custody-DRAFT-0.2.0.md`](chain-of-custody-DRAFT-0.2.0.md) | `0.2.0` | Superseded - retained for back-reference |
 
 This is a public-comment draft, not a finalized standard. Comments and review are invited per [`../GOVERNANCE.md`](../GOVERNANCE.md). The trajectory of changes between PRD-N and PRD-(N+1) is tracked in [`../CHANGELOG.md`](../CHANGELOG.md) and in §12 of the spec.
 

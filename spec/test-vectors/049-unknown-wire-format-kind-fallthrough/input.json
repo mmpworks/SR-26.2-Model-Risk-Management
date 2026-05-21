@@ -1,0 +1,27 @@
+{
+  "_about": "Input fixture for case 049-unknown-wire-format-kind-fallthrough. Pins the structured verifier output when a PRD-3 verifier (v1.0c-verifier-2026-05-15) ingests a chain containing a §10.62 cross_domain_transition record — a v1 wire-format kind the verifier was built before. Per §7 fallthrough rule: PASS with anomaly line `unknown wire-format kind present: cross_domain_transition (count: 1)` plus `additional_verifications: ['unknown_kind_present']`. Exit code 0 per §10.12 additional-verifications discipline.",
+  "unknown_kind_string": "cross_domain_transition",
+  "unknown_kind_count": 1,
+  "structured_output": {
+    "anomaly_lines": [
+      "unknown wire-format kind present: cross_domain_transition (count: 1)"
+    ],
+    "status": "PASS",
+    "verdict": {
+      "additional_verifications": [
+        "unknown_kind_present"
+      ],
+      "exit_code": 0,
+      "posture": "ffiec",
+      "trust_anchor_manifest_sha256": "7c2a5f9b1d3e8c6a4b2f1e9d7c5a3b1f8e2d6c4a9b7e5d3c1a8f6e4d2c0b9a8e",
+      "verifier_spec_version_supported": "v1.0c",
+      "verifier_version": "v1.0c-verifier-2026-05-15"
+    }
+  },
+  "structured_canonical_byte_length": 389,
+  "structured_canonical_sha256": "5b9c5410cd0d9e6fd4208daeff338f754fd4e366093d2c2e24aa5507735187cf",
+  "structured_canonical_bytes_utf8": "{\"anomaly_lines\":[\"unknown wire-format kind present: cross_domain_transition (count: 1)\"],\"status\":\"PASS\",\"verdict\":{\"additional_verifications\":[\"unknown_kind_present\"],\"exit_code\":0,\"posture\":\"ffiec\",\"trust_anchor_manifest_sha256\":\"7c2a5f9b1d3e8c6a4b2f1e9d7c5a3b1f8e2d6c4a9b7e5d3c1a8f6e4d2c0b9a8e\",\"verifier_spec_version_supported\":\"v1.0c\",\"verifier_version\":\"v1.0c-verifier-2026-05-15\"}}",
+  "verdict_only_canonical_byte_length": 272,
+  "verdict_only_canonical_sha256": "917235d23e1038afc990dd55d1bc8cb9011ce837eaf3fdd48cab5d40a0ce7dde",
+  "verdict_only_canonical_bytes_utf8": "{\"additional_verifications\":[\"unknown_kind_present\"],\"exit_code\":0,\"posture\":\"ffiec\",\"trust_anchor_manifest_sha256\":\"7c2a5f9b1d3e8c6a4b2f1e9d7c5a3b1f8e2d6c4a9b7e5d3c1a8f6e4d2c0b9a8e\",\"verifier_spec_version_supported\":\"v1.0c\",\"verifier_version\":\"v1.0c-verifier-2026-05-15\"}"
+}

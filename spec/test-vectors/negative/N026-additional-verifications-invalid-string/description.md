@@ -32,11 +32,15 @@ diagnostic_output: "additional_verifications contains string outside the closed 
 ```
 exit_code: 3
 Status: configuration / strict-mode rejection
-Reason: §10.12 strict-mode: additional_verifications contains string outside the closed enumeration ('<unknown>')
+Reason: additional_verifications marker "<X>" not in v1.0 enumeration
 additional_verifications: []
 ```
 
+The `Reason` string is byte-identical to the §10.12 normative wording (spec lines 2098-2099 of DRAFT-0.2.0.md and DRAFT-0.3.0.md): "the verifier MUST reject any marker not on the list as a non-conformance (output: `additional_verifications marker \"<value>\" not in v1.0 enumeration`)". Token-substitute `<X>` with the offending marker string (e.g., `vendor-acme.custom_diagnostic` for variant A, `BACKFILL_SEAL_VERIFIED` for variant B, `backfill_seal_verifyed` for variant C).
+
 The `--strict` mode rejection is exit code 3 (configuration error) rather than exit code 1 (FAIL) because the chain itself verified — the issue is the verifier's structured output carrying a string the strict-mode contract rejects. This matches the §10.12 categorical distinction: exit 1 is a chain-integrity finding; exit 3 is a configuration / strict-mode rejection.
+
+**Why this is NOT a §7 step.** The §7 procedure is a chain-integrity walk. N026's check runs AFTER §7 completes (the chain has already PASSed every §7 step), at the moment the verifier serializes its verdict object. The check belongs to §10.12's verifier-output discipline, not to §7's chain-integrity discipline. The INDEX.md `Target` column reads `§10.12 strict-mode (post-§7)` to make this distinction explicit; earlier index revisions that tagged the vector `§7 step 13` were incorrect — §7 has no step 13.
 
 ## What this case proves
 

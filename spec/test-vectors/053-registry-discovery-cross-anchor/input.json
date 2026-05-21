@@ -1,0 +1,99 @@
+{
+  "_about": "Input fixture for case 053-registry-discovery-cross-anchor. Pins TWO of the three §10.21.3 normative `cross_anchor_state` values: `bound` (both sides participate; verifier emits `registry_cross_anchor_verified`) and `unbound` (counterpart non-participating; verifier emits `cross_anchor_unbound` and the institution's CC8.1 documents the non-participation as a residual). The third state `published-pending-counterpart` is not exercised in this vector per the PRD-3 index scope (V3 follow-up).",
+  "registry_identity": "federal-reserve-fedwire-registry",
+  "registry_publication_at_utc": "2026-05-21T15:30:00Z",
+  "bound": {
+    "cross_anchor_entry": {
+      "audit.registry_discovery.counterpart_institution": "cape-madeline-bank-and-trust",
+      "audit.registry_discovery.cross_anchor_state": "bound",
+      "audit.registry_discovery.registry_identity": "federal-reserve-fedwire-registry",
+      "audit.registry_discovery.registry_publication_at_utc": "2026-05-21T15:30:00Z",
+      "audit.registry_discovery.registry_publication_id": "fed-fedwire-xanchor-2026-05-21-pub-NBFS-cape-001"
+    },
+    "cross_anchor_canonical_byte_length": 397,
+    "cross_anchor_canonical_sha256": "d96d42585d2996b86430501f471cabb1e7061d01fa0f70ca7f657b83ed2b637e",
+    "cross_anchor_canonical_bytes_utf8": "{\"audit.registry_discovery.counterpart_institution\":\"cape-madeline-bank-and-trust\",\"audit.registry_discovery.cross_anchor_state\":\"bound\",\"audit.registry_discovery.registry_identity\":\"federal-reserve-fedwire-registry\",\"audit.registry_discovery.registry_publication_at_utc\":\"2026-05-21T15:30:00Z\",\"audit.registry_discovery.registry_publication_id\":\"fed-fedwire-xanchor-2026-05-21-pub-NBFS-cape-001\"}",
+    "verdict": {
+      "additional_verifications": [
+        "registry_cross_anchor_verified"
+      ],
+      "exit_code": 0,
+      "posture": "ffiec",
+      "trust_anchor_manifest_sha256": "7c2a5f9b1d3e8c6a4b2f1e9d7c5a3b1f8e2d6c4a9b7e5d3c1a8f6e4d2c0b9a8e",
+      "verifier_spec_version_supported": "v1.0c",
+      "verifier_version": "v1.0c-verifier-2026-05-15"
+    },
+    "verdict_canonical_byte_length": 282,
+    "verdict_canonical_sha256": "94499b150bb60e28a93268d4ac2f285428ced3bff31095b397a7aaa3edbe0c23",
+    "verdict_canonical_bytes_utf8": "{\"additional_verifications\":[\"registry_cross_anchor_verified\"],\"exit_code\":0,\"posture\":\"ffiec\",\"trust_anchor_manifest_sha256\":\"7c2a5f9b1d3e8c6a4b2f1e9d7c5a3b1f8e2d6c4a9b7e5d3c1a8f6e4d2c0b9a8e\",\"verifier_spec_version_supported\":\"v1.0c\",\"verifier_version\":\"v1.0c-verifier-2026-05-15\"}",
+    "composed_record": {
+      "cross_anchor_entry": {
+        "audit.registry_discovery.counterpart_institution": "cape-madeline-bank-and-trust",
+        "audit.registry_discovery.cross_anchor_state": "bound",
+        "audit.registry_discovery.registry_identity": "federal-reserve-fedwire-registry",
+        "audit.registry_discovery.registry_publication_at_utc": "2026-05-21T15:30:00Z",
+        "audit.registry_discovery.registry_publication_id": "fed-fedwire-xanchor-2026-05-21-pub-NBFS-cape-001"
+      },
+      "cross_anchor_state": "bound",
+      "verdict": {
+        "additional_verifications": [
+          "registry_cross_anchor_verified"
+        ],
+        "exit_code": 0,
+        "posture": "ffiec",
+        "trust_anchor_manifest_sha256": "7c2a5f9b1d3e8c6a4b2f1e9d7c5a3b1f8e2d6c4a9b7e5d3c1a8f6e4d2c0b9a8e",
+        "verifier_spec_version_supported": "v1.0c",
+        "verifier_version": "v1.0c-verifier-2026-05-15"
+      }
+    },
+    "composed_canonical_byte_length": 742,
+    "composed_canonical_sha256": "7d63bde56591d902e2439786a3f28dfe72f474597fb3eed92015bd4f2110bf30"
+  },
+  "unbound": {
+    "cross_anchor_entry": {
+      "audit.registry_discovery.counterpart_institution": "non-participating-receiver-institution-XYZ",
+      "audit.registry_discovery.cross_anchor_state": "unbound",
+      "audit.registry_discovery.registry_identity": "federal-reserve-fedwire-registry",
+      "audit.registry_discovery.registry_publication_at_utc": "2026-05-21T15:30:00Z",
+      "audit.registry_discovery.registry_publication_id": "fed-fedwire-xanchor-2026-05-21-pub-NBFS-orphan-002"
+    },
+    "cross_anchor_canonical_byte_length": 415,
+    "cross_anchor_canonical_sha256": "33d7c08f8ad21aacfdcf29afd8d2f7a5d0d9447ace26e25a7a2754f6e2d8d0b1",
+    "cross_anchor_canonical_bytes_utf8": "{\"audit.registry_discovery.counterpart_institution\":\"non-participating-receiver-institution-XYZ\",\"audit.registry_discovery.cross_anchor_state\":\"unbound\",\"audit.registry_discovery.registry_identity\":\"federal-reserve-fedwire-registry\",\"audit.registry_discovery.registry_publication_at_utc\":\"2026-05-21T15:30:00Z\",\"audit.registry_discovery.registry_publication_id\":\"fed-fedwire-xanchor-2026-05-21-pub-NBFS-orphan-002\"}",
+    "verdict": {
+      "additional_verifications": [
+        "cross_anchor_unbound"
+      ],
+      "exit_code": 0,
+      "posture": "ffiec",
+      "trust_anchor_manifest_sha256": "7c2a5f9b1d3e8c6a4b2f1e9d7c5a3b1f8e2d6c4a9b7e5d3c1a8f6e4d2c0b9a8e",
+      "verifier_spec_version_supported": "v1.0c",
+      "verifier_version": "v1.0c-verifier-2026-05-15"
+    },
+    "verdict_canonical_byte_length": 272,
+    "verdict_canonical_sha256": "c9240ff4ebf7d393a25178408a4b510255438c1fd3e04d573ae5a1a14c438dc4",
+    "verdict_canonical_bytes_utf8": "{\"additional_verifications\":[\"cross_anchor_unbound\"],\"exit_code\":0,\"posture\":\"ffiec\",\"trust_anchor_manifest_sha256\":\"7c2a5f9b1d3e8c6a4b2f1e9d7c5a3b1f8e2d6c4a9b7e5d3c1a8f6e4d2c0b9a8e\",\"verifier_spec_version_supported\":\"v1.0c\",\"verifier_version\":\"v1.0c-verifier-2026-05-15\"}",
+    "composed_record": {
+      "cross_anchor_entry": {
+        "audit.registry_discovery.counterpart_institution": "non-participating-receiver-institution-XYZ",
+        "audit.registry_discovery.cross_anchor_state": "unbound",
+        "audit.registry_discovery.registry_identity": "federal-reserve-fedwire-registry",
+        "audit.registry_discovery.registry_publication_at_utc": "2026-05-21T15:30:00Z",
+        "audit.registry_discovery.registry_publication_id": "fed-fedwire-xanchor-2026-05-21-pub-NBFS-orphan-002"
+      },
+      "cross_anchor_state": "unbound",
+      "verdict": {
+        "additional_verifications": [
+          "cross_anchor_unbound"
+        ],
+        "exit_code": 0,
+        "posture": "ffiec",
+        "trust_anchor_manifest_sha256": "7c2a5f9b1d3e8c6a4b2f1e9d7c5a3b1f8e2d6c4a9b7e5d3c1a8f6e4d2c0b9a8e",
+        "verifier_spec_version_supported": "v1.0c",
+        "verifier_version": "v1.0c-verifier-2026-05-15"
+      }
+    },
+    "composed_canonical_byte_length": 752,
+    "composed_canonical_sha256": "af734b43376d47e3f6626f1996a01b8b48fc84b84b93bda4f5876a7055f79708"
+  }
+}

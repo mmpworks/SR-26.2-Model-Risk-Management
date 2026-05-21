@@ -1,0 +1,71 @@
+{
+  "_about": "Input fixture for case 052-parallel-evaluator-composition. Pins the §10.21.2 cross-anchor byte forms for a cardinality-2 known-cardinality regime (lab-internal-eval + aisi-program-evaluation) anchored at a synthetic target-model-weights chain entry. Pins (1) each evaluator's §10.21.2 attribute set in isolation; (2) the §10.12 verdict object the verifier emits on PASS — exit_code 0 with `additional_verifications: ['parallel_evaluator_anchor_verified']`; (3) the composed record carrying both evaluators plus the verdict under one byte-form pin.",
+  "target_anchor_chain_entry_id": "target-model-weights-chain-entry-2026-05-21-frontier-model-v3-deploy",
+  "cardinality": 2,
+  "lab_cross_anchor_entry": {
+    "audit.parallel_evaluator.cardinality": 2,
+    "audit.parallel_evaluator.evaluator_chain_entry_id": "evaluator-chain-entry-2026-05-21::lab-internal-eval",
+    "audit.parallel_evaluator.evaluator_identity": "lab-internal-eval",
+    "audit.parallel_evaluator.evaluator_role": "regulatory-equivalent",
+    "audit.parallel_evaluator.target_anchor_chain_entry_id": "target-model-weights-chain-entry-2026-05-21-frontier-model-v3-deploy"
+  },
+  "lab_cross_anchor_canonical_byte_length": 407,
+  "lab_cross_anchor_canonical_sha256": "831de5f3ad489804dfcae0af5b76afb882b1a96cd5e8eef37a031ddd4ae7fb76",
+  "lab_cross_anchor_canonical_bytes_utf8": "{\"audit.parallel_evaluator.cardinality\":2,\"audit.parallel_evaluator.evaluator_chain_entry_id\":\"evaluator-chain-entry-2026-05-21::lab-internal-eval\",\"audit.parallel_evaluator.evaluator_identity\":\"lab-internal-eval\",\"audit.parallel_evaluator.evaluator_role\":\"regulatory-equivalent\",\"audit.parallel_evaluator.target_anchor_chain_entry_id\":\"target-model-weights-chain-entry-2026-05-21-frontier-model-v3-deploy\"}",
+  "aisi_cross_anchor_entry": {
+    "audit.parallel_evaluator.cardinality": 2,
+    "audit.parallel_evaluator.evaluator_chain_entry_id": "evaluator-chain-entry-2026-05-21::aisi-program-evaluation",
+    "audit.parallel_evaluator.evaluator_identity": "aisi-program-evaluation",
+    "audit.parallel_evaluator.evaluator_role": "regulatory-equivalent",
+    "audit.parallel_evaluator.target_anchor_chain_entry_id": "target-model-weights-chain-entry-2026-05-21-frontier-model-v3-deploy"
+  },
+  "aisi_cross_anchor_canonical_byte_length": 419,
+  "aisi_cross_anchor_canonical_sha256": "47193d870c68b226f707b65879af7a0d953bdc3ef43b456f284bf562b463a354",
+  "aisi_cross_anchor_canonical_bytes_utf8": "{\"audit.parallel_evaluator.cardinality\":2,\"audit.parallel_evaluator.evaluator_chain_entry_id\":\"evaluator-chain-entry-2026-05-21::aisi-program-evaluation\",\"audit.parallel_evaluator.evaluator_identity\":\"aisi-program-evaluation\",\"audit.parallel_evaluator.evaluator_role\":\"regulatory-equivalent\",\"audit.parallel_evaluator.target_anchor_chain_entry_id\":\"target-model-weights-chain-entry-2026-05-21-frontier-model-v3-deploy\"}",
+  "verdict": {
+    "additional_verifications": [
+      "parallel_evaluator_anchor_verified"
+    ],
+    "exit_code": 0,
+    "posture": "ffiec",
+    "trust_anchor_manifest_sha256": "7c2a5f9b1d3e8c6a4b2f1e9d7c5a3b1f8e2d6c4a9b7e5d3c1a8f6e4d2c0b9a8e",
+    "verifier_spec_version_supported": "v1.0c",
+    "verifier_version": "v1.0c-verifier-2026-05-15"
+  },
+  "verdict_canonical_byte_length": 286,
+  "verdict_canonical_sha256": "a97fea0bf03e41f9e5dc22740b2c0a3b6b245d77d9cfd1c90e6dd98d5ed0c620",
+  "verdict_canonical_bytes_utf8": "{\"additional_verifications\":[\"parallel_evaluator_anchor_verified\"],\"exit_code\":0,\"posture\":\"ffiec\",\"trust_anchor_manifest_sha256\":\"7c2a5f9b1d3e8c6a4b2f1e9d7c5a3b1f8e2d6c4a9b7e5d3c1a8f6e4d2c0b9a8e\",\"verifier_spec_version_supported\":\"v1.0c\",\"verifier_version\":\"v1.0c-verifier-2026-05-15\"}",
+  "composed_record": {
+    "cardinality_declared": 2,
+    "cardinality_observed": 2,
+    "evaluators": [
+      {
+        "audit.parallel_evaluator.cardinality": 2,
+        "audit.parallel_evaluator.evaluator_chain_entry_id": "evaluator-chain-entry-2026-05-21::lab-internal-eval",
+        "audit.parallel_evaluator.evaluator_identity": "lab-internal-eval",
+        "audit.parallel_evaluator.evaluator_role": "regulatory-equivalent",
+        "audit.parallel_evaluator.target_anchor_chain_entry_id": "target-model-weights-chain-entry-2026-05-21-frontier-model-v3-deploy"
+      },
+      {
+        "audit.parallel_evaluator.cardinality": 2,
+        "audit.parallel_evaluator.evaluator_chain_entry_id": "evaluator-chain-entry-2026-05-21::aisi-program-evaluation",
+        "audit.parallel_evaluator.evaluator_identity": "aisi-program-evaluation",
+        "audit.parallel_evaluator.evaluator_role": "regulatory-equivalent",
+        "audit.parallel_evaluator.target_anchor_chain_entry_id": "target-model-weights-chain-entry-2026-05-21-frontier-model-v3-deploy"
+      }
+    ],
+    "target_anchor_chain_entry_id": "target-model-weights-chain-entry-2026-05-21-frontier-model-v3-deploy",
+    "verdict": {
+      "additional_verifications": [
+        "parallel_evaluator_anchor_verified"
+      ],
+      "exit_code": 0,
+      "posture": "ffiec",
+      "trust_anchor_manifest_sha256": "7c2a5f9b1d3e8c6a4b2f1e9d7c5a3b1f8e2d6c4a9b7e5d3c1a8f6e4d2c0b9a8e",
+      "verifier_spec_version_supported": "v1.0c",
+      "verifier_version": "v1.0c-verifier-2026-05-15"
+    }
+  },
+  "composed_canonical_byte_length": 1293,
+  "composed_canonical_sha256": "bf9b665be389679006cf3ff698b964bca0b77d89d4ab554a443a82a73fb23abf"
+}

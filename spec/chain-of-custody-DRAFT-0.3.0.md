@@ -1,14 +1,14 @@
 ---
-status: "Public Review Draft 2 (PRD-2)"
-status_short: "PRD-2"
-version: "0.2.0"
+status: "Public Review Draft 3 (PRD-3)"
+status_short: "PRD-3"
+version: "0.3.0"
 ---
 
-# Chain-of-Custody Specification — Public Review Draft 2 (PRD-2)
+# Chain-of-Custody Specification — Public Review Draft 3 (PRD-3)
 
 > Copyright © 2026 MMPWorks LLC and contributors. Licensed under the Apache License, Version 2.0. See [LICENSE](../LICENSE) and [NOTICE](../NOTICE).
 
-> **Status:** Public Review Draft 2 (PRD-2). Document version `0.2.0`. **This is a draft for public comment, not a finalized standard.** Comments and review are invited per [GOVERNANCE.md](../GOVERNANCE.md). Material changes between PRD-N and PRD-(N+1) are tracked in [CHANGELOG.md](../CHANGELOG.md) and in §12 of this document.
+> **Status:** Public Review Draft 3 (PRD-3). Document version `0.3.0`. **This is a draft for public comment, not a finalized standard.** Comments and review are invited per [GOVERNANCE.md](../GOVERNANCE.md). Material changes between PRD-N and PRD-(N+1) are tracked in [CHANGELOG.md](../CHANGELOG.md) and in §12 of this document.
 > **Audience:** implementers of conforming SDKs, ledger servers, and verifiers; auditors and examiners reviewing the proposed standard; regulators evaluating whether to adopt it. Stakeholder navigation is at §13.
 > **Conformance keywords.** The keywords MUST, MUST NOT, SHOULD, SHOULD NOT, and MAY are to be interpreted as described in [RFC 2119](https://www.rfc-editor.org/rfc/rfc2119) and [RFC 8174](https://www.rfc-editor.org/rfc/rfc8174). The keywords are normative for any future finalized version of this specification; in this draft they preview the conformance bar a finalized version is expected to carry.
 >
@@ -687,6 +687,8 @@ The seal record's signature has a fully-specified dual-algorithm posture under �
 Until both conditions hold, the alt MAC remains a v1.0b RECOMMENDED safety margin rather than a v1.0b normative requirement.
 
 **Composition with §4.3.2 emergency-patch SLA.** The 90-day SLA from §4.3.2 remains the primary migration mechanism; the alt MAC field is an in-band early-warning capability that lets an institution that has been emitting `payload_hash_alt` for years switch to the alt algorithm as the primary at the moment a SHA-256 break is announced, without rebuilding cryptographic foundations from scratch. The two mechanisms compose: §4.3.2 covers the institutional response and timeline; the alt MAC field covers the in-band cryptographic state at the moment the response is required. An institution that adopts the alt MAC at v1.0b and runs it in parallel for the chain's full retention period reduces its post-break migration burden from "90 days to deploy a new algorithm and re-validate all primitives" to "90 days to confirm the alt algorithm survives scrutiny and switch the primary pointer in CC8.1." The cost difference is the practical motivation for the recommendation.
+
+**Reference-implementation status (normative-but-forthcoming).** This section is NORMATIVE in PRD-3 spec text. The Herald.Compliance (C#) and Herald.Py (Python) reference implementations are forthcoming in PRD-3.1; the reference implementation has landed when Herald.Compliance `HmacChainCore.cs` and Herald.Py `_hmac_chain_core.py` emit the optional `payload_hash_alt` field and a dedicated test vector pins the dual-MAC byte form. The spec text is the conformance bar while the reference implementation follows; an institution implementing against this section today reads the cited §-refs and the test-vector corpus to the extent it is materialized.
 
 ### 4.2 Primitive 2 — Daily Merkle seal (normative)
 
@@ -2276,6 +2278,8 @@ The inheritance event preserves the unbroken preservation duty: an entry held un
 
 **Cross-reference.** §10.9 IKM retention; §10.13.2 FRCP 37(e) safe-harbor (the spoliation framework the hold registry composes with); §10.69 disclosure_complete_excepting; FRCP 26 (discovery scope); FRCP 37(e) (spoliation); `docs/litigation-support.md`.
 
+**Reference-implementation status (normative-but-forthcoming).** This section is NORMATIVE in PRD-3 spec text. The Herald.Compliance (C#) and Herald.Py (Python) reference implementations are forthcoming in Phase 14 (Story 20 wave); the reference implementation has landed when the `audit.litigation_hold.*` attribute family parser ships in Herald.Compliance and Herald.Py and test vectors 077-083 materialize under `spec/test-vectors/`. The spec text is the conformance bar while the reference implementation follows; an institution implementing against this section today reads the cited §-refs and the test-vector corpus to the extent it is materialized.
+
 ### 10.14 Trusted-time integration (informative)
 
 For institutions requiring maximum timestamp credibility in high-stakes disputes (litigation anticipated, regulator-supervised dispute resolution), RFC 3161 trusted-timestamp integration is RECOMMENDED but NOT REQUIRED for v1.0 conformance. A future v1.x extension MAY define a normative `audit.timestamp.rfc3161_token` attribute (Base64-encoded RFC 3161 TimeStampToken for the entry's `captured_at` value) to provide an independent time-authority attestation alongside the institution's NTP-synchronized clock.
@@ -3455,6 +3459,8 @@ When an institution operates an AI model that produces user-facing artifacts sub
 
 **Cross-reference.** §4.3.2 (the substrate); §4.2 `signatures` list (the wire carrier); §7 step 11 (the verifier dispatch); §10.10 IKM rotation (sibling rotation discipline); §10.54 decadal re-sealing (the long-retention companion); §11 References (lifts `cryptographic-agility-roadmap.md` from informative to normative — cryptographic-agility roadmap closure); test vector `015-dual-algorithm-cosigned-seal` pins the byte values (the existing PRD-2 vector becomes the §10.53 normative pin); `docs/regulator-pack/long-retention-overlay.md` (operational mapping for 60-year-retention regimes).
 
+**Reference-implementation status (normative-but-forthcoming).** This section is NORMATIVE in PRD-3 spec text. The Herald.Compliance (C#) and Herald.Py (Python) reference implementations are forthcoming in PRD-3.1; the reference implementation has landed when Herald.Compliance `ChainVerifier.cs` and the Herald.Py verifier dispatch on the institution-named migration window per §10.53 requirement 3. The spec text is the conformance bar while the reference implementation follows; an institution implementing against this section today reads the cited §-refs and the test-vector corpus to the extent it is materialized.
+
 ### 10.54 Decadal re-sealing discipline (normative when applicable)
 
 Long-retention regimes (Swiss tax archive law mandating 60-year retention; pension administrators retaining records for participant lifetimes; real-estate title records retained in perpetuity; NARA-equivalent government records) face a multi-generational cryptographic-integrity challenge: a chain sealed under cryptographic suite X at year T must remain verifiable at year T+50 even though X may have been deprecated, broken, or replaced by year T+50. §10.54 normates a *re-sealing* discipline — at each decadal cadence (institution's CC8.1 names the cadence; typical 10 years), the institution emits a re-seal record under the *then-current* cryptographic suite covering the prior period's seal records.
@@ -4120,6 +4126,8 @@ A class-disclosure cohort-mode sub-fixture lives alongside §10.69's per-custome
 
 **Cross-reference.** §10.21 cross-anchor; §10.22 redaction discipline; §10.23 consumer-correlation-index integrity (the `consumer_index.consumer_id_hash` attribute that drives the §10.69 HKDF binding); §10.31 per-cohort subtree disclosure (regulator-side parallel, composed into the class-disclosure sub-mode above); §10.32 per-device session key derivation (the parallel HKDF derivation pattern); §10.2 operational events (`consumer_index.coverage_attestation`, `chain.disclosure_sla_missed`, `chain.class_disclosure_produced`); §10.70 BSA SAR / privileged-investigation overlay (the reciprocal exclusion source); §1.2(f) epistemic-scope (the mis-categorization residual the coverage-attestation closes existence-attestation-wise); §0.6 plain-spoken companion (consumer-facing quick-start for the customer-runnable verifier); `docs/design/19-customer-disclosure.md`; `docs/customer-dispute-procedures.md` (the operational lifecycle the SLA caps bind into); test vectors 077-078 per `spec/test-vectors/PRD-4-INDEX.md`; `docs/regulator-pack/cfpb-1033-overlay.md`; 12 CFR Part 1033; ECOA / Regulation B (12 CFR §1002.9, 30-day adverse-action response); FCRA §611 (30-day reinvestigation, 45-day extension under §611(a)(3)); GDPR Article 12 (response timelines) and Article 15 (data-subject access right); Federal Rule of Civil Procedure 23 (class-action commonality and predominance).
 
+**Reference-implementation status (normative-but-forthcoming).** This section is NORMATIVE in PRD-3 spec text. The Herald.Compliance (C#) and Herald.Py (Python) reference implementations are forthcoming in Phase 14 (Story 20 wave); the reference implementation has landed when the per-customer HKDF derivation ships in Herald.Compliance and Herald.Py and test vectors 077-078 materialize under `spec/test-vectors/`. The spec text is the conformance bar while the reference implementation follows; an institution implementing against this section today reads the cited §-refs and the test-vector corpus to the extent it is materialized.
+
 ### 10.70 Bank Secrecy Act SAR / privileged-investigation overlay (normative when applicable)
 
 Suspicious Activity Reports (SARs) and Currency Transaction Reports (CTRs) filed under 31 USC §5318(g) and 31 CFR Part 1020 are bound by privilege: the customer cannot be told they are filed; chain entries supporting the SAR must be integrity-bound for FinCEN review and law-enforcement subpoena; but the SAR-filing event itself cannot be exposed to the customer under §10.69 customer disclosure. §10.70 normates a privileged-investigation overlay that tags SAR-related (and broader privileged-investigation) chain entries with role-based verifier dispatch.
@@ -4218,6 +4226,8 @@ The family closes the BSA-officer finding that SAR-tagged entries did not bind t
 CTR filings carry weaker confidentiality than SAR filings — the institution MAY disclose the CTR to the subject. The institution's CC8.1 names whether the chain entry's CTR attribution is included in §10.69 customer-disclosure packets (institution-policy choice) or excluded per the §10.70 `regime = "bsa-ctr"` exclusion.
 
 **Cross-reference.** §10.22 redaction discipline (the post-MAC vs pre-MAC binding distinction); §10.23 consumer-correlation-index integrity (privileged-investigation entries still carry the customer index for institution-side cross-referencing); §10.69 per-customer disclosure (the reciprocal exclusion source); §10.71 cross-institution wire chain integrity (the composition rule above); `docs/design/20-privileged-investigation.md`; test vectors 079-080 per `spec/test-vectors/PRD-4-INDEX.md`; `docs/regulator-pack/bsa-sar-overlay.md`; 31 USC §5318(g); 31 CFR Part 1020; 31 CFR §1010.311; FinCEN Form 111 (SAR-FI); FinCEN Form 104 (CTR).
+
+**Reference-implementation status (normative-but-forthcoming).** This section is NORMATIVE in PRD-3 spec text. The Herald.Compliance (C#) and Herald.Py (Python) reference implementations are forthcoming in Phase 14 (Story 20 wave); the reference implementation has landed when the privileged-investigation tag schema with role-based verifier dispatch ships in Herald.Compliance and Herald.Py and test vectors 079-080 materialize under `spec/test-vectors/`. The spec text is the conformance bar while the reference implementation follows; an institution implementing against this section today reads the cited §-refs and the test-vector corpus to the extent it is materialized.
 
 ### 10.71 Cross-institution Fedwire / ACH chain integrity (normative when applicable)
 
@@ -5762,3 +5772,185 @@ A.8.24 requires the institution to "establish and implement rules for the effect
 **ISO 27001 reading-order paragraph (informative).** An ISO 27001:2022 lead auditor approaching this spec for the first time reads in this order: (1) §1 Scope to bound the chain's operational coverage; (2) Appendix B CC8.1 obligations index to identify the institution-side control-description obligations; (3) Appendix C Annex A mapping to align spec sections with Annex A controls under review; (4) Appendix D (this appendix) cryptographic key-management lifecycle for A.8.24 coverage; (5) §10.5, §10.6, §10.6.1, §10.9, §10.10, §10.76, §10.78 in sequence for the full cryptographic substrate. The audit's chain-of-custody scope-statement bounds the engagement to the specific tenant_id values and the period under review; the spec sections cited above are the conformance bar for each control element. Cross-walks to other Annex A controls (asset management A.5.9-12, access control A.5.15-18, supplier relationships A.5.19-23, business continuity A.5.29-30) compose with the chain through the institution's broader ISMS and reference the specific spec sections cited above where overlap exists.
 
 The lifecycle composes with §10.78 trust-anchor rotation integrity (the rotation ceremony's chain-bound attestation) and with §10.17 HSM partition ceremony attestation (the partition-level ceremony for HSM operations spanning the lifecycle). An ISO 27001 lead reading this appendix gains the consolidated view; per-section normative content remains the conformance bar.
+
+
+---
+
+## 14. PRD-3 advancements (informative + targeted normative refinements)
+
+This section lands the PRD-3 wave atop the stable PRD-2 substrate (sections 0-13). PRD-3 refines five spearheads grounded in cross-Kognitos competitive analysis (May-21 points-beyond-Kognitos engineering source) and adds three net-new attribute families pre-cited by the Laura companion documentation. PRD-3 is additive within wire-format identifier v1; no wire-format change.
+
+**Reading guide.** Each subsection below identifies which PRD-2 section it refines or extends. Refinements tighten existing normative text without changing its byte form; extensions add new normative material the verifier-side dispatch table accommodates.
+
+**Reference-implementations-forthcoming flag.** Several PRD-3 surfaces ship as NORMATIVE in the spec text with the explicit qualifier reference implementations forthcoming Phase N. This is honesty discipline: the spec bar is set; the operational implementation lags. The qualifier appears verbatim in each affected subsection status statement.
+
+### 14.0 PRD-3 advancement summary
+
+The five spearheads:
+
+1. Multi-layer cryptographic defense (section 14.1, refining sections 1.4 + 4.1 + 4.2 + 4.3 + 10.5).
+2. Daubert-grade testability (section 14.2, refining sections 1.1 + 1.3 + 7 + 10.12 + 10.26).
+3. Categorical exclusions by design (section 14.3, refining sections 10.13.3 + 10.69 + 10.70). Status: NORMATIVE - REFERENCE IMPLEMENTATIONS FORTHCOMING PHASE 14.
+4. Post-quantum cryptographic agility (section 14.4, refining sections 4.1.3 + 4.3.2 + 10.53 + 10.54). Status: section 4.1.3 dual-MAC NORMATIVE - REFERENCE IMPLEMENTATIONS FORTHCOMING PRD-3.1; sections 4.3.2 + 10.54 shipped today.
+5. Examiner runs the verifier locally (section 14.5, refining sections 10.26 + 10.13.1 + 5.2.1 + 10.12).
+
+Three net-new normative attribute families (Laura pre-cites):
+
+- Section 14.6 audit.actor.* family (Seam D - authenticated actor on chain entries). Status: NORMATIVE - REFERENCE IMPLEMENTATIONS FORTHCOMING PRD-3.1.
+- Section 14.7 audit.reasoning.substrate_kind (Seam B - reasoning-architecture marker). Status: NORMATIVE - REFERENCE IMPLEMENTATIONS FORTHCOMING PRD-3.1.
+- Section 14.8 audit.downstream_action.* family (generalized system-of-record linkage). Status: NORMATIVE - REFERENCE IMPLEMENTATIONS FORTHCOMING PRD-3.1.
+
+Plus the smaller refinements (section 14.9): pre-MAC redaction tightening, cross-vendor handover dispatch marker, long-retention crypto-erasure composition, examiner-facing operational readiness, ISO 3166-1 jurisdictional pinning.
+
+### 14.1 Multi-layer cryptographic defense - tightening section 1.4
+
+The PRD-2 section 1.4 compositional security argument names three independent integrity layers (per-event HMAC, daily Merkle seal, HSM signature). PRD-3 refines the argument by tightening the threat-model framing: defeating the chain to silently insert or alter an entry requires defeating ALL THREE layers simultaneously under the section 10.5 separation-of-duties roster. Defeating any single layer surfaces at the section 7 verifier as a named anomaly.
+
+The refinement is load-bearing under cross-examination of layered competitor claims. Single-layer audit-trail products (hash-chain alone, Merkle-tree alone, append-only signed log alone) satisfy a checkbox bar but produce a single-point-of-failure integrity story. PRD-3 section 1.4 narrative explicitly frames the three-layer composition as the answer to could opposing counsel attack the chain as a whole - a question with a documented response anchored in section 1.4 + section 7 + section 10.5 the institution expert witness reads mechanically.
+
+**No wire-form change. No new code. Pure spec-text refinement.**
+
+### 14.2 Daubert-grade testability - tightening section 1.1 + section 7 + section 10.12
+
+PRD-2 section 1.1 grounds the chain evidentiary posture against the Daubert four factors. PRD-3 refines by making each factor answer explicit and self-contained from shipped artifacts (spec text, test-vector corpus, reference implementation, FIPS standards):
+
+- **Testability**: section 7 procedure + the materialized test-vector corpus (vectors 001-048 + N001-N035) + cross-implementation byte-equivalence demonstrated by Vidimus + TesseraSeal producing byte-identical output. A clean-room implementer can write a second verifier against the spec, pass the corpus, and produce byte-identical output against any institution production chain. Reproducibility is independent of who built the verifier.
+- **Peer review**: cryptographic primitives reviewed against IETF CFRG, NIST FIPS 180-4 / 186-5 / 198-1 / SP 800-90A / 108 / 185, and Real World Crypto community analysis. The deployment-side discipline (HSM custody, key-management lifecycle, multi-target considerations) reviewed against IETF UTA and NIST SP 800-175B.
+- **Known error rate**: per-primitive theoretical bounds named in section 1.3 - HMAC-SHA-256 EUF-CMA bounded by q-squared over 2-to-the-256; SHA-256 Merkle second-preimage bounded by N-squared over 2-to-the-256; Ed25519 EUF-CMA below 2-to-the-minus-128 classical.
+- **General acceptance**: NIST-standardized primitives (FIPS 180-4 SHA-256, FIPS 186-5 Ed25519, FIPS 198-1 HMAC, RFC 5869 HKDF, RFC 8785 JCS, RFC 6962 Merkle).
+
+**Section 10.12 footnote (NEW, normative):** Implementations of the additional_verifications array discipline ship with varying degrees of completeness. Two markers (backfill_seal_verified, parallel_evaluator_anchor_verified) are emitted by the Phase 11+ reference implementations today. Eleven markers (customer_disclosure_subtree_verified, customer_disclosure_key_derivation_verified, class_disclosure_subtree_verified, cohort_coverage_attestation_verified, foia_release_subtree_verified, foia_release_key_derivation_verified, privileged_investigation_full_content_returned, privileged_investigation_redacted_with_existence_attestation, cross_institution_chain_verified, customer_disclosure_cross_tenant_inheritance_verified, attestation_chain_validated) are spec-normated but reference-implementations-forthcoming - the marker is in the closed enumeration AND in the verifier emission table once the corresponding section reference implementation ships. Two markers (cross_vendor_handover_verified, partial_coverage_pattern_2_verified) are partially implemented via existing cross-anchor + chain-coverage code respectively. The institution CC8.1 names which markers its production verifier emits today.
+
+The footnote is honesty discipline. A procurement evaluator reading the closed enumeration table (PRD-2 section 10.12 lines 2100-2121) sees the bar; the footnote sees which bars are testable today.
+
+### 14.3 Categorical exclusions by design - tightening sections 10.13.3 + 10.69 + 10.70
+
+The PRD-2 chain captures every AI-driven decision the institution emits. Some content categories are excluded by design - the categorical fact of exclusion is integrity-bound under the chain. PRD-3 refines the discipline:
+
+**section 10.70 substantive-reach limitation (clarification, normative).** Institution-named regimes (regime values of the form institution-named with a CC8.1-named label) MUST NOT cover the underlying decision the chain entry records, nor its principal reasons. They are limited to deliberative-process content adjacent to a captured decision: the institution internal weighing, draft formulations, contemporaneous reviewer commentary, internal counsel memoranda. A credit-decision entry tagged with an institution-named loan-committee-deliberative regime that excludes the section 10.11.1 ECOA adverse-action reasons themselves is non-conformant; the reasons MUST remain visible in section 10.69 disclosure packets even when surrounding deliberative-process commentary is excluded.
+
+**section 10.70 regime_first_used_utc + regime_scope_filter_sha256 binding (tightening).** Combined, these two attributes close two distinct attack classes: post-hoc regime invocation aimed at hiding inconvenient entries (regime_first_used_utc catches the temporal anomaly), and mid-use scope creep (regime_scope_filter_sha256 catches the scope drift). PRD-3 tightens the discipline by clarifying that an institution widening the scope must emit a fresh regime invocation (new regime_first_used_utc AND new regime_scope_filter_sha256); the prior regime entries retain their bound hash.
+
+**Status flag (section 10.69, section 10.70, section 10.13.3): NORMATIVE - REFERENCE IMPLEMENTATIONS FORTHCOMING PHASE 14.** The spec text bar is preserved in PRD-3; the C# Herald.Compliance and Python Herald.Py reference implementations of the per-customer HKDF derivation (section 10.69), the privileged-investigation tag schema with role-based verifier dispatch (section 10.70), and the litigation-hold registry binding (section 10.13.3) ship at Phase 14 (the Story 20 wave from the PRD-4-now-PRD-3 wave allocation). The eight verifier-dispatch markers in the section 10.12 closed enumeration tied to sections 10.69 / 10.70 are similarly forthcoming.
+
+### 14.4 Post-quantum cryptographic agility - tightening sections 4.1.3 + 4.3.2 + 10.53
+
+The chain signing layer is replaceable without changing the wire format. PRD-3 makes the cryptographic-agility roadmap normative in three places:
+
+**section 4.1.3 per-event MAC algorithm agility (NEW normative, REFERENCE IMPLEMENTATION FORTHCOMING PRD-3.1).** Implementations MAY emit an optional payload_hash_alt field on chain entries carrying a parallel MAC under a second algorithm (HMAC-SHA-3 or HMAC-BLAKE3). When emitted, both payload_hash (HMAC-SHA-256 per section 4.1) AND payload_hash_alt MUST verify for the chain entry to be integrity-bearing under the dual-MAC posture. The institution CC8.1 names whether the dual-MAC posture is active and the chosen alt-algorithm. The dual-MAC posture lets institutions hedge against a future HMAC-SHA-256 break by carrying parallel attestation under an alternate hash family. Wire-form preservation: payload_hash_alt is OPTIONAL; chains operating under single-MAC posture remain conformant.
+
+**section 4.3.2 dual-algorithm post-quantum coexistence (refinement).** The PRD-2 signatures list under AND-security posture (Variant B) is the load-bearing PQC mechanism. PRD-3 clarifies: a seal is integrity-bearing only if EVERY signature in the signatures list verifies under its named algorithm against its named sign_payload. The PRD-2 spec text already establishes this; PRD-3 names it as the AND-security contract for cross-examination defensibility.
+
+**section 10.53 hybrid PQ seal mandate (clarification).** The PRD-2 NORMATIVE-when-applicable lift remains. PRD-3 clarifies the migration-window discipline: institutions operating the lift name the migration-window opening UTC, the legacy-algorithm retirement UTC, and the change-management procedure in CC8.1. The NIST IR 8547 2030-12-31 anchor remains in spec text (per open-question-5 resolution). Reference implementations of the verifier-side dispatch for the section 10.53 mandate (rejecting single-algorithm seals during the migration window as PASS-WITH-ANOMALY) are REFERENCE-IMPLEMENTATION FORTHCOMING PRD-3.1.
+
+**section 10.54 decadal re-sealing (no change).** Already shipped in Herald.Compliance Resealing.cs + Herald.Py _resealing.py + test vector 047.
+
+### 14.5 Examiner runs the verifier locally - tightening sections 10.26 + 10.13.1 + 5.2.1
+
+PRD-2 section 10.26 normates the reference-verifier distribution discipline. PRD-3 tightens by adding two clarifications:
+
+**Sigstore-alignment language (refinement, informative).** An institution operating its verifier and SDK releases under Sigstore (Cosign-signed artifacts validated against a Sigstore root of trust, with release records anchored in the Rekor transparency log) satisfies the section 10.26 distribution discipline by construction. The institution CC8.1 MAY cite Sigstore-conformant release as shorthand for the five-element discipline (reproducible builds, signed artifacts, per-platform binaries, SHA-256 + SHA-512 manifests, SBOM) provided the Rekor anchor is identified. Sigstore is one conformant realization; equivalent signature schemes tied to a published verification key (HSM-rooted enterprise PKI, vendor-internal release-key channels with documented retention) are also conformant when they meet the five-element discipline. The discipline binds, not the tool.
+
+**Established-pattern framing (informative).** The chain open-verifier architecture applies an established open-verification pattern documented in the broader software-integrity ecosystem (Sigstore Cosign, Linux Foundation Rekor, IETF Certificate Transparency under RFC 6962, OpenSSF policy framework, multiple open-source PKI verifier projects) to the AI audit-trail domain. The pattern is not novel to this specification; the specification contribution is applying it to AI audit trails with the section 10.13.1 discovery-production form, the section 5.2.1 FRE 902(13)/(14) self-authentication posture, and the section 10.12 deterministic exit-code contract.
+
+**section 10.13.1 discovery-production form (refinement).** A reference implementation of the integrated produce-a-section-10.13.1-discovery-packet code path is REFERENCE-IMPLEMENTATION FORTHCOMING PRD-3.1. The per-component primitives ship today (Herald.Compliance AuditFileVerifier + MerkleDisclosure + CanonicalJson; Herald.Py equivalents); the integrated packet-assembly path lands at PRD-3.1.
+
+### 14.6 audit.actor.* family - Seam D (NORMATIVE, REFERENCE IMPLEMENTATIONS FORTHCOMING PRD-3.1)
+
+PRD-2 chain entries carry SDK-side workload-identity capture (per section 4.1.1 SPIFFE/mTLS/HSM bearer) and per-event ECOA / SR 11-7 / FRE 902 metadata. The Kognitos Field 3 framing (authenticated human user identity) maps to the institution-side SSO-authenticated human whose session triggered the work. PRD-3 normates a dedicated attribute family for the human-actor side, complementary to the workload-identity side.
+
+| Attribute | Type | Required | Description |
+|---|---|---|---|
+| audit.actor.authenticated_user_id_hash | string | yes when emitted | SHA-256 of the canonicalized authenticated-user identifier per the institution SSO discipline. The hash form binds the actor identity without binding raw PII into the chain entry. |
+| audit.actor.authentication_method | string | yes when emitted | Closed enum: saml_sso, oidc_sso, mtls_workload, spiffe_workload, hsm_bearer_token, api_key_with_iam, institution_named per CC8.1. |
+| audit.actor.session_id | string | RECOMMENDED | The authentication session identifier under which the chain entry was emitted. |
+| audit.actor.delegation_chain | array | when applicable | JCS-canonical lex-sorted array of delegated-authority identities (OAuth on-behalf-of via RFC 8693). Each entry is itself an authenticated_user_id_hash + authentication_method pair. |
+
+The family closes the May-20 Richard coverage-audit gap. Composition with the existing audit.signed_review.* family (section 10.50 HITL primitive) is binary: a chain entry MAY emit the per-event MAC under audit.actor.* AND a separate audit.signed_review.* event later. The two surfaces capture distinct moments.
+
+**Cross-reference.** section 3 Definitions; section 4.1.1 SDK handshake identity; section 10.17 operational-event signatory schema; section 10.50 reviewer signed-review primitive; OAuth RFC 8693; SPIFFE/SPIRE workload-identity model.
+
+**Reference-implementation status (normative-but-forthcoming).** This section is NORMATIVE in PRD-3 spec text. The Herald.Compliance (C#) and Herald.Py (Python) reference implementations are forthcoming in PRD-3.1; the reference implementation has landed when Herald.Compliance and Herald.Py emit the `audit.actor.*` attribute family and a dedicated test vector pins the canonical bytes. The spec text is the conformance bar while the reference implementation follows; an institution implementing against this section today reads the cited §-refs and the test-vector corpus to the extent it is materialized.
+
+### 14.7 audit.reasoning.substrate_kind - Seam B (NORMATIVE, REFERENCE IMPLEMENTATIONS FORTHCOMING PRD-3.1)
+
+PRD-2 chain entries bind hashes of reasoning text (section 10.11 output_hash, section 10.74 explanation_text_hash) and structured reasons codes. The reasoning text itself lives in the institution communication record per section 10.69 retention discipline. PRD-3 normates a per-entry attribute that stratifies reasoning by architecture class.
+
+| Attribute | Type | Required | Description |
+|---|---|---|---|
+| audit.reasoning.substrate_kind | string | RECOMMENDED | Closed canonical enumeration discriminating the reasoning architecture. |
+
+**Closed canonical enumeration (normative).**
+
+- neurosymbolic - the policy operating the AI agent is the human-readable rendered text itself (the Kognitos English-as-Code architecture and related neurosymbolic frameworks)
+- retrieval_grounded_with_citations - reasoning supported by retrieved-document citations (RAG with explicit citation chain); each citation is integrity-bound via section 10.49 per-document retrieval anchor events
+- rule_based - deterministic rule engine; the rule body is institution-side; the chain binds the rule-version hash
+- post_hoc_llm_rationalization - reasoning text generated AFTER the decision by an LLM (lowest trust class)
+- attention_feature_importance - SHAP / attention-weights / feature-attribution-style explanation grounded in the model internal state
+- none - no reasoning artifact captured (rare; institution CC8.1 explains the omission)
+- institution_named - per CC8.1
+
+The substrate-kind attribute is RECOMMENDED rather than REQUIRED. Institutions deploying reasoning-substrate-sensitive decisioning (ECOA / Article 22 / SR 11-7 / fair-lending review) SHOULD emit the field; institutions in lower-stakes domains MAY omit.
+
+**Cross-reference.** section 10.11 / 10.11.1 ECOA reasoning; section 10.47 generation four-tuple binding; section 10.50 output-grounding review; section 10.74 GDPR Article 22 explanation_text_hash.
+
+**Reference-implementation status (normative-but-forthcoming).** This section is NORMATIVE in PRD-3 spec text. The Herald.Compliance (C#) and Herald.Py (Python) reference implementations are forthcoming in PRD-3.1; the reference implementation has landed when Herald.Compliance and Herald.Py emit `audit.reasoning.substrate_kind` on chain entries and a dedicated test vector pins the canonical bytes for each enumeration value. The spec text is the conformance bar while the reference implementation follows; an institution implementing against this section today reads the cited §-refs and the test-vector corpus to the extent it is materialized.
+
+### 14.8 audit.downstream_action.* family (NORMATIVE, REFERENCE IMPLEMENTATIONS FORTHCOMING PRD-3.1)
+
+The chain captures every AI-driven decision; PRD-2 section 10.21 + 10.43 + 10.11 + 10.74 cover per-decision-class downstream actions (model handover, claim lifecycle, ECOA delivery, GDPR deletion). PRD-3 normates a generalized downstream-action attribute family for cases where the decision class is not pre-normated.
+
+| Attribute | Type | Required | Description |
+|---|---|---|---|
+| audit.downstream_action.action_kind | string | yes when emitted | Institution-named action class (account_status_change, notification_sent, payment_executed, record_updated, case_disposition). The institution CC8.1 names the canonical action-kind registry. |
+| audit.downstream_action.system_of_record_id | string | yes when emitted | Institution-issued identifier for the system-of-record the action targeted. |
+| audit.downstream_action.change_record_id_hash | string | yes when emitted | SHA-256 of the canonicalized system-of-record change record. Binds the chain entry to the downstream change without binding the downstream content into the chain. |
+| audit.downstream_action.applied_at_utc | RFC 3339 UTC | yes when emitted | When the downstream system applied the change. An institution that emits a different applied-at-utc than the downstream system own record produces a control-completeness anomaly under section 10.81. |
+
+The family closes the May-20 Richard coverage-audit recommended-addition gap. Composition is additive: a chain entry MAY emit audit.downstream_action.* alongside any of the existing per-decision-class downstream-action families.
+
+**Cross-reference.** section 10.21 cross-vendor handover; section 10.43 claim state-machine; section 10.11 ECOA adverse-action delivery; section 10.74 GDPR Article 17 / CCPA deletion; section 10.81 control-completeness anomaly framing.
+
+**Reference-implementation status (normative-but-forthcoming).** This section is NORMATIVE in PRD-3 spec text. The Herald.Compliance (C#) and Herald.Py (Python) reference implementations are forthcoming in PRD-3.1; the reference implementation has landed when Herald.Compliance and Herald.Py emit the `audit.downstream_action.*` attribute family and a dedicated test vector pins the canonical bytes. The spec text is the conformance bar while the reference implementation follows; an institution implementing against this section today reads the cited §-refs and the test-vector corpus to the extent it is materialized.
+
+### 14.9 Smaller PRD-3 refinements
+
+**section 10.22 pre-MAC redaction at SDK (refinement).** PRD-3 reaffirms the binary posture: redaction is pre-MAC at the SDK boundary (conformant) OR post-MAC via a parent-anchored sidecar per section 10.21-style cross-anchor (conformant only with the cross-anchor). The minimum protected-class floor is unchanged. PRD-3 adds the explicit reminder that ZIP code, occupation code, surname, and university-of-graduation are well-settled examples that MUST appear in the institution CC8.1 enumeration.
+
+**section 10.21 cross-vendor handover (refinement).** The audit.model_handover.contract_status cross-check applies uniformly across spec-named AND institution-named values. PRD-3 clarifies that the cross_vendor_handover_verified marker is partially-implemented today via existing cross-anchor + contract-attribute parsing; full reference-implementation of the dedicated marker emission is REFERENCE-IMPLEMENTATION FORTHCOMING PRD-3.1.
+
+**section 10.71 cross-institution wire chain (informative status, no change).** PRD-3 reaffirms the registry-ready vs registry-operating distinction. The Federal Reserve voluntary cross-institution-anchor registry does not exist operationally; the spec normates the discovery mechanism and the cross_anchor_unbound documented residual.
+
+**section 10.74 long-retention + crypto-erasure composition (refinement).** PRD-3 reaffirms the deletion-discipline composition: PII never enters the chain as raw bytes; deletion requests are bound as separate chain entries via audit.deletion_request.disposition + vault.tokenization_event.change_kind; the institution token vault destroys the mapping from token to raw PII while the chain entry retains only the token.
+
+**section 4.4.1 ISO 3166-1 + sub-national jurisdictional pinning (refinement).** PRD-3 reaffirms ISO 3166-1 alpha-2 + ISO 3166-2 subdivision pinning, BCP 47 language tagging, and the regime-specific consent legal-basis codes. No new code; spec-text-only refinement.
+
+### 14.10 PRD-3 advancement appendix - cross-reference
+
+| Spearhead | PRD-3 section | PRD-2 anchors | Code-backing status |
+|---|---|---|---|
+| 1 Multi-layer crypto | 14.1 | 1.4 + 4.1 + 4.2 + 4.3 + 10.5 | PROVEN BY CODE + TEST |
+| 2 Daubert testability | 14.2 | 1.1 + 1.3 + 7 + 10.12 + 10.26 | PROVEN BY CODE + TEST; section 10.12 footnote NEW |
+| 3 Categorical exclusions | 14.3 | 10.13.3 + 10.69 + 10.70 | NORMATIVE - REFERENCE IMPL FORTHCOMING PHASE 14 |
+| 4 Post-quantum agility | 14.4 | 4.1.3 + 4.3.2 + 10.53 + 10.54 | Mixed: 10.54 shipped; 4.1.3 + 10.53 dispatch FORTHCOMING PRD-3.1 |
+| 5 Examiner runs verifier | 14.5 | 10.26 + 10.13.1 + 5.2.1 + 10.12 | PROVEN BY CODE; integrated packet path FORTHCOMING PRD-3.1 |
+| Family audit.actor.* | 14.6 | NEW (Seam D) | NORMATIVE - REFERENCE IMPL FORTHCOMING PRD-3.1 |
+| Field audit.reasoning.substrate_kind | 14.7 | NEW (Seam B) | NORMATIVE - REFERENCE IMPL FORTHCOMING PRD-3.1 |
+| Family audit.downstream_action.* | 14.8 | NEW | NORMATIVE - REFERENCE IMPL FORTHCOMING PRD-3.1 |
+
+The full code-vs-claims audit lives at Herald/wiki/PRD-3-CODE-VS-CLAIMS-AUDIT.md (Herald repo, internal). The PRD-3 release notes summarize the same status; the audit is the engineering source of truth.
+
+### 14.11 Wire-format identifier
+
+v1 - unchanged. All PRD-3 advancements are additive within v1. New attribute families (audit.actor.*, audit.reasoning.substrate_kind, audit.downstream_action.*) and the optional payload_hash_alt field at section 4.1.3 are additive; existing chains remain valid under PRD-3 conformance.
+
+### 14.12 Open items deferred to PRD-3.1 / PRD-4
+
+- Reference implementations of section 4.1.3 dual-MAC (payload_hash_alt) in Herald.Compliance + Herald.Py.
+- Reference implementations of section 10.69 per-customer disclosure + section 10.70 privileged-investigation in Herald.Compliance + Herald.Py.
+- Reference implementations of section 10.53 migration-window verifier dispatch in Herald.Compliance + Herald.Py.
+- Reference implementations of the three section 14 net-new attribute families (audit.actor.*, audit.reasoning.substrate_kind, audit.downstream_action.*) in Herald.Compliance + Herald.Py.
+- Reference implementation of the integrated produce-a-section-10.13.1-discovery-packet code path.
+- Test vectors 049-053 (Phase 11 shared primitives) materialized on disk.
+- Test vectors 054-083 (Phases 12-14 Stories 18-20) materialized on disk.
+- The Federal Reserve voluntary cross-institution-anchor registry (section 10.71) - exogenous; no spec action.

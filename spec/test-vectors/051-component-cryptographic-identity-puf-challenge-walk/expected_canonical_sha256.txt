@@ -1,0 +1,4 @@
+canonical_binding_input  8ba3334374f19abc8fab7ac00cf041bc1b9f99c546a7ee68d7c40a0e4de6b753
+binding_hash_hex         8ba3334374f19abc8fab7ac00cf041bc1b9f99c546a7ee68d7c40a0e4de6b753
+challenge_oracle_output  478376b6b8d4cd84b3c828d6b5c130c6e17f1ad6f3bb809b8499f20139f15955
+verdict                  e8936ea55f7c6011ffd6d8156b2ef79a7920a7046ea33b0d3a142a821bd69e65

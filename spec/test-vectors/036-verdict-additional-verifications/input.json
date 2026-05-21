@@ -1,12 +1,31 @@
 {
-  "_about": "Input fixture for case 036-verdict-additional-verifications — pins the verdict-object JCS-canonical bytes for three sub-cases. The conformance contract is that all three sub-cases produce byte-identical output across implementations.",
+  "_about": "Input fixture for case 036-verdict-additional-verifications. Pins the verdict-object JCS-canonical bytes for seven sub-cases: three structural-subset shapes (036a/b/c, 2-field) and four full-schema shapes (036d/e/f/g, 6-field v1.0b plus 7-field v1.0c). The conformance contract is that all seven sub-cases produce byte-identical output across implementations.",
   "known_additional_verifications": [
-    "backfill_seal_verified"
+    "backfill_seal_verified",
+    "sample_based_attestation_via_lot_verified",
+    "parallel_evaluator_anchor_verified",
+    "cross_anchor_unbound",
+    "unknown_kind_present",
+    "customer_disclosure_subtree_verified",
+    "customer_disclosure_key_derivation_verified",
+    "class_disclosure_subtree_verified",
+    "cohort_coverage_attestation_verified",
+    "foia_release_subtree_verified",
+    "foia_release_key_derivation_verified",
+    "privileged_investigation_full_content_returned",
+    "privileged_investigation_redacted_with_existence_attestation",
+    "cross_institution_chain_verified",
+    "device_revoked_seen_at_seq_N",
+    "cross_vendor_handover_verified",
+    "partial_coverage_pattern_2_verified",
+    "customer_disclosure_cross_tenant_inheritance_verified",
+    "attestation_chain_validated",
+    "sibling_log_root_verified"
   ],
   "subcases": [
     {
       "label": "036a",
-      "description": "PASS with no bonus verifications (the steady-state shape)",
+      "description": "Structural 2-field subset — PASS with no bonus verifications. Pins the empty-array shape in isolation.",
       "verdict": {
         "additional_verifications": [],
         "exit_code": 0
@@ -17,7 +36,7 @@
     },
     {
       "label": "036b",
-      "description": "PASS with a §10.42 backfill-seal bonus verification",
+      "description": "Structural 2-field subset — PASS with a §10.42 backfill-seal bonus verification.",
       "verdict": {
         "additional_verifications": [
           "backfill_seal_verified"
@@ -30,7 +49,7 @@
     },
     {
       "label": "036c",
-      "description": "PASS with two bonus verifications (forward-compat composition test — the second string is a placeholder demonstrating the two-entry array byte form)",
+      "description": "Structural 2-field subset — PASS with two bonus verifications (forward-compat composition; second string is a placeholder demonstrating the two-entry array byte form).",
       "verdict": {
         "additional_verifications": [
           "backfill_seal_verified",
@@ -41,6 +60,74 @@
       "canonical_byte_length": 106,
       "canonical_sha256": "8062495801460b1ed1969788ebe7bcf40dce63cc9d734a3ceaea43e2cd6316a4",
       "canonical_bytes_utf8": "{\"additional_verifications\":[\"backfill_seal_verified\",\"hybrid_pqc_dual_signature_verified\"],\"exit_code\":0}"
+    },
+    {
+      "label": "036d",
+      "description": "FULL §7 6-field shape — v1.0b PASS, no bonus verifications. Matches spec §7 byte-form example at line 1591.",
+      "verdict": {
+        "additional_verifications": [],
+        "exit_code": 0,
+        "posture": "ffiec",
+        "trust_anchor_manifest_sha256": "7c2a5f9b1d3e8c6a4b2f1e9d7c5a3b1f8e2d6c4a9b7e5d3c1a8f6e4d2c0b9a8e",
+        "verifier_spec_version_supported": "v1.0b",
+        "verifier_version": "v1.0b-verifier-2026-05-15"
+      },
+      "canonical_byte_length": 250,
+      "canonical_sha256": "1555e3ece8c1901561fc359dd8848b34932428f818f8e56256d86004b6d2b098",
+      "canonical_bytes_utf8": "{\"additional_verifications\":[],\"exit_code\":0,\"posture\":\"ffiec\",\"trust_anchor_manifest_sha256\":\"7c2a5f9b1d3e8c6a4b2f1e9d7c5a3b1f8e2d6c4a9b7e5d3c1a8f6e4d2c0b9a8e\",\"verifier_spec_version_supported\":\"v1.0b\",\"verifier_version\":\"v1.0b-verifier-2026-05-15\"}"
+    },
+    {
+      "label": "036e",
+      "description": "FULL §7 6-field shape — v1.0b PASS with `backfill_seal_verified`. Matches spec §7 byte-form example at line 1597.",
+      "verdict": {
+        "additional_verifications": [
+          "backfill_seal_verified"
+        ],
+        "exit_code": 0,
+        "posture": "ffiec",
+        "trust_anchor_manifest_sha256": "7c2a5f9b1d3e8c6a4b2f1e9d7c5a3b1f8e2d6c4a9b7e5d3c1a8f6e4d2c0b9a8e",
+        "verifier_spec_version_supported": "v1.0b",
+        "verifier_version": "v1.0b-verifier-2026-05-15"
+      },
+      "canonical_byte_length": 274,
+      "canonical_sha256": "b34d9803a9caa153a314796e3dd53c218cda1e38ec23dd0263be644786283138",
+      "canonical_bytes_utf8": "{\"additional_verifications\":[\"backfill_seal_verified\"],\"exit_code\":0,\"posture\":\"ffiec\",\"trust_anchor_manifest_sha256\":\"7c2a5f9b1d3e8c6a4b2f1e9d7c5a3b1f8e2d6c4a9b7e5d3c1a8f6e4d2c0b9a8e\",\"verifier_spec_version_supported\":\"v1.0b\",\"verifier_version\":\"v1.0b-verifier-2026-05-15\"}"
+    },
+    {
+      "label": "036f",
+      "description": "FULL §7 6-field shape — v1.0b PASS with two §10.69 class-disclosure bonus verifications. Matches spec §7 byte-form example at line 1603.",
+      "verdict": {
+        "additional_verifications": [
+          "class_disclosure_subtree_verified",
+          "cohort_coverage_attestation_verified"
+        ],
+        "exit_code": 0,
+        "posture": "ffiec",
+        "trust_anchor_manifest_sha256": "7c2a5f9b1d3e8c6a4b2f1e9d7c5a3b1f8e2d6c4a9b7e5d3c1a8f6e4d2c0b9a8e",
+        "verifier_spec_version_supported": "v1.0b",
+        "verifier_version": "v1.0b-verifier-2026-05-15"
+      },
+      "canonical_byte_length": 324,
+      "canonical_sha256": "829ae3f8b4e4e73f15ee40fe69b81718ba0a6e93b521f4372816f41fef077fdf",
+      "canonical_bytes_utf8": "{\"additional_verifications\":[\"class_disclosure_subtree_verified\",\"cohort_coverage_attestation_verified\"],\"exit_code\":0,\"posture\":\"ffiec\",\"trust_anchor_manifest_sha256\":\"7c2a5f9b1d3e8c6a4b2f1e9d7c5a3b1f8e2d6c4a9b7e5d3c1a8f6e4d2c0b9a8e\",\"verifier_spec_version_supported\":\"v1.0b\",\"verifier_version\":\"v1.0b-verifier-2026-05-15\"}"
+    },
+    {
+      "label": "036g",
+      "description": "FULL §7 7-field shape — v1.0c PASS with sibling-log root binding (`operational_events_log_root` PRESENT under v1.0c). Matches spec §7 byte-form example at line 1609.",
+      "verdict": {
+        "additional_verifications": [
+          "sibling_log_root_verified"
+        ],
+        "exit_code": 0,
+        "posture": "ffiec",
+        "trust_anchor_manifest_sha256": "7c2a5f9b1d3e8c6a4b2f1e9d7c5a3b1f8e2d6c4a9b7e5d3c1a8f6e4d2c0b9a8e",
+        "verifier_spec_version_supported": "v1.0c",
+        "verifier_version": "v1.0c-verifier-2026-05-15",
+        "operational_events_log_root": "3e9f7c2a8b1d5e6c4a2f9e1d8c7b5a3f1e8d6c4a9b7e5d3c1a8f6e4d2c0b9a8e"
+      },
+      "canonical_byte_length": 374,
+      "canonical_sha256": "bdcc616eb4aaddf1e5506121e6dc0898d958e4bfa955b987bbdb7d3b5b2ad6a7",
+      "canonical_bytes_utf8": "{\"additional_verifications\":[\"sibling_log_root_verified\"],\"exit_code\":0,\"operational_events_log_root\":\"3e9f7c2a8b1d5e6c4a2f9e1d8c7b5a3f1e8d6c4a9b7e5d3c1a8f6e4d2c0b9a8e\",\"posture\":\"ffiec\",\"trust_anchor_manifest_sha256\":\"7c2a5f9b1d3e8c6a4b2f1e9d7c5a3b1f8e2d6c4a9b7e5d3c1a8f6e4d2c0b9a8e\",\"verifier_spec_version_supported\":\"v1.0c\",\"verifier_version\":\"v1.0c-verifier-2026-05-15\"}"
     }
   ]
 }

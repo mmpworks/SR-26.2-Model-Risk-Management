@@ -8,6 +8,62 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 
 ---
 
+## [0.3.0] - 2026-05-21 (Public Review Draft 3 / PRD-3)
+
+### Headline
+
+PRD-3 advances chain-of-custody on five spearheads grounded in cross-Kognitos competitive analysis and adds three net-new attribute families pre-cited by the Laura companion documentation. PRD-3 rolls forward the Stories 18-20 wave previously scheduled for PRD-4. Wire-format identifier v1 unchanged.
+
+### Added (PRD-3 advancement appendix - section 14)
+
+- **section 14.0** PRD-3 advancement summary (informative).
+- **section 14.1** Multi-layer cryptographic defense - tightening section 1.4 narrative. No code change.
+- **section 14.2** Daubert-grade testability - tightening sections 1.1 + 7 + 10.12. Adds the section 10.12 closed-enumeration footnote distinguishing implemented vs reference-implementations-forthcoming markers. Eleven of 21 markers flagged forthcoming.
+- **section 14.3** Categorical exclusions by design - tightening sections 10.13.3 + 10.69 + 10.70. Section 10.70 substantive-reach limitation clarified normatively. Status: NORMATIVE - REFERENCE IMPLEMENTATIONS FORTHCOMING PHASE 14.
+- **section 14.4** Post-quantum cryptographic agility - tightening sections 4.1.3 + 4.3.2 + 10.53 + 10.54. Section 4.1.3 introduces optional payload_hash_alt field for HMAC-SHA-3 / HMAC-BLAKE3 dual-MAC. Status: section 4.1.3 dual-MAC + section 10.53 migration-window dispatch NORMATIVE - REFERENCE IMPLEMENTATIONS FORTHCOMING PRD-3.1.
+- **section 14.5** Examiner runs the verifier locally - tightening sections 10.26 + 10.13.1 + 5.2.1. Sigstore-alignment language added (informative). Established-pattern framing added (Sigstore Cosign, Linux Foundation Rekor, IETF Certificate Transparency RFC 6962, OpenSSF policy precedent).
+- **section 14.6** audit.actor.* family (NEW NORMATIVE - REFERENCE IMPLEMENTATIONS FORTHCOMING PRD-3.1). Authenticated_user_id_hash, authentication_method, session_id, delegation_chain. Closes the May-20 Richard coverage-audit gap for Kognitos Field 3 (authenticated human user identity).
+- **section 14.7** audit.reasoning.substrate_kind (NEW NORMATIVE - REFERENCE IMPLEMENTATIONS FORTHCOMING PRD-3.1). Closed canonical enumeration: neurosymbolic, retrieval_grounded_with_citations, rule_based, post_hoc_llm_rationalization, attention_feature_importance, none, institution_named. Closes the Kognitos comparison-doc Point 8 gap.
+- **section 14.8** audit.downstream_action.* family (NEW NORMATIVE - REFERENCE IMPLEMENTATIONS FORTHCOMING PRD-3.1). Generalized system-of-record linkage with action_kind, system_of_record_id, change_record_id_hash, applied_at_utc.
+- **section 14.9** Smaller PRD-3 refinements (section 10.22 pre-MAC redaction, section 10.21 cross-vendor handover, section 10.71 cross-institution wire status, section 10.74 long-retention crypto-erasure, section 4.4.1 ISO 3166-1 pinning).
+- **section 14.10** Cross-reference summary table.
+- **section 14.11** Wire-format identifier confirmation (v1 unchanged).
+- **section 14.12** Open items deferred to PRD-3.1 / PRD-4.
+
+### Rolled forward from PRD-4 (formerly 0.1.0-draft.7)
+
+The full PRD-4 wave (sections 10.56-10.71 + section 0.6 + section 7 unknown-wire-format-kind fallthrough + section 10.21 amendments + test vectors 049-083 indexed) is consolidated into PRD-3. Document version moves from 0.2.0 (PRD-2) to 0.3.0 (PRD-3); the prior PRD-4 (0.1.0-draft.7) marker is retired. Wire-format identifier v1 unchanged.
+
+### Code-vs-claims audit
+
+A code-vs-claims audit grounds every PRD-3 normative claim against implementation artifacts (C# in Herald.Compliance, Python in Herald.Py, test vectors under spec/test-vectors/). Audit lives at Herald/wiki/PRD-3-CODE-VS-CLAIMS-AUDIT.md (internal). Summary:
+
+- Spearhead 1 (Multi-layer crypto): PROVEN BY CODE + TEST
+- Spearhead 2 (Daubert testability): PROVEN BY CODE + TEST
+- Spearhead 3 (Categorical exclusions): CLAIMED BUT UNPROVEN; ships under Path A flag (NORMATIVE, REFERENCE IMPL FORTHCOMING PHASE 14)
+- Spearhead 4 (PQ agility): PARTIALLY PROVEN; section 10.54 shipped, section 4.1.3 + section 10.53 dispatch flagged FORTHCOMING PRD-3.1
+- Spearhead 5 (Examiner runs verifier): PROVEN BY CODE; integrated discovery-packet path FORTHCOMING PRD-3.1
+- Three Laura pre-cited families (audit.actor.*, audit.reasoning.substrate_kind, audit.downstream_action.*): ASPIRATIONAL - reference impl FORTHCOMING PRD-3.1
+- Eleven of 21 section 10.12 closed-enumeration markers are normative-but-unimplemented; PRD-3 adds the section 10.12 footnote
+- Thirty-five test vectors (049-083) indexed but not materialized
+
+### Path A applied
+
+The canonical flag block "Reference-implementation status (normative-but-forthcoming)" is applied inline at every PRD-3 section whose reference implementation lags the spec text. Eight sections carry the flag: §4.1.3 (`payload_hash_alt`, PRD-3.1), §10.13.3 (litigation-hold registry binding, Phase 14 / Story 20 wave), §10.53 (PQ migration-window verifier dispatch, PRD-3.1), §10.69 (per-customer disclosure, Phase 14 / Story 20 wave), §10.70 (BSA SAR / privileged-investigation overlay, Phase 14 / Story 20 wave), §14.6 (`audit.actor.*`, PRD-3.1), §14.7 (`audit.reasoning.substrate_kind`, PRD-3.1), §14.8 (`audit.downstream_action.*`, PRD-3.1). The spec text is the conformance bar today; the reference implementations and corresponding test-vector materializations are the per-section landing signals. Resolves PRD-3-INDEX.md Open Question 7.
+
+### Wire-format identifier
+
+v1 unchanged.
+
+### Pre-mortem reversals (recorded for posterity)
+
+PRD-3 produced two structural reversals from the initial advancement draft:
+
+1. **Path A vs Path B for section 10.69 + section 10.70 reference implementations.** Initial draft proposed gating PRD-3 ship on reference-impl completeness (Path B, 2-3 week delay). Reversed to Path A (ship NORMATIVE with REFERENCE IMPLEMENTATIONS FORTHCOMING PHASE 14 flag) per Richard read - the spec text bar is preserved, the operational implementation can lag without violating the PRD-3 publication contract. Confirmed by Steve resolution (pending) on open question 7.
+2. **Section 10.12 footnote vs separate normative carve-out.** Initial draft proposed splitting the closed-enumeration table into implemented + forthcoming halves. Reversed to a single normative footnote distinguishing the two classes - preserves the closed enumeration as the canonical contract, names which bars are testable today without restructuring the table.
+
+---
+
 ## [0.1.0-draft.7] &mdash; 2026-05-09 (in progress, PRD-4 wave)
 
 ### Added (16 reference-spec extensions — PRD-4 wave / Stories 18-20)

@@ -11,10 +11,10 @@
 | Field | Meaning |
 |---|---|
 | `Vector` | Directory slot (N001-N038 currently shipped or stubbed) |
-| `Target` | §7 step number the failure attaches to, OR `pre-flight` for file-header / structural checks |
+| `Target` | §7 step number the failure attaches to, OR `pre-flight` for file-header / structural checks, OR `§10.12 strict-mode (post-§7)` for verifier-output-validation checks that run after §7 completes |
 | `Expected reason` | The reason string the verifier MUST emit. Token-substitute `<N>`, `<X>`, `<A>`, `<B>` as documented in the vector's description.md |
 | `Required` | `true` = part of v1.0 conformance bar; `false` = v1.x-scoped or aspirational |
-| `Materialized` | `yes` = `input.json` + `expected_output.txt` exist; `stub` = description.md only |
+| `Materialized` | `yes` = `input.json` + `expected_output.txt` exist on disk; `stub` = description.md only; `deferred-v1.x` = Required:true but conformance harness emits SKIP (not FAIL) for v1.0 release, scheduled for materialization in a v1.x cycle |
 | `Notes` | Cross-reference to spec section, secondary failure modes, or composition notes |
 
 ## Index
@@ -39,11 +39,11 @@
 | N014-botched-rotation | §7 step 8 | `key_fingerprint mismatch at seq <N>` | true | stub | §10.10 — load-bearing rotation defence |
 | N015-prev-hash-substituted | §7 step 6 | `chain link broken at seq <N>` | true | stub | §4.1 inviolate property 8 |
 | N016-prev-hash-and-payload-recomputed-by-attacker | §7 step 6 | `chain link broken at seq <N>` | true | stub | §4.1 inviolate property 8 (deep) |
-| N017-dual-algo-partial-coverage | §7 step 11 | `partial-coverage seal: single-algorithm signature during institution's declared dual-algorithm posture` | true | stub | §4.3.2 case (b); PASS-WITH-ANOMALY |
-| N018-dual-algo-not-in-posture | §7 step 11 | `algorithm not on institution's declared posture list at seal_date <date>` | true | stub | §4.3.2 case (c) |
-| N019-dual-algo-one-valid-one-invalid | §7 step 11 | `co-signed seal failure: algorithm <A> validated, algorithm <B> did not` | true | stub | §4.3.2 case (e); Severe |
+| N017-dual-algo-partial-coverage | §7 step 11 | `partial-coverage seal: single-algorithm signature during institution's declared dual-algorithm posture` | true | deferred-v1.x | §4.3.2 case (b); PASS-WITH-ANOMALY |
+| N018-dual-algo-not-in-posture | §7 step 11 | `algorithm not on institution's declared posture list at seal_date <date>` | true | deferred-v1.x | §4.3.2 case (c) |
+| N019-dual-algo-one-valid-one-invalid | §7 step 11 | `co-signed seal failure: algorithm <A> validated, algorithm <B> did not` | true | deferred-v1.x | §4.3.2 case (e); Severe |
 | N020-algorithm-key-type-mismatch | §7 step 11 | `algorithm/key-type mismatch at signature verification` | true | stub | §4.3.2 |
-| N021-routing-event-tampered | §7 step 9 | `payload_hash MAC mismatch at seq <N>` | true | stub | §4.4.1 routing in canonical bytes |
+| N021-routing-event-tampered | §7 step 9 | `payload_hash MAC mismatch at seq <N>` | true | deferred-v1.x | §4.4.1 routing in canonical bytes |
 | N022-format-version-v1-1 | §7 step 1 | `format_version v1.1 not supported by this verifier (running v1)` | true | stub | unrecognized minor within v1 family |
 | N023-format-version-case-variant | §7 step 1 | `format_version "V1" not supported by this verifier (running v1)` | true | stub | case-variant rejection |
 
@@ -51,30 +51,32 @@
 
 | Vector | Target | Expected reason | Required | Materialized | Notes |
 |---|---|---|:---:|:---:|---|
-| N024-acquirer-hsm-signature-mismatch | §7 step 11 | `acquirer-HSM signature verification failed at successor anchor` | true | yes | §10.24 entity succession |
-| N025-backfill-merkle-root-corrupted | §7 step 10 | `backfill merkle root mismatch at backfill seq <N>` | true | yes | §10.42 backfill seal |
-| N026-additional-verifications-invalid-string | §7 step 13 | `additional_verifications entry "<X>" not in closed enumeration` | true | yes | §10.12 closed-enum discipline |
-| N027-state-machine-invalid-transition | §7 step 12 | `state-machine illegal transition at seq <N>: <from> → <to>` | true | yes | §10.43 claim state-machine |
-| N028-adjuster-anchor-missing-reverse-link | §7 step 11 | `adjuster anchor missing reverse link to insurer chain entry` | true | yes | §10.45 |
-| N029-bordereau-reconciled-before-received | §7 step 12 | `bordereau lifecycle out of order at seq <N>` | true | yes | §10.46 bordereau lifecycle |
-| N030-output-hash-mismatch | §7 step 9 | `payload_hash MAC mismatch at seq <N>` | true | yes | §10.49 generative-AI output binding |
-| N031-retrieval-merkle-tampered | §7 step 11 | `retrieval set Merkle root mismatch` | true | yes | §10.49 retrieval-set Merkle |
-| N032-hitl-signature-bad | §7 step 11 | `HITL reviewer signature verification failed at seq <N>` | true | yes | §10.50 human-in-the-loop |
-| N033-dp-noise-seed-tampered | §7 step 9 | `payload_hash MAC mismatch at seq <N>` | true | yes | §10.51 DP overlay |
-| N034-decadal-reseal-previous-anchor-mismatch | §7 step 11 | `decadal re-seal previous-anchor mismatch at seal_date <date>` | true | yes | §10.54 decadal re-sealing |
-| N035-challenge-response-disposition-out-of-order | §7 step 12 | `challenge-response disposition out of order at seq <N>` | true | yes | §10.55 audit-target challenge-response |
+| N024-acquirer-hsm-signature-mismatch | §7 step 11 | `acquirer-HSM signature verification failed at successor anchor` | true | stub | §10.24 entity succession |
+| N025-backfill-merkle-root-corrupted | §7 step 10 | `backfill merkle root mismatch at backfill seq <N>` | true | stub | §10.42 backfill seal |
+| N026-additional-verifications-invalid-string | §10.12 strict-mode (post-§7) | `additional_verifications marker "<X>" not in v1.0 enumeration` | true | deferred-v1.x | §10.12 closed-enum discipline; verifier-output validation, NOT a chain-integrity check; emits exit code 3 under `--strict` (the chain PASSes §7; the rejection is the verifier's structured output carrying an unknown marker) |
+| N027-state-machine-invalid-transition | §7 step 12 | `state-machine illegal transition at seq <N>: <from> → <to>` | true | stub | §10.43 claim state-machine |
+| N028-adjuster-anchor-missing-reverse-link | §7 step 11 | `adjuster anchor missing reverse link to insurer chain entry` | true | stub | §10.45 |
+| N029-bordereau-reconciled-before-received | §7 step 12 | `bordereau lifecycle out of order at seq <N>` | true | stub | §10.46 bordereau lifecycle |
+| N030-output-hash-mismatch | §7 step 9 | `payload_hash MAC mismatch at seq <N>` | true | stub | §10.49 generative-AI output binding |
+| N031-retrieval-merkle-tampered | §7 step 11 | `retrieval set Merkle root mismatch` | true | stub | §10.49 retrieval-set Merkle |
+| N032-hitl-signature-bad | §7 step 11 | `HITL reviewer signature verification failed at seq <N>` | true | stub | §10.50 human-in-the-loop |
+| N033-dp-noise-seed-tampered | §7 step 9 | `payload_hash MAC mismatch at seq <N>` | true | stub | §10.51 DP overlay |
+| N034-decadal-reseal-previous-anchor-mismatch | §7 step 11 | `decadal re-seal previous-anchor mismatch at seal_date <date>` | true | stub | §10.54 decadal re-sealing |
+| N035-challenge-response-disposition-out-of-order | §7 step 12 | `challenge-response disposition out of order at seq <N>` | true | stub | §10.55 audit-target challenge-response |
 
 ### Phase 3 vectors — second-wave additions (N036-N038)
 
 | Vector | Target | Expected reason | Required | Materialized | Notes |
 |---|---|---|:---:|:---:|---|
-| N036-otlp-json-bytes-encoding | §7 step 9 | `payload_hash MAC mismatch at seq <N>` (root cause: §4.4 OTLP/JSON encoding rule violation) | true | stub | §4.4 OTLP/JSON base64-with-padding |
+| N036-otlp-json-bytes-encoding | §7 step 9 | `payload_hash MAC mismatch at seq <N>` (root cause: §4.4 OTLP/JSON encoding rule violation) | true | deferred-v1.x | §4.4 OTLP/JSON base64-with-padding; receiver-side OTLP/JSON bytes-encoding refusal pending separate dispatch (per Glenn 2026-05-21) — Herald.Py Q-3 PR is scoped to §7 step 3a semantic gate, not receiver decoder hardening |
 | N037-leap-second-captured-at | §7 step 6 (false-positive) | conformant verifier emits Status: PASS with `clock-skew anomaly at seq <N>: captured_at non-monotonic across leap-second boundary; ordering preserved by seq` | true | stub | §10.4 — the negative case is a verifier that incorrectly fails on leap-second-adjacent chains |
-| N038-discovery-production-form | pre-flight | `production manifest missing required artifact: <artifact>` OR `production manifest absent — package not chain-of-custody conformant` | true | stub | §10.13.1 discovery production form |
+| N038-discovery-production-form | pre-flight | `production manifest missing required artifact: <artifact>` OR `production manifest absent — package not chain-of-custody conformant` | true | deferred-v1.x | §10.13.1 discovery production form |
 
 ## Materialization roadmap
 
-The Phase 1 + Phase 2 vectors (N001-N035) are scheduled for full materialization (input.json + expected_output.txt + canonical-bytes/) alongside Herald.Py reference verifier and the .NET SDK conformance harness in PRD-2 Phase 11-14. Vectors N024-N035 are currently materialized at the level needed for the §7 implementer reading the description.md; the input.json fixtures land with the SDK release. Phase 3 vectors (N036-N038) are stubs added in the second-wave audit closure pass; their materialization follows the same Phase 11-14 cycle.
+The Phase 1 + Phase 2 vectors (N001-N035) are scheduled for full materialization (input.json + expected_output.txt + canonical-bytes/) alongside the Python and .NET reference verifiers and the conformance harness. All vectors marked `stub` in the table above are description-only on disk today; the input.json fixtures land in waves coordinated with the reference-implementation cycle.
+
+**Deferred-v1.x set (7 vectors as of 2026-05-21).** N017, N018, N019, N021, N026, N036, N038 carry `Materialized: deferred-v1.x`. These vectors remain `Required: true` for the conformance contract but the conformance harness emits SKIP (not FAIL) for the v1.0 release window. Each deferred vector has a documented reason — dual-algorithm posture (N017/N018/N019) awaits the PQ migration cycle; routing-event coverage (N021) waits for the routing schema's finalization; the §10.12 strict-mode validation case (N026) is verifier-output-validation rather than chain-integrity (different conformance contract); OTLP/JSON byte-encoding refusal (N036) is receiver-side decoder hardening that needs its own architectural pass; discovery-production-form coverage (N038) ties to the §10.13.1 evidentiary-artifacts wave that lands in v1.x. v1.x release cycles pick up these vectors as their gating dependencies resolve.
 
 ## Forward-looking PRD-4 vectors (049-083)
 
