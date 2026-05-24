@@ -8,6 +8,39 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 
 ---
 
+## [0.3.0] PRD-3.1 - 2026-05-24 (reference-implementation sub-release)
+
+### Summary
+
+PRD-3.1 ships the reference implementations for the three attribute families PRD-3 normated under Path A (REFERENCE IMPLEMENTATIONS FORTHCOMING PRD-3.1). Document version remains 0.3.0. Wire-format identifier remains v1. No normative spec text changed.
+
+### Shipped
+
+- **Section 14.6 `audit.actor.*`** reference implementations in C# (Herald.Compliance), Python (Herald.Py), and Go (ffiec verifier). Byte-identical JCS-canonical output across all three.
+- **Section 14.7 `audit.reasoning.substrate_kind`** reference implementations in C# / Python / Go.
+- **Section 14.8 `audit.downstream_action.*`** reference implementations in C# / Python / Go.
+- **35 new conformance vectors** (050-084) pinning emitter output and verifier predicate behavior.
+- **5 Phase 11 shared-primitive vectors** (049-053) materialized on disk and passing across all three implementations.
+- **Kognitos-projection library** (Herald.Compliance) demonstrating TesseraSeal-to-Kognitos field mapping.
+- **SDK reference documentation** for the three attribute families.
+- **Framework-portability documentation** with proof-by-construction via the Kognitos projection.
+
+### Changed (status-only)
+
+- Section 14.12 items O-4 and O-6 status updated from FORTHCOMING to SHIPPED.
+- Sections 14.6, 14.7, 14.8 "Reference-implementation status" blocks updated from "normative-but-forthcoming" to "SHIPPED -- PRD-3.1."
+- Section 14.10 cross-reference summary table rows updated with SHIPPED status.
+
+### Unchanged
+
+- All normative spec text (sections 0-14).
+- Wire-format identifier v1.
+- Existing test vectors 001-049 and negative vectors N001-N029.
+- Open items O-1, O-2, O-3, O-5, O-7 (remain FORTHCOMING).
+- O-8 (remain EXOGENOUS).
+
+---
+
 ## [0.3.0] - 2026-05-21 (Public Review Draft 3 / PRD-3)
 
 ### Headline
