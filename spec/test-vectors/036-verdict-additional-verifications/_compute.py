@@ -311,21 +311,28 @@ def main() -> None:
 
     # The expected_canonical.txt holds the THREE sub-case canonical byte
     # forms separated by a single LF — a reader can split on LF to recover
-    # each sub-case. The expected_canonical_sha256.txt holds the three
-    # sub-case hex digests separated by LF.
+    # each sub-case. The expected_canonical_sha256.txt opens with a
+    # `full_blob <hash>` line (SHA-256 of the entire expected_canonical.txt
+    # blob — the verifier's "are the bytes I have the bytes the spec
+    # intends" gate), followed by the per-sub-case labeled hex digests.
+    # See README §"Multi-payload vector sha256 convention".
+    blob_bytes = b""
+    for i, r in enumerate(results):
+        if i > 0:
+            blob_bytes += b"\n"
+        blob_bytes += r["canonical_bytes_utf8"].encode("utf-8")
+    blob_bytes += b"\n"
     with open(os.path.join(HERE, "expected_canonical.txt"), "wb") as f:
-        for i, r in enumerate(results):
-            if i > 0:
-                f.write(b"\n")
-            f.write(r["canonical_bytes_utf8"].encode("utf-8"))
-        f.write(b"\n")
+        f.write(blob_bytes)
 
+    full_blob_sha256 = hashlib.sha256(blob_bytes).hexdigest()
     with open(
         os.path.join(HERE, "expected_canonical_sha256.txt"),
         "w",
         encoding="utf-8",
         newline="\n",
     ) as f:
+        f.write(f"full_blob               {full_blob_sha256}\n")
         for r in results:
             f.write(f"{r['label']} {r['canonical_sha256']}\n")
 

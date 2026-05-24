@@ -97,6 +97,25 @@ If any byte disagrees, the implementation is non-conforming. Investigate (a) JCS
 
 **JCS edge-case conformance (mandatory).** The basic fixtures above exercise integers, ASCII strings, and base64-encoded byte strings. They do NOT exercise the RFC 8785 edge cases that historically cause silent disagreement between implementations: floats, non-ASCII Unicode, NaN/Infinity rejection, surrogate pairs, control characters, deeply nested objects, very long strings, and non-trivial object-key ordering. Case [`008-jcs-edge-cases/`](008-jcs-edge-cases/description.md) closes that gap. Implementations that pass the basic fixtures (`001-` through `015-`) but fail any of the `008-jcs-edge-cases/` fixtures are NOT v1.0-conformant. The JCS edge cases are part of the conformance bar.
 
+## Multi-payload vector sha256 convention
+
+Most vectors pin a single canonical byte form: `expected_canonical.txt` holds the bytes verbatim, and `expected_canonical_sha256.txt` holds a single lowercase-hex SHA-256 of those bytes followed by `\n`. A clean-room verifier reads the SHA-256 file, recomputes SHA-256 over `expected_canonical.txt`, and compares — one line in, one comparison.
+
+A small class of vectors (cases 036, 050, 051, 052, 053 as of this writing) pins multiple JCS-canonical sub-payloads in a single composed `expected_canonical.txt` (sub-payloads concatenated by single `\n` separators, with — for some cases — a trailing `\n` on the terminal sub-payload). For these vectors, `expected_canonical_sha256.txt` carries multiple lines:
+
+```
+full_blob               <sha256 of the entire expected_canonical.txt blob>
+<sub_payload_label_1>   <sha256 of sub-payload 1's canonical bytes alone>
+<sub_payload_label_2>   <sha256 of sub-payload 2's canonical bytes alone>
+...
+```
+
+**Reading discipline.** A verifier's "are the bytes I have the bytes the spec intends" gate compares its recomputed full-blob SHA-256 against the FIRST line's hash (the `full_blob` line). The remaining lines exist for granular per-sub-payload diagnostics — when a clean-room implementer's full-blob hash disagrees, the per-sub-payload hashes localize the drift to a specific sub-payload before the implementer reaches for a byte-diff tool.
+
+The line shape is `<label>` + run of spaces + 64 lowercase hex chars + `\n`. The label set is per-vector (the labels are descriptive identifiers for each sub-payload, not normative across vectors). The first line's label is always `full_blob`.
+
+**For single-payload vectors**, the convention is unchanged: one line, just the SHA-256 hex + `\n`. The `full_blob` prefix is added only when N>1 sub-payloads land in the same `expected_canonical.txt`.
+
 ## Per-case directories
 
 Each numbered directory carries a `description.md` documenting the case's purpose, the inputs (which subset of `chain_vectors.json` to consume), and the expected outputs (the subset of `chain_vectors.json` to compare against). A reference conformance runner, when provided by an implementation, MUST consume each directory and produce pass/fail per case without adding implementation-specific assumptions.

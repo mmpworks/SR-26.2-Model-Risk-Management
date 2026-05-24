@@ -221,18 +221,23 @@ def main() -> None:
 
     # expected_canonical.txt carries the two composed-record byte forms
     # separated by a single LF (bound first, then unbound). A reader
-    # splits on LF to recover each variant.
+    # splits on LF to recover each variant. The
+    # expected_canonical_sha256.txt opens with a `full_blob <hash>`
+    # line (SHA-256 of the entire expected_canonical.txt blob),
+    # followed by the per-sub-form labeled hex digests. See README
+    # §"Multi-payload vector sha256 convention".
+    blob_bytes = bound_composed_bytes + b"\n" + unbound_composed_bytes
     with open(os.path.join(HERE, "expected_canonical.txt"), "wb") as f:
-        f.write(bound_composed_bytes)
-        f.write(b"\n")
-        f.write(unbound_composed_bytes)
+        f.write(blob_bytes)
 
+    full_blob_sha256 = hashlib.sha256(blob_bytes).hexdigest()
     with open(
         os.path.join(HERE, "expected_canonical_sha256.txt"),
         "w",
         encoding="utf-8",
         newline="\n",
     ) as f:
+        f.write(f"full_blob               {full_blob_sha256}\n")
         f.write(f"bound_cross_anchor      {bound_sha256}\n")
         f.write(f"bound_verdict           {bound_verdict_sha256}\n")
         f.write(f"bound_composed          {bound_composed_sha256}\n")

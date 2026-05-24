@@ -1,3 +1,4 @@
+full_blob               dafdc9b433f13d77642f63fbc0eab6c9fa87a44d205dc4c693415364ecd178fc
 canonical_binding_input 8ba3334374f19abc8fab7ac00cf041bc1b9f99c546a7ee68d7c40a0e4de6b753
 binding_hash_hex        8ba3334374f19abc8fab7ac00cf041bc1b9f99c546a7ee68d7c40a0e4de6b753
 verdict                 cab215be0fd340c0be841c4bb437ac4af7a4721de7200b1939489faf0a6b6da5

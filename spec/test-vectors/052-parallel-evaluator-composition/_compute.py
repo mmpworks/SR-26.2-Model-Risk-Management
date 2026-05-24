@@ -220,18 +220,23 @@ def main() -> None:
         f.write("\n")
 
     # expected_canonical.txt carries the composed-record bytes as the
-    # primary pin (it carries both sub-forms inside it). The per-sub-form
-    # SHA-256s are listed in expected_canonical_sha256.txt for granular
-    # comparison.
+    # primary pin (it carries both sub-forms inside it). The
+    # expected_canonical_sha256.txt opens with a `full_blob <hash>`
+    # line (SHA-256 of the entire expected_canonical.txt blob — which
+    # for this case equals the composed-record hash because composed
+    # IS the blob), followed by the per-sub-form labeled hex digests.
+    # See README §"Multi-payload vector sha256 convention".
     with open(os.path.join(HERE, "expected_canonical.txt"), "wb") as f:
         f.write(composed_bytes)
 
+    full_blob_sha256 = hashlib.sha256(composed_bytes).hexdigest()
     with open(
         os.path.join(HERE, "expected_canonical_sha256.txt"),
         "w",
         encoding="utf-8",
         newline="\n",
     ) as f:
+        f.write(f"full_blob          {full_blob_sha256}\n")
         f.write(f"lab_cross_anchor   {lab_sha256}\n")
         f.write(f"aisi_cross_anchor  {aisi_sha256}\n")
         f.write(f"verdict            {verdict_sha256}\n")

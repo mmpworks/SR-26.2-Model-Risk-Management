@@ -166,18 +166,23 @@ def main() -> None:
     # expected_canonical.txt carries the binding-input bytes followed
     # by a single LF and then the verdict bytes — readers split on LF
     # to recover each sub-form. This mirrors case 036's multi-subcase
-    # composition pattern.
+    # composition pattern. The expected_canonical_sha256.txt opens
+    # with a `full_blob <hash>` line (SHA-256 of the entire
+    # expected_canonical.txt blob), followed by the per-sub-form
+    # labeled hex digests. See README §"Multi-payload vector sha256
+    # convention".
+    blob_bytes = binding_bytes + b"\n" + verdict_bytes
     with open(os.path.join(HERE, "expected_canonical.txt"), "wb") as f:
-        f.write(binding_bytes)
-        f.write(b"\n")
-        f.write(verdict_bytes)
+        f.write(blob_bytes)
 
+    full_blob_sha256 = hashlib.sha256(blob_bytes).hexdigest()
     with open(
         os.path.join(HERE, "expected_canonical_sha256.txt"),
         "w",
         encoding="utf-8",
         newline="\n",
     ) as f:
+        f.write(f"full_blob               {full_blob_sha256}\n")
         f.write(f"canonical_binding_input {binding_sha256}\n")
         f.write(f"binding_hash_hex        {binding_hash_hex}\n")
         f.write(f"verdict                 {verdict_sha256}\n")
