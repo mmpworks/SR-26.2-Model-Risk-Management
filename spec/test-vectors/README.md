@@ -140,6 +140,18 @@ Cases:
 | `026-hierarchical-merkle-aggregation/` | §10.37 two-level Merkle tree — 4 subtrees × varying leaf counts. Per-leaf concatenated audit paths round-trip to the top root. |
 | `negative/` | Tampering cases the verifier MUST report as failure with a specific named reason. See `negative/README.md`. |
 
+### Materialization status (positive cases)
+
+Whether a case carries on-disk byte fixtures (`expected_canonical.txt` + `expected_canonical_sha256.txt` and/or `expected_sign_payload.txt`) or is description-only. The conformance gate consumes the materialized fixtures directly; description-only cases are read by an implementer building the fixtures.
+
+| Case | Materialized | Artifact / notes |
+|---|:---:|---|
+| `001-single-event-empty-prev/` | yes | JCS-canonical seq=1 event bytes + embedded `event_canonical_sha256` pin; chain values from `chain_vectors.json` |
+| `002-multi-event-same-run/` | yes | NDJSON: 5 JCS-canonical event docs (one per line) + per-event sha rows |
+| `010-tenant-ikm-rotation-mid-day/` | yes | NDJSON: 5 rotation-chain event docs + per-half fingerprints + `key_versions=[1,2]` |
+| `015-dual-algorithm-cosigned-seal/` | deferred-v1.x | Needs a Dilithium3/SLH-DSA test keypair + signatures that v1.0 does not ship (single-algorithm Ed25519 only). The case's own `description.md` declares it a v1.x stub. |
+| `027-sign-payload-v1.0c-sibling-log/` | blocked | v1.0c 13-line `sign_payload` byte form. The byte form is deterministically buildable, but the Go runner's `buildSeal` hardcodes `OperationalEventsLogRoot: ""` (`verifier/internal/vectors/signpayload.go`), so a materialized 027 with a real `operational_events_log_root` would fail the reconstruction byte-compare. Materialize once the runner threads the field. See the divergence finding. |
+
 Future cases (per `docs/design/08-test-vectors.md` §5):
 
 - `004-empty-day/` — empty-tree convention
