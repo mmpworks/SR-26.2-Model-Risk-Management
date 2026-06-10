@@ -1,0 +1,4 @@
+Status: FAIL
+Step: pre-flight
+Reason: audit file ends mid-line — possible mid-write crash
+ExitCode: 2

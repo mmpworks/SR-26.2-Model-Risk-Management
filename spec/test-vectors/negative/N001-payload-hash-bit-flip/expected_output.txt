@@ -1,0 +1,5 @@
+Status: FAIL
+Step: 9
+Reason-Template: payload_hash MAC mismatch at seq <N>
+Reason: payload_hash MAC mismatch at seq 3
+ExitCode: 1

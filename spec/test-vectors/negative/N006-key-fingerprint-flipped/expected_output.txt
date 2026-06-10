@@ -1,0 +1,5 @@
+Status: FAIL
+Step: 8
+Reason-Template: key_fingerprint mismatch at seq <N>: looked-up IKM does not match the entry's recorded fingerprint
+Reason: key_fingerprint mismatch at seq 2: looked-up IKM does not match the entry's recorded fingerprint
+ExitCode: 1

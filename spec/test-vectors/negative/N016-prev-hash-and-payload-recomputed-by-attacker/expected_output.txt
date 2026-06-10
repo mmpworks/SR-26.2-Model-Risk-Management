@@ -1,0 +1,5 @@
+Status: FAIL
+Step: 6
+Reason-Template: chain link broken at seq <N>
+Reason: chain link broken at seq 4
+ExitCode: 1

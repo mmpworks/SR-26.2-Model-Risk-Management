@@ -1,0 +1,4 @@
+Status: FAIL
+Step: 10
+Reason: merkle root mismatch — ledger contents do not produce sealed root
+ExitCode: 1

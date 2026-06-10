@@ -1,0 +1,4 @@
+Status: FAIL
+Step: 3
+Reason: header genesis_hash does not match v1 constant
+ExitCode: 1

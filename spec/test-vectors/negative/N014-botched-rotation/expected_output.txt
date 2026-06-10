@@ -1,0 +1,5 @@
+Status: FAIL
+Step: 8
+Reason-Template: key_fingerprint mismatch at seq <N>
+Reason: key_fingerprint mismatch at seq 4
+ExitCode: 1

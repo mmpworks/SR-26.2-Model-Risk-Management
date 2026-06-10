@@ -1,0 +1,5 @@
+Status: FAIL
+Step: 7
+Reason-Template: unknown key_version: no IKM for (tenant=<T>, key_version=<V>) at seq <N>
+Reason: unknown key_version: no IKM for (tenant=tenant-ffiec-test-1, key_version=99) at seq 4
+ExitCode: 1

@@ -1,0 +1,4 @@
+Status: FAIL
+Step: 11
+Reason: signature verification failed
+ExitCode: 1

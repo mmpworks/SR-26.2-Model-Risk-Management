@@ -1,0 +1,69 @@
+{
+  "_about": "Seal claims algorithm ed25519 but the resolved public key for public_key_id is RSA-3072; §7 step 11 reports the specific algorithm/key-type mismatch, NOT the generic signature-verification-failed.",
+  "tamper": {
+    "class": "algorithm/key-type mismatch",
+    "seal_algorithm": "ed25519",
+    "resolved_key_type": "rsa-3072"
+  },
+  "audit_file": {
+    "header": {
+      "format_version": "v1",
+      "tenant_id": "tenant-ffiec-test-1",
+      "seal_date": "2026-05-06",
+      "genesis_hash_hex": "0000000000000000000000000000000000000000000000000000000000000000",
+      "hkdf_inputs_digest_hex": "6f8a5005cabb2eab8b347254d0c94c2d585a7e5a5a82398c5aeaea074c727d65"
+    },
+    "entries": [
+      {
+        "seq": 1,
+        "tenant_id": "tenant-ffiec-test-1",
+        "run_id": "RUN-FFIEC-VECTOR",
+        "key_version": 1,
+        "key_fingerprint_hex": "54c245a894b81d788d372badc563531f",
+        "format_version": "v1",
+        "event": {
+          "attributes": {
+            "data": "payload-1",
+            "step": 1
+          },
+          "chain_kind": "audit",
+          "duration_ns": null,
+          "event_id": "01HFFIEC00000000000000000001",
+          "kind": "audit",
+          "name": "audit_event_1",
+          "parent_span_id": null,
+          "resource": {},
+          "run_id": "RUN-FFIEC-VECTOR",
+          "severity": "AUDIT",
+          "span_id": "AQEBAQEBAQE=",
+          "tenant_id": "tenant-ffiec-test-1",
+          "timestamp_ns": 1735689601000000000,
+          "trace_id": "AQEBAQEBAQEBAQEBAQEBAQ=="
+        },
+        "event_canonical_hex": "7b2261747472696275746573223a7b2264617461223a227061796c6f61642d31222c2273746570223a317d2c22636861696e5f6b696e64223a226175646974222c226475726174696f6e5f6e73223a6e756c6c2c226576656e745f6964223a2230314846464945433030303030303030303030303030303030303031222c226b696e64223a226175646974222c226e616d65223a2261756469745f6576656e745f31222c22706172656e745f7370616e5f6964223a6e756c6c2c227265736f75726365223a7b7d2c2272756e5f6964223a2252554e2d46464945432d564543544f52222c227365766572697479223a224155444954222c227370616e5f6964223a2241514542415145424151453d222c2274656e616e745f6964223a2274656e616e742d66666965632d746573742d31222c2274696d657374616d705f6e73223a313733353638393630313030303030303030302c2274726163655f6964223a22415145424151454241514542415145424151454241513d3d227d",
+        "prev_hash_hex": "0000000000000000000000000000000000000000000000000000000000000000",
+        "payload_hash_hex": "e84168071562a9e866f28977a204b43abfdc959b7f84aad83c16fe790f63b049"
+      }
+    ],
+    "seal": {
+      "tenant_id": "tenant-ffiec-test-1",
+      "seal_date": "2026-05-06",
+      "format_version": "v1",
+      "spec_version": "v1.0",
+      "sign_payload_version": "v1.0a",
+      "algorithm": "ed25519",
+      "cadence": "daily",
+      "dev_mode": false,
+      "key_versions": [
+        1
+      ],
+      "merkle_root_hex": "b31d2d419f05267c6b817ceb272ea6b29d533eb60700d615924fddac2448f974",
+      "hkdf_inputs_digest_hex": "6f8a5005cabb2eab8b347254d0c94c2d585a7e5a5a82398c5aeaea074c727d65",
+      "signature_b64": "TEST-SIGNATURE-PLACEHOLDER-not-an-ed25519-sig",
+      "sign_payload_hex": "66666965632e636861696e2d6f662d637573746f64792e76310a76312e30610a656432353531390a76310a74656e616e742d66666965632d746573742d310a323032362d30352d30360a623331643264343139663035323637633662383137636562323732656136623239643533336562363037303064363135393234666464616332343438663937340a366638613530303563616262326561623862333437323534643063393463326435383561376535613561383233393863356165616561303734633732376436350a6461696c790a30",
+      "sign_payload_text": "ffiec.chain-of-custody.v1\nv1.0a\ned25519\nv1\ntenant-ffiec-test-1\n2026-05-06\nb31d2d419f05267c6b817ceb272ea6b29d533eb60700d615924fddac2448f974\n6f8a5005cabb2eab8b347254d0c94c2d585a7e5a5a82398c5aeaea074c727d65\ndaily\n0",
+      "public_key_id": "tenant-ffiec-test-1.rsa-3072-misconfigured",
+      "resolved_public_key_type": "rsa-3072"
+    }
+  }
+}

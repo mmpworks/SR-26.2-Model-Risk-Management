@@ -1,0 +1,5 @@
+Status: FAIL
+Step: 4
+Reason-Template: cross-chain lift detected at seq <N> (event.tenant_id mismatch)
+Reason: cross-chain lift detected at seq 3 (event.tenant_id mismatch)
+ExitCode: 1
