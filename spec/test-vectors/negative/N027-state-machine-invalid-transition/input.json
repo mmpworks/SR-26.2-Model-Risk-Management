@@ -1,0 +1,26 @@
+{
+  "_about": "§10.43 / §1.5 state machine: a closed → opened transition (no transition out of a terminal state). The validator rejects at index 0.",
+  "tamper": {
+    "class": "illegal state transition"
+  },
+  "transitions_table": {
+    "opened": [
+      "pending",
+      "closed"
+    ],
+    "pending": [
+      "decided",
+      "closed"
+    ],
+    "decided": [
+      "closed"
+    ],
+    "closed": []
+  },
+  "walk": [
+    {
+      "from_state": "closed",
+      "to_state": "opened"
+    }
+  ]
+}

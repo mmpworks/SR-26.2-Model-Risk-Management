@@ -1,0 +1,21 @@
+{
+  "_about": "§10.39 successor-attestation: the envelope's declared acquirer_hsm_key_fingerprint does not match the key under which the to-entity dual_signatures entry actually verifies (Variant A: declared-fingerprint corruption).",
+  "tamper": {
+    "class": "acquirer-HSM fingerprint mismatch",
+    "variant": "A declared-fingerprint corruption"
+  },
+  "successor_envelope": {
+    "acquirer_hsm_key_fingerprint": "00ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "dual_signatures": [
+      {
+        "role": "from_entity",
+        "signature_b64": "TEST-FROM-PLACEHOLDER"
+      },
+      {
+        "role": "to_entity",
+        "signature_b64": "TEST-TO-PLACEHOLDER-verifies-under-real-key"
+      }
+    ],
+    "_note": "to_entity signature verifies under the real key; declared fingerprint points elsewhere"
+  }
+}

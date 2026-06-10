@@ -1,0 +1,5 @@
+Status: FAIL
+Step: §10.12 strict-mode (post-§7)
+Reason-Template: additional_verifications marker "<X>" not in v1.0 enumeration
+Reason: additional_verifications marker "BACKFILL_SEAL_VERIFIED" not in v1.0 enumeration
+ExitCode: 3

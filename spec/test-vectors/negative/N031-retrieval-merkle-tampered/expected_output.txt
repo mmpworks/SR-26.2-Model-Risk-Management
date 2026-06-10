@@ -1,0 +1,4 @@
+Status: FAIL
+Step: §7 step 11
+Reason: retrieval set Merkle root mismatch
+ExitCode: 1

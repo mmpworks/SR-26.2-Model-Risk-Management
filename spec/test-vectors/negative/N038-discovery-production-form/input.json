@@ -1,0 +1,19 @@
+{
+  "_about": "DEFERRED-v1.x: §10.13.1 discovery production form. The production packet omits the per-entry canonical-bytes/ artifact; the production-manifest pre-flight refuses. Pins the missing-artifact reason.",
+  "tamper": {
+    "class": "discovery production form missing artifact",
+    "missing": "canonical-bytes/"
+  },
+  "production_manifest": {
+    "artifacts_present": [
+      "ndjson",
+      "verdict-object",
+      "seal-records",
+      "hsm-pubkey",
+      "trust-anchor-manifest"
+    ],
+    "artifacts_missing": [
+      "canonical-bytes/"
+    ]
+  }
+}

@@ -1,0 +1,5 @@
+Status: FAIL
+Step: pre-flight
+Reason-Template: production manifest missing required artifact: <artifact>` OR `production manifest absent — package not chain-of-custody conformant
+Reason: production manifest missing required artifact: canonical-bytes/
+ExitCode: 1

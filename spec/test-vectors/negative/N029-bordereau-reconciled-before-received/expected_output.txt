@@ -1,0 +1,5 @@
+Status: FAIL
+Step: §7 step 12
+Reason-Template: bordereau lifecycle out of order at seq <N>
+Reason: bordereau lifecycle out of order at seq 1
+ExitCode: 1

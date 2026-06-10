@@ -1,0 +1,18 @@
+{
+  "_about": "§10.42 backfill seal: the seal's apex merkle_root is corrupted by a single-byte flip; the recomputed root over (baseline manifest leaves + metadata leaf) differs (Variant C: baseline manifest leaf path → step 2 / root recomputation).",
+  "tamper": {
+    "class": "backfill merkle root corrupted",
+    "variant": "C baseline-manifest leaf"
+  },
+  "backfill_seal": {
+    "merkle_root_hex": "0011111111111111111111111111111111111111111111111111111111111111",
+    "backfill_seq": 1,
+    "baseline_manifest": [
+      {
+        "artifact": "pre-acq-day-01",
+        "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      }
+    ],
+    "_note": "apex root corrupted; recomputed root over leaves differs"
+  }
+}

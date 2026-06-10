@@ -1,0 +1,5 @@
+Status: FAIL
+Step: §7 step 11
+Reason-Template: HITL reviewer signature verification failed at seq <N>
+Reason: HITL reviewer signature verification failed at seq 3
+ExitCode: 1

@@ -1,0 +1,4 @@
+Status: FAIL
+Step: §10.39 acquirer_hsm_key_fingerprint cross-binding to dual_signatures
+Reason: acquirer-HSM signature verification failed at successor anchor
+ExitCode: 1

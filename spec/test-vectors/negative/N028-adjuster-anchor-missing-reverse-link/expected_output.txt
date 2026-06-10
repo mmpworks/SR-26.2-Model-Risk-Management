@@ -1,0 +1,4 @@
+Status: FAIL
+Step: §7 step 11
+Reason: adjuster anchor missing reverse link to insurer chain entry
+ExitCode: 1

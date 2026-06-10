@@ -1,0 +1,19 @@
+{
+  "_about": "§10.46 lifecycle: a reconciled event for a bordereau_id has no prior received event from the same party (published → reconciled, skipping received).",
+  "tamper": {
+    "class": "lifecycle out of order",
+    "skipped": "received"
+  },
+  "bordereau_id": "polaris-bordereau-2026-05",
+  "reconciling_party_identifier": "polaris-reinsurance-bermuda",
+  "lifecycle": [
+    {
+      "seq": 0,
+      "event": "published"
+    },
+    {
+      "seq": 1,
+      "event": "reconciled"
+    }
+  ]
+}

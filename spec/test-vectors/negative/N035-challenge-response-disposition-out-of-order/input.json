@@ -1,0 +1,16 @@
+{
+  "_about": "§10.55 audit-target challenge-response: a disposition event precedes its challenge (out of order). §7 step 12 lifecycle check rejects.",
+  "tamper": {
+    "class": "challenge-response out of order"
+  },
+  "sequence": [
+    {
+      "seq": 0,
+      "event": "disposition"
+    },
+    {
+      "seq": 1,
+      "event": "challenge"
+    }
+  ]
+}

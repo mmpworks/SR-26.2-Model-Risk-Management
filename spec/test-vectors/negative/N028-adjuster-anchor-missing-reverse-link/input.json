@@ -1,0 +1,18 @@
+{
+  "_about": "§10.45 bidirectional cross-anchor: the cedent-side anchor references the reinsurer entry, but the reinsurer-side anchor's peer_party_chain_entries is empty (Variant A). Check (a) fails.",
+  "tamper": {
+    "class": "missing reverse link",
+    "variant": "A empty peer list"
+  },
+  "cedent_anchor": {
+    "peer_party_chain_entries": [
+      {
+        "peer_run_id": "reinsurer-claim-001",
+        "peer_seq": 2
+      }
+    ]
+  },
+  "reinsurer_anchor": {
+    "peer_party_chain_entries": []
+  }
+}

@@ -1,0 +1,5 @@
+Status: PASS
+Reason-Template: conformant verifier emits Status: PASS with `clock-skew anomaly at seq <N>: captured_at non-monotonic across leap-second boundary; ordering preserved by seq
+Reason: clock-skew anomaly at seq 2: captured_at non-monotonic across leap-second boundary; ordering preserved by seq
+Anomaly: clock-skew anomaly at seq 2: captured_at non-monotonic across leap-second boundary; ordering preserved by seq
+ExitCode: 0

@@ -1,0 +1,5 @@
+Status: FAIL
+Step: §7 step 12
+Reason-Template: state-machine illegal transition at seq <N>: <from> → <to>
+Reason: state-machine illegal transition at seq 0: closed → opened
+ExitCode: 1

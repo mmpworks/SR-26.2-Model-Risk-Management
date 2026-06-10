@@ -1,0 +1,5 @@
+Status: FAIL
+Step: §7 step 11
+Reason-Template: decadal re-seal previous-anchor mismatch at seal_date <date>
+Reason: decadal re-seal previous-anchor mismatch at seal_date 2036-05-06
+ExitCode: 1

@@ -1,0 +1,5 @@
+Status: FAIL
+Step: §10.42 step 2 (Merkle root verification)
+Reason-Template: backfill merkle root mismatch at backfill seq <N>
+Reason: backfill merkle root mismatch at backfill seq 1
+ExitCode: 1
