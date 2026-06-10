@@ -38,7 +38,7 @@ Three independent reasons:
 
 Verifier MUST execute spec §7 steps 1..(1-1) cleanly and fail at step 1 with the exact reason string above. A verifier that produces `Status: PASS` is broken; a verifier that fails at a different step (or with a different reason string) is non-conforming for the rework's named-failure-mode taxonomy.
 
-A verifier that emits the reason string from N009 or N022 on a `"V1"` header is non-conforming — the version string in the reason MUST reflect what the chain claimed (the literal `"V1"` bytes), not the canonical `"v2"` placeholder or the canonical `"v1.1"` placeholder.
+A verifier that emits the reason string from N009 or N022 on a `"V1"` header is non-conforming — the version string in the reason MUST reflect what the chain claimed (the literal `"V1"` bytes, rendered quoted per the §7 observed-value rendering rule), not the canonical `"v2"` placeholder or the canonical `"v1.1"` placeholder. All three cases render the observed value with the same quoting; only the bytes between the quotes differ.
 
 ## Fixture shape
 

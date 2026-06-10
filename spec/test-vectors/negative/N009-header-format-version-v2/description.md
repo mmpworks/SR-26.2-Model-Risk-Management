@@ -5,7 +5,7 @@
 ```
 Status: FAIL
 Step:   1
-Reason: format_version v2 not supported by this verifier (running v1)
+Reason: format_version "v2" not supported by this verifier (running v1)
 ```
 
 ## Tampering recipe

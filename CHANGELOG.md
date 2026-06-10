@@ -8,6 +8,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 
 ---
 
+## [Unreleased]
+
+### Changed
+
+- **§7 observed-value rendering rule (normative).** Added a normative rule to §7: whenever a verifier reason string embeds a value the verifier observed on the wire — the claimed `format_version`, `sign_payload_version`, `canonical_encoding`, or a declared floor version — the verifier MUST wrap that value in ASCII double-quotes. This resolves a fixture divergence where N023 (`format_version "V1"`) quoted the observed value while N009 (`format_version v2`), N022 (`format_version v1.1`), and the §7 step-1 reason template left it bare.
+
+  **Decision: quote.** Three factors drove the choice. (1) **Consistency.** The rest of §7 already quotes — `sign_payload_version "X"`, `canonical_encoding "X"`, and the floor-version `"X"`/`"Y"` reasons all use double-quotes. Quoting makes step 1 join the existing convention instead of standing alone; the alternative (going bare) would have required editing four reason templates that already quote. (2) **Disambiguation.** Quoting is the only rule that stays unambiguous when the observed value contains spaces or is empty: `format_version "" not supported` reads cleanly where a bare empty value collapses into a double space, and `format_version "v1 beta" not supported` stays one token where the bare form reads as two. (3) **No signature effect.** The reason string is human-facing diagnostic output and is never signed, so quoting it has zero effect on `sign_payload` reconstruction — the byte-level `format_version` discipline (the header field bound under the seal per §4.3) is a separate concern from how the rejection reason is printed. The one factor pointing the other way — the Go reference verifier and the `07-verifier-design.md` pseudocode emitted bare — was outweighed: the Go vector-walk match was already quote-insensitive, so the corpus pin can quote without breaking the gate, and the reference rendering aligns to the dominant spec convention.
+
+  **Scope.** The rule governs the version/encoding-identifier reason family (the values the verifier dispatches on). It deliberately does NOT touch the structured-field reason family (`unknown key_version: no IKM for (tenant=T, key_version=V)`, which renders `key=value` pairs), the enum-in-sentence family (`co-signed seal failure: algorithm X validated`), or the state-transition family (`closed → opened`). Those families have their own internally-consistent rendering conventions; folding them under the quoting rule would introduce new divergences rather than remove one. The `additional_verifications marker "<value>"` reason already quotes and is consistent with the chosen rule.
+
+  **Re-rendered vectors.** N009 and N022 expected outputs and generators updated to the quoted form (N023 already quoted). The negative-corpus `INDEX` rows for N009 and N022 updated to match. Spec text touched: §7 step 1 reason template + new "Observed-value rendering in §7 reason strings" normative block; `docs/design/07-verifier-design.md` pseudocode; `docs/future-needs/sections-plain-english/03-wire-storage-verification.md`. The generic-form references in `regulator-pack/finding-language.md`, `examiner-quickstart.md`, `sample-report.md`, and `docs/design/02-chain-construction.md` were left unchanged — they render no observed value, so the rule does not reach them.
+
+---
+
 ## [0.3.0] PRD-3.1 - 2026-05-24 (reference-implementation sub-release)
 
 ### Summary

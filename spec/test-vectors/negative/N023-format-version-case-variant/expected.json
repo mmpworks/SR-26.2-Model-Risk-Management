@@ -1,7 +1,7 @@
 {
-  "_about": "Expected verifier output for N023. The verifier MUST refuse the chain at spec §7 step 1 with the reason string below. Status MUST be FAIL. The version string in the reason MUST be the literal claimed bytes (`V1`), not the canonical `v2` or `v1.1` placeholders used in N009/N022.",
+  "_about": "Expected verifier output for N023. The verifier MUST refuse the chain at spec §7 step 1 with the reason string below. Status MUST be FAIL. The version string in the reason MUST be the literal claimed bytes (`V1`), rendered quoted per the §7 observed-value rendering rule — the same quoting N009 (`\"v2\"`) and N022 (`\"v1.1\"`) now use.",
   "status": "FAIL",
   "step": 1,
   "reason": "format_version \"V1\" not supported by this verifier (running v1)",
-  "match_rule": "exact-or-syntactically-equivalent (the version string MUST be the literal claimed bytes; the verifier-running-version MUST be `v1`; whitespace and quoting around the literal MAY vary)"
+  "match_rule": "exact-or-prefix (the observed version string is rendered quoted per the §7 observed-value rendering rule, with the literal claimed bytes between the quotes; the verifier-running-version MUST be `v1`; the verifier MAY append `: detail` after the normative prefix)"
 }

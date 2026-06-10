@@ -5,7 +5,7 @@
 ```
 Status: FAIL
 Step:   1
-Reason: format_version v1.1 not supported by this verifier (running v1)
+Reason: format_version "v1.1" not supported by this verifier (running v1)
 ```
 
 ## Tampering recipe
@@ -22,7 +22,7 @@ This is the load-bearing closure for the version-negotiation policy: a v1 verifi
 
 Verifier MUST execute spec §7 steps 1..(1-1) cleanly and fail at step 1 with the exact reason string above. A verifier that produces `Status: PASS` is broken; a verifier that fails at a different step (or with a different reason string) is non-conforming for the rework's named-failure-mode taxonomy.
 
-A verifier that emits the reason string from N009 (`format_version v2 not supported by this verifier (running v1)`) on a `"v1.1"` header is non-conforming — the version string in the reason MUST reflect what the chain claimed, not the canonical "next major" placeholder.
+A verifier that emits the reason string from N009 (`format_version "v2" not supported by this verifier (running v1)`) on a `"v1.1"` header is non-conforming — the version string in the reason MUST reflect what the chain claimed, not the canonical "next major" placeholder.
 
 ## Fixture shape
 

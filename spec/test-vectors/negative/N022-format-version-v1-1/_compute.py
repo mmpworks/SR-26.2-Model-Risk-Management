@@ -27,11 +27,11 @@ def main() -> None:
     record = {'_about': ABOUT, 'tamper': tamper, 'audit_file': audit}
     _lib.write_input_json(HERE, record)
     _lib.write_expected_output(
-        HERE, status='FAIL', step='1', reason='format_version v1.1 not supported by this verifier (running v1)',
-        reason_template='format_version v1.1 not supported by this verifier (running v1)',
+        HERE, status='FAIL', step='1', reason='format_version "v1.1" not supported by this verifier (running v1)',
+        reason_template='format_version "v1.1" not supported by this verifier (running v1)',
         exit_code=1, anomaly=None,
     )
-    print("[N022-format-version-v1-1] materialized:", 'FAIL', '1', 'format_version v1.1 not supported by this verifier (running v1)')
+    print("[N022-format-version-v1-1] materialized:", 'FAIL', '1', 'format_version "v1.1" not supported by this verifier (running v1)')
 
 
 if __name__ == "__main__":

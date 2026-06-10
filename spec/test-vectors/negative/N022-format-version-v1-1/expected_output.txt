@@ -1,4 +1,4 @@
 Status: FAIL
 Step: 1
-Reason: format_version v1.1 not supported by this verifier (running v1)
+Reason: format_version "v1.1" not supported by this verifier (running v1)
 ExitCode: 1

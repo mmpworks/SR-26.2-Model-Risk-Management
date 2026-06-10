@@ -142,7 +142,7 @@ header = read first line of audit file (parse as AuditFileHeader)
 # downstream messages would mislead a reader into thinking the file is corrupt
 # rather than format-incompatible.
 IF header.format_version != "v1":
-  FAIL: format_version {header.format_version} not supported by this verifier (running v1)
+  FAIL: format_version "{header.format_version}" not supported by this verifier (running v1)
 
 # Step 2: HKDF inputs digest matches the running v1 constants.
 expected_hkdf_inputs_digest = SHA-256(

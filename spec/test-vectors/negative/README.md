@@ -18,7 +18,7 @@ Per `docs/design/08-test-vectors.md` §5.6:
 | `N006-key-fingerprint-flipped/` | Entry's `key_fingerprint` flipped to arbitrary 16 bytes | 8 | `key_fingerprint mismatch at seq N: looked-up IKM does not match the entry's recorded fingerprint` (NO MAC compute) |
 | `N007-unknown-key-version/` | Entry's `key_version` set to a generation not in the test IKM registry | 7 | `unknown key_version: no IKM for (tenant=T, key_version=V) at seq N` (NO MAC compute) |
 | `N008-entry-format-version-mismatch/` | One entry's `format_version` set to `"v2"` | 5 | `format_version mismatch at seq N` |
-| `N009-header-format-version-v2/` | `header.format_version` set to `"v2"` | 1 | `format_version v2 not supported by this verifier (running v1)` |
+| `N009-header-format-version-v2/` | `header.format_version` set to `"v2"` | 1 | `format_version "v2" not supported by this verifier (running v1)` |
 | `N010-header-hkdf-digest-flipped/` | `header.hkdf_inputs_digest` flipped | 2 | `header HKDF inputs do not match running v1 inputs` |
 | `N011-header-genesis-nonzero/` | `header.genesis_hash` set to non-zero bytes | 3 | `header genesis_hash does not match v1 constant` |
 | `N012-cross-chain-tenant-mismatch/` | Event's `tenant_id` differs from header's | 4 | `cross-chain lift detected at seq N (event.tenant_id mismatch)` |
@@ -31,7 +31,7 @@ Per `docs/design/08-test-vectors.md` §5.6:
 | `N019-dual-algo-one-valid-one-invalid/` | One signature in a co-signed seal validates, the other does not (case e) | 11 | `co-signed seal failure: algorithm <A> validated, algorithm <B> did not` (`--strict`: FAIL; non-strict: PASS-WITH-ANOMALY) |
 | `N020-algorithm-key-type-mismatch/` | `seal.algorithm` and the resolved public-key type disagree (e.g. seal claims `ed25519` but `public_key_id` resolves to RSA-3072) | 11 | `algorithm/key-type mismatch at signature verification` (FAIL; distinct from generic `signature verification failed`) |
 | `N021-routing-event-tampered/` | A routing chain entry's `audit.routing.*` attribute is altered post-capture (e.g. `provider_chosen` changed) | 9 | `payload_hash MAC mismatch at seq N` (proves §4.4.1 routing attributes are inside the canonical bytes the chain MAC covers) |
-| `N022-format-version-v1-1/` | `header.format_version` set to `"v1.1"` (unrecognized minor within v1 family) | 1 | `format_version v1.1 not supported by this verifier (running v1)` |
+| `N022-format-version-v1-1/` | `header.format_version` set to `"v1.1"` (unrecognized minor within v1 family) | 1 | `format_version "v1.1" not supported by this verifier (running v1)` |
 | `N023-format-version-case-variant/` | `header.format_version` set to `"V1"` (uppercase V; case-variant of the recognized lowercase string) | 1 | `format_version "V1" not supported by this verifier (running v1)` |
 
 ## Conformance test
