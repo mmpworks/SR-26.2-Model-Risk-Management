@@ -1,0 +1,5 @@
+Status: PASS-WITH-ANOMALY
+Step: 11
+Reason: partial-coverage seal: single-algorithm signature during institution's declared dual-algorithm posture
+Anomaly: partial-coverage seal: single-algorithm signature during institution's declared dual-algorithm posture
+ExitCode: 0

@@ -1,0 +1,5 @@
+Status: FAIL
+Step: 11
+Reason-Template: co-signed seal failure: algorithm <A> validated, algorithm <B> did not
+Reason: co-signed seal failure: algorithm ed25519 validated, algorithm dilithium3 did not
+ExitCode: 1
