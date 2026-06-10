@@ -1,0 +1,46 @@
+{
+  "_about": "Input fixture for case 027-sign-payload-v1.0c-sibling-log — the §4.3 v1.0c 13-line sign_payload byte form binding hex(operational_events_log_root) per §10.79. Sub-case (a) is the non-empty day (3 operational events → 3-leaf RFC 6962 sibling root); sub-case (b) is the empty day (operational_events_log_root = SHA-256(b'')).",
+  "seal": {
+    "sign_payload_version": "v1.0c",
+    "algorithm": "ed25519",
+    "format_version": "v1",
+    "tenant_id": "test-tenant-v1.0c",
+    "seal_date": "2026-05-11",
+    "merkle_root_hex": "11223344556677889900aabbccddeeff11223344556677889900aabbccddeeff",
+    "hkdf_inputs_digest_hex": "0a1b2c3d4e5f60718293a4b5c6d7e8f90a1b2c3d4e5f60718293a4b5c6d7e8f9",
+    "cadence": "daily",
+    "dev_mode": false,
+    "operational_events_log_root_hex": "af8557b1ea725b1fa02e7329c1149e33194276df299a9ff9c448280c964f6a20"
+  },
+  "computed_canonical_fields": {
+    "key_versions_canon": "1",
+    "kms_handle_uris_digest_hex": "5d4f1e9c2b8a7f6e3d0c1b2a3f4e5d6c7b8a9f0e1d2c3b4a5f6e7d8c9b0a1f2e"
+  },
+  "operational_events": [
+    {
+      "chain_kind": "operational",
+      "event_type": "master.reconciliation_completed",
+      "seq": 1,
+      "tenant_id": "test-tenant-v1.0c",
+      "ts_utc": "2026-05-11T01:00:00Z"
+    },
+    {
+      "chain_kind": "operational",
+      "event_type": "verifier.run_completed",
+      "seq": 2,
+      "tenant_id": "test-tenant-v1.0c",
+      "ts_utc": "2026-05-11T06:30:00Z"
+    },
+    {
+      "chain_kind": "operational",
+      "event_type": "chain.verification_failure",
+      "seq": 3,
+      "tenant_id": "test-tenant-v1.0c",
+      "ts_utc": "2026-05-11T18:45:00Z"
+    }
+  ],
+  "empty_day_subcase": {
+    "operational_events_log_root_hex": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "sign_payload_sha256": "605bbaf40c8db688ece2a0f85261792990c93ddaf08f05cddd28155d345c7096"
+  }
+}

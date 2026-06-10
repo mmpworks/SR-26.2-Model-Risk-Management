@@ -51,7 +51,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 # convention lands, at which point the pins get committed (see README
 # status note).
 # ---------------------------------------------------------------------------
-_OP_EVENTS_ROOT_FIELD = "operational_events_log_root_hex"  # PROVISIONAL
+_OP_EVENTS_ROOT_FIELD = "operational_events_log_root_hex"  # confirmed: ffiec @ 3a70ebd
 
 
 # Pinned v1.0c sign_payload inputs — arbitrary post-amendment day per the
@@ -174,11 +174,9 @@ def build_sign_payload_v1_0c(operational_events_root_hex: str) -> bytes:
     return ("\n".join(lines)).encode("utf-8")
 
 
-# When True, the generator writes the expected_* pins + input.json. Held
-# False until Jared's v1.0c runner convention lands and _OP_EVENTS_ROOT_FIELD
-# is confirmed (PREPARED-BUT-UNPINNED status — see README). Flip to True in
-# the same commit that pins 027.
-PIN = False
+# Pins are live: the v1.0c runner convention (operational_events_log_root_hex
+# on the seal block) is committed in ffiec @ 3a70ebd, matching this generator.
+PIN = True
 
 
 def main() -> None:
@@ -200,7 +198,7 @@ def main() -> None:
     print(f"[027] op-events root (empty day):     {op_root_empty}")
     print(f"[027] sign_payload len (empty):       {len(sp_empty)}")
     print(f"[027] sign_payload SHA (empty):       {sp_empty_sha}")
-    print(f"[027] op-events root field (input):   {_OP_EVENTS_ROOT_FIELD} (PROVISIONAL)")
+    print(f"[027] op-events root field (input):   {_OP_EVENTS_ROOT_FIELD}")
 
     if not PIN:
         print(
