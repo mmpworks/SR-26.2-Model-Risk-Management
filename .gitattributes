@@ -1,0 +1,5 @@
+# Byte-pinned conformance corpus: never apply line-ending conversion.
+# expected_* files are byte-exact contracts (sign_payload forms, canonical JCS
+# bytes, sha256 pins); CRLF normalization on checkout would break every
+# byte-compare on Windows clones.
+spec/test-vectors/** -text
