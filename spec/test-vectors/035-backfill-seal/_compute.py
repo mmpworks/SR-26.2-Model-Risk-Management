@@ -50,6 +50,12 @@ KEY_VERSIONS_CANON = "1"
 KMS_HANDLE_URIS_DIGEST_HEX = (
     "5d4f1e9c2b8a7f6e3d0c1b2a3f4e5d6c7b8a9f0e1d2c3b4a5f6e7d8c9b0a1f2e"
 )
+# hkdf_inputs_digest_hex — synthetic for case 035; the institutional HKDF
+# inputs are pinned in case 010 et al. Surfaced into input.json so the full
+# sign_payload byte form is reconstructible from the input alone.
+HKDF_INPUTS_DIGEST_HEX = (
+    "0a1b2c3d4e5f60718293a4b5c6d7e8f90a1b2c3d4e5f60718293a4b5c6d7e8f9"
+)
 
 
 # §10.42 metadata-leaf inputs.
@@ -182,9 +188,7 @@ def build_sign_payload(merkle_root_hex: str) -> bytes:
         TENANT_ID,
         SEAL_DATE,
         merkle_root_hex,
-        # hkdf_inputs_digest_hex — synthetic for case 035; the institutional
-        # HKDF inputs are pinned in case 010 et al.
-        "0a1b2c3d4e5f60718293a4b5c6d7e8f90a1b2c3d4e5f60718293a4b5c6d7e8f9",
+        HKDF_INPUTS_DIGEST_HEX,
         CADENCE,
         "0" if not DEV_MODE else "1",
         KEY_VERSIONS_CANON,
@@ -241,6 +245,7 @@ def main() -> None:
             "format_version": FORMAT_VERSION,
             "cadence": CADENCE,
             "dev_mode": DEV_MODE,
+            "hkdf_inputs_digest_hex": HKDF_INPUTS_DIGEST_HEX,
             "key_versions_canon": KEY_VERSIONS_CANON,
             "kms_handle_uris_digest_hex": KMS_HANDLE_URIS_DIGEST_HEX,
         },
