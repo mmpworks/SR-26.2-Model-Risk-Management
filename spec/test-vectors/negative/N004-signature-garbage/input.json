@@ -1,5 +1,5 @@
 {
-  "_about": "The seal's signature is replaced with garbage bytes; §7 step 11 signature verification fails.",
+  "_about": "Real Ed25519-signed baseline (test key), then the seal's signature is replaced with garbage bytes; §7 step 11 signature verification fails. Steps 1-10 pass; the reconstruct-and-compare assertion passes (the structured fields and sign_payload_hex are untouched); the Ed25519 verify fails because the signature bytes are garbage.",
   "tamper": {
     "class": "signature garbage"
   },
@@ -177,7 +177,7 @@
       ],
       "merkle_root_hex": "927adc88e5d843c5847674f7245d1e3c762bacc3f0b225f3322300cddf4eefe9",
       "hkdf_inputs_digest_hex": "6f8a5005cabb2eab8b347254d0c94c2d585a7e5a5a82398c5aeaea074c727d65",
-      "signature_b64": "ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ",
+      "signature_b64": "/////////////////////////////////////////////////////////////////////////////////////w==",
       "sign_payload_hex": "66666965632e636861696e2d6f662d637573746f64792e76310a76312e30610a656432353531390a76310a74656e616e742d66666965632d746573742d310a323032362d30352d30360a393237616463383865356438343363353834373637346637323435643165336337363262616363336630623232356633333232333030636464663465656665390a366638613530303563616262326561623862333437323534643063393463326435383561376535613561383233393863356165616561303734633732376436350a6461696c790a30",
       "sign_payload_text": "ffiec.chain-of-custody.v1\nv1.0a\ned25519\nv1\ntenant-ffiec-test-1\n2026-05-06\n927adc88e5d843c5847674f7245d1e3c762bacc3f0b225f3322300cddf4eefe9\n6f8a5005cabb2eab8b347254d0c94c2d585a7e5a5a82398c5aeaea074c727d65\ndaily\n0"
     }

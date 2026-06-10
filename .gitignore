@@ -51,6 +51,16 @@ desktop.ini
 secrets/
 local/
 
+# Conformance test signing key: the PUBLIC half is published in the corpus
+# (pub.hex + the PKIX BEGIN-PUBLIC-KEY pem). The global *.pem rule above would
+# otherwise ignore the public pem, so force-allow ONLY the two public files.
+# Every private artifact (seed hex, private pem) stays out by name and is never
+# stored in this repo — it lives local-only under TESSERASEAL_TEST_KEY_DIR.
+!spec/test-vectors/_keys/test-signing-key.pub.hex
+!spec/test-vectors/_keys/test-signing-key.ed25519.pub.pem
+spec/test-vectors/_keys/*.seed.hex
+spec/test-vectors/_keys/test-signing-key.ed25519.pem
+
 # Working notes (forward-needs, gap manifest, etc. — not part of the published artifact set)
 docs/future-needs/
 

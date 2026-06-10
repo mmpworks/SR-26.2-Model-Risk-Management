@@ -26,6 +26,8 @@ import json
 import os
 from typing import Any
 
+from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
+
 # ---------------------------------------------------------------------------
 # Spec §4.1 constants (FFIEC-conformance posture)
 # ---------------------------------------------------------------------------
@@ -214,6 +216,79 @@ def build_sign_payload_v1_0a(
         dev_byte,  # terminal field — NO trailing newline
     ])
     return text.encode("utf-8")
+
+
+# ---------------------------------------------------------------------------
+# TesseraSeal TEST signing key (Ed25519, deterministic RFC 8032)
+# ---------------------------------------------------------------------------
+# The generators read the PRIVATE seed local-only; the verifier reads only
+# the PUBLIC key. Seed handling is fail-loud: a signature-bearing generator
+# that cannot find the key dir MUST error, never silently fall back to a
+# placeholder. The published public key is pinned so a key rotation that
+# forgets to regenerate a vector is caught here, not silently passed.
+TEST_KEY_DIR_ENV = "TESSERASEAL_TEST_KEY_DIR"
+DEFAULT_TEST_KEY_DIR = r"E:\dev\testing\private-keys\tesseraseal"
+SEED_HEX_FILE = "test-signing-key.seed.hex"
+PUBLISHED_PUB_HEX = (
+    "0985603b6c0e099bac783bcd7801664ed376a7888eafbf191859854bf8ff7f35"
+)
+
+
+def test_key_dir() -> str:
+    """Resolve the test-key directory: env override, then local-only default."""
+    return os.environ.get(TEST_KEY_DIR_ENV) or DEFAULT_TEST_KEY_DIR
+
+
+def load_test_signing_key() -> Ed25519PrivateKey:
+    """Read the 32-byte private seed and return the Ed25519 signing key.
+
+    FAILS LOUDLY when the key directory or seed file is absent — a
+    signature-bearing vector must never materialize against placeholder
+    bytes. When the seed IS present, a derived-public-key mismatch against
+    the pinned PUBLISHED_PUB_HEX is a hard error: the key was rotated
+    without regenerating the corpus.
+    """
+    seed_path = os.path.join(test_key_dir(), SEED_HEX_FILE)
+    if not os.path.isfile(seed_path):
+        raise FileNotFoundError(
+            f"TesseraSeal test signing seed not found at {seed_path}. "
+            f"Set {TEST_KEY_DIR_ENV} to the local-only key directory "
+            f"(it holds {SEED_HEX_FILE}). The generator refuses to "
+            f"materialize a signature-bearing vector against placeholder bytes."
+        )
+    with open(seed_path, "r", encoding="utf-8") as f:
+        seed = bytes.fromhex(f.read().strip())
+    if len(seed) != 32:
+        raise ValueError(f"seed {seed_path} has {len(seed)} bytes, want 32")
+    priv = Ed25519PrivateKey.from_private_bytes(seed)
+    pub_hex = priv.public_key().public_bytes_raw().hex()
+    if pub_hex != PUBLISHED_PUB_HEX:
+        raise ValueError(
+            f"loaded seed derives public key {pub_hex}, but the corpus "
+            f"publishes {PUBLISHED_PUB_HEX} — the test key was rotated "
+            f"without regenerating the corpus."
+        )
+    return priv
+
+
+def sign_bytes(priv: Ed25519PrivateKey, message: bytes) -> str:
+    """Ed25519-sign `message` and return base64-std of the 64-byte signature.
+
+    Deterministic per RFC 8032 — the same (seed, message) reproduces the
+    same signature bytes on every run and in every conforming library.
+    """
+    return base64.b64encode(priv.sign(message)).decode("ascii")
+
+
+def sign_seal_in_place(audit: dict, priv: Ed25519PrivateKey) -> None:
+    """Replace the baseline seal's placeholder signature with a REAL one.
+
+    Signs the seal's already-built `sign_payload` (the v1.0a byte form on
+    `sign_payload_hex`) so the seal carries a genuine Ed25519 signature the
+    §7 step-11 walk verifies under the published public key.
+    """
+    sign_payload = bytes.fromhex(audit["seal"]["sign_payload_hex"])
+    audit["seal"]["signature_b64"] = sign_bytes(priv, sign_payload)
 
 
 # ---------------------------------------------------------------------------
