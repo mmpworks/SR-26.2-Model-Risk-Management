@@ -1,0 +1,1 @@
+{"attributes":{"data":"payload-1","step":1},"chain_kind":"audit","duration_ns":null,"event_id":"01HFFIEC00000000000000000001","kind":"audit","name":"audit_event_1","parent_span_id":null,"resource":{},"run_id":"RUN-FFIEC-VECTOR","severity":"AUDIT","span_id":"AQEBAQEBAQE=","tenant_id":"tenant-ffiec-test-1","timestamp_ns":1735689601000000000,"trace_id":"AQEBAQEBAQEBAQEBAQEBAQ=="}
