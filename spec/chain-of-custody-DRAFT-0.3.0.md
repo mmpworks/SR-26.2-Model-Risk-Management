@@ -1551,6 +1551,25 @@ Beyond best-evidence and self-authentication, chain entries entering substantive
 
 The chain's properties give the institution's witness affirmative content to read for each element. An opposing party challenging trustworthiness under FRE 803(6)(E) confronts the §7 verifier procedure as the mechanical demonstration of trustworthiness; absent a specific attack the chain's defenses do not address, the FRE 803(6) foundation survives.
 
+### 5.2.3 SEA 17a-4(f) recordkeeping-rule mapping (normative when applicable)
+
+Sections 5.2.1 and 5.2.2 map the chain onto the Federal Rules of Evidence. §5.2.3 maps it onto the SEC's broker-dealer **recordkeeping rule** — 17 CFR §240.17a-4(f) — which FINRA Rule 4511 incorporates by reference for FINRA-member firms. This is the settled-rule anchor for a tamper-evident AI-decision-record product in the securities context.
+
+**Two compliance paths, not one (normative framing).** Before the 2022 amendment, 17a-4(f) required electronic records to be preserved on **WORM** (write-once-read-many) media. SEC Release No. 34-96034 (effective Jan 3 2023, compliance date May 3 2023) added a co-equal **audit-trail alternative**: an electronic recordkeeping system may instead maintain "a complete time-stamped audit trail that includes all modifications to and deletions of a record or any part thereof … to the extent necessary to permit the recreation of the original record if it is altered, over-written, or erased." A conforming system satisfies 17a-4(f) by meeting **either** path. Earlier spec text described the chain only as "WORM-equivalent"; that framing understates the fit. The chain is not WORM storage (it does not render the medium physically non-rewritable) — it is a tamper-*evident* append-only audit trail, which is precisely the shape the audit-trail alternative describes. The audit-trail alternative is therefore the doctrinally-correct and stronger mapping.
+
+**Element-by-element mapping (normative when applicable).** The audit-trail alternative has four load-bearing elements; each maps to a chain primitive a §7 verifier proves mechanically:
+
+| 17a-4(f) audit-trail-alternative element | Chain primitive | How the §7 verifier demonstrates it |
+|---|---|---|
+| **Complete** — every record, no silent gaps | §4.1 monotonic `seq` (inviolate property 2) + §4.2 daily Merkle seal | §7 chain-linkage step rejects a gap or reorder; the Merkle seal's leaf count binds the day's full set |
+| **Time-stamped** | §4.1 `mac_computed_at_utc` (integrity clock) + `captured_at_utc` (forensic wall clock) | Both timestamps are inside the per-event MAC-covered canonical bytes; §7 per-event-MAC step confirms they were bound at capture |
+| **Audit trail** — a traceable record chain | The §7 chain of inferences: per-event MAC → daily Merkle root → HSM-rooted Ed25519 seal signature | Each step independently rejects a distinct tamper class; the trail is the ordered §7 procedure itself |
+| **Permits recreation of an original record if altered or deleted** | §10.3 append-only enforcement + the Merkle seal (catches deletion) + the per-event MAC (catches alteration) | A deleted entry breaks the recomputed Merkle root against the signed seal; an altered entry breaks its per-event MAC — either surfaces as a named §7 `FAIL`, and the un-tampered canonical bytes remain the recoverable original |
+
+A verifier `Status: PASS` over a chain-of-custody ledger **is** the audit-trail-alternative conformance demonstration for the records that ledger covers: it shows the trail is complete, time-stamped, and that any alteration or deletion would have been detected. The institution's CC8.1 names the retention period (17a-4 sets the durations; the chain is agnostic to duration) and the storage substrate. Note the scope boundary: 17a-4(f) governs *how* records are preserved once they are records; whether a given AI prompt/output is itself a "record … relating to its business as such" under 17a-4(b)(4) is a separate, currently-unsettled question (FINRA RN 25-07, April 2025, requested comment; SEC/FINRA have not definitively answered) that this spec does not resolve — the chain binds whatever the institution captures, and the institution makes the risk-based recordkeeping judgment.
+
+**Cross-reference.** §4.1 per-event MAC; §4.2 daily Merkle seal; §4.3 HSM-rooted seal signature; §7 verification procedure; §10.3 append-only enforcement; §11 references (17 CFR §240.17a-4, FINRA Rule 4511); §13 FINRA-examiner (SRO) stakeholder entry; `docs/regulator-pack/sec-overlay.md` and `docs/regulator-pack/finra-overlay.md` (operational mappings; informative).
+
 ## 6. Storage
 
 Implementations MUST persist captured events in append-only form. UPDATE and DELETE operations on stored events are non-conformant. Retention period is set by regulatory framework and tenant configuration.
@@ -2147,6 +2166,7 @@ Implementations MAY define additional exit codes ≥ 4 for vendor-specific diagn
 | `customer_disclosure_cross_tenant_inheritance_verified` | §10.69 | §10.69 disclosure subtree spans a cross-tenant §10.39 inheritance boundary AND the §10.40 cross-anchors binding the inherited tenant resolve cleanly under the unified per-customer-disclosure key derivation; emitted alongside `customer_disclosure_subtree_verified` |
 | `attestation_chain_validated` | §10.77 | Verifier observed host-attestation artifacts (Intel TDX / AMD SEV-SNP / AWS Nitro / vTPM) bound to one or more chain entries AND validated the attestation evidence against the institution's published trust roots; institution declares the discipline operational in CC8.1 per §10.77 |
 | `sibling_log_root_verified` | §10.79 | v1.0c seal walk's bound `operational_events_log_root` matches the verifier-recomputed Merkle root over the chain's `chain_kind = "operational"` entries; emitted alongside the PRESENT `operational_events_log_root` field per the v1.0c verdict-object shape |
+| `communication_principal_preapproval_verified` | §10.84 | A `retail` communication event has a parent-linked `registered_principal` §10.50 approval whose `signed_at_utc` is at or before the parent-linked §14.8 send's `applied_at_utc` (approval preceded send) |
 
 The enumeration is closed at each document version; extending requires a document-version revision per §0 Version policy (the wire-format identifier `"v1"` is intentionally stable across draft revisions, but the §10.12 marker enumeration evolves with the document). A verifier emitting a marker not on this list is non-conformant. Vendor-specific markers MAY appear in the parallel `additional_diagnostics` field (which is opaque and NOT closed-enumerated) but MUST NOT contaminate `additional_verifications`.
 
@@ -3355,7 +3375,7 @@ The institution names additional domain-specific outcomes in CC8.1 (e.g., `clini
 | `audit.review.edited_output_sha256` | string | when applicable | SHA-256 of the canonical bytes of the edited output. REQUIRED when `outcome = "clinician_edit"`; absent otherwise. |
 | `audit.review.review_rationale_hash` | string | RECOMMENDED | SHA-256 of the canonical bytes of the reviewer's free-form rationale (the rationale itself MAY contain customer-PII; the hash binds without binding). |
 | `audit.review.signed_review` | object | yes | Signed-review-event object per the human-review primitive (see `docs/design/14-generation-and-hitl.md`). Carries reviewer_id, reviewer_role, signed_at_utc, signature_b64, and the reviewer-key-fingerprint binding. |
-| `audit.review.role` | string | yes | Closed enum identifying the reviewer's organizational role for the review: `"clinician"` \| `"legal"` \| `"compliance"` \| `"business"` \| `"underwriter"` \| `"agent"` \| `"institution_named"` per CC8.1. Lets downstream consumers (verifier, MRM committee, examiner) distinguish a clinical-grounding review from a legal-review-of-counsel from a business-line override. The role discriminator is institution-meaningful: a `compliance` review carries different audit weight than a `business` review in regulatory contexts. Per DRY, this attribute replaces the proposed audit.human_review.* parallel family — §10.50 IS the human-review event family; the role attribute extends the existing schema. |
+| `audit.review.role` | string | yes | Closed enum identifying the reviewer's organizational role for the review: `"clinician"` \| `"legal"` \| `"compliance"` \| `"business"` \| `"underwriter"` \| `"agent"` \| `"registered_principal"` \| `"institution_named"` per CC8.1. Lets downstream consumers (verifier, MRM committee, examiner) distinguish a clinical-grounding review from a legal-review-of-counsel from a business-line override. The role discriminator is institution-meaningful: a `compliance` review carries different audit weight than a `business` review in regulatory contexts. The `registered_principal` value is the FINRA Rule 2210 registered-principal approver whose pre-approval ordering §10.84 verifies. Per DRY, this attribute replaces the proposed audit.human_review.* parallel family — §10.50 IS the human-review event family; the role attribute extends the existing schema. |
 
 **Composition with §1.5 state-machine.** The review-state lifecycle (pending_review → reviewed) is validated through the shared `_state_machine.py` primitive Phase 6 normated under §1.5. §10.50 emits the pending_review state implicitly (a §10.47 generation event without a paired §10.50 review is `pending_review`) and the reviewed state explicitly via the §10.50 event itself. The institution's CC8.1 names the review-window SLA; reviews not closed within the SLA are control-completeness anomalies surfaced by audit-procedures P-6.
 
@@ -4914,6 +4934,26 @@ Institutions operating under home-host supervision (a US-resident IHC parent sup
 
 FRB consolidated examination cycles (CCAR, DFAST, LISCC review) read the chain-coverage map alongside the verifier output and cross-reference per-tenant chain integrity against consolidated entity reporting. The institution's CC8.1 names the chain-coverage map's BHC-consolidated discipline (the map update cadence at material-change moments per §10.19) and the named successor when intra-group legal-entity reorganizations occur (per §10.24 succession events).
 
+### 10.84 Communication principal-preapproval ordering (normative when applicable)
+
+FINRA Rule 2210 requires a registered principal to approve certain public communications, and for retail communications the approval must generally precede first use (pre-approval). When an institution operates AI-assisted or AI-generated public communications under chain-of-custody, §10.84 normates the chain-side discipline that proves the **ordering** — the principal's approval preceded the send — rather than merely that both events occurred. §10.84 introduces no new cryptographic mechanism; it composes the §10.50 human-review event, the §14.8 downstream-action event, and §4.4 parent-linkage.
+
+**Position (normative when applicable).** A communication subject to Rule 2210 is captured as a **communication event** (`chain_kind = "audit"` or `"generation"`) carrying the `audit.communication.audience` attribute below. When the audience is `retail`, the institution MUST also emit, parent-linked to the communication via §4.4 `parent_run_id` / `parent_seq`: (a) a §10.50 review event with `audit.review.role = "registered_principal"` recording the principal's approval, and (b) a §14.8 downstream-action event with `audit.downstream_action.action_kind ∈ {"communication_sent", "notification_sent"}` recording the send. §10.84 is soft-enforcement per §10.12: the verifier surfaces an ordering violation as an anomaly line under `Status: PASS`, NOT as a chain-integrity `FAIL` — the requirement bears on operational-attestation completeness, not on cryptographic chain integrity.
+
+**Audience attribute (normative when applicable).**
+
+| Attribute | Type | Required | Description |
+|---|---|---|---|
+| `audit.communication.audience` | string | yes on a §10.84 communication event | Closed enum: `"retail"` \| `"institutional"` \| `"correspondence"` \| `"institution_named"` per CC8.1. Rule 2210(a) classifies communications by audience; `retail` communications distributed to more than 25 retail investors within any 30-calendar-day period require registered-principal pre-approval. The count-threshold determination is institution-side (the chain does not count recipients); the institution's CC8.1 names how it classifies a communication as `retail` for §10.84 purposes. |
+
+**Ordering rule (normative).** For a communication event C with `audit.communication.audience = "retail"`, let A be the §10.50 review event parent-linked to C with `audit.review.role = "registered_principal"` (the approval), and S be the §14.8 downstream-action event parent-linked to C recording the send. The verifier checks `A.signed_at_utc ≤ S.applied_at_utc`, where `A.signed_at_utc` is the `signed_at_utc` inside `audit.review.signed_review` and `S.applied_at_utc` is `audit.downstream_action.applied_at_utc`. When the check holds, the verifier emits the marker `communication_principal_preapproval_verified` (§10.12). When it fails — approval timestamp strictly after send timestamp — the verifier emits the anomaly line `communication principal-preapproval ordering: approval did not precede send at seq N` under `Status: PASS`, where N is the send event's `seq`. When a `retail` communication event has a send but no parent-linked `registered_principal` approval at all, the verifier emits `communication principal-preapproval ordering: no registered-principal approval bound at seq N` under `Status: PASS` (the missing-approval case). `institutional` and `correspondence` communications are outside the pre-approval ordering check (Rule 2210 does not impose registered-principal pre-approval on them); the verifier does not emit the marker or an anomaly for them.
+
+**Verifier dispatch (normative).** The check is additive: it runs after the §7 base procedure and reports through the §10.12 `additional_verifications` discipline. It does NOT gate `Status: PASS` / `Status: FAIL`. A chain whose only finding is a §10.84 ordering anomaly is structurally intact and PASSes integrity verification; the anomaly is a control-completeness signal an examiner or SOC engagement reviews. The verifier evaluates only the ordering it can read from the bound timestamps; whether a communication was correctly classified `retail`, and whether the >25-in-30-days threshold applied, are institution-side determinations the CC8.1 names and the SOC engagement tests.
+
+**Wire-form preservation.** §10.84 events do NOT modify the v1.0a / v1.0b / v1.0c `sign_payload` byte-form. `audit.communication.audience` is an `audit.*`-namespace attribute under §10.2; the review and downstream-action events are the existing §10.50 / §14.8 shapes.
+
+**Cross-reference.** §10.50 output-grounding / human-in-the-loop review (the approval event; `registered_principal` role value); §14.8 `audit.downstream_action.*` (the send event); §4.4 parent-linkage; §10.12 verifier exit-code contract (soft-enforcement anomaly + the `communication_principal_preapproval_verified` marker); §11 references (FINRA Rule 2210); §13 FINRA-examiner (SRO) stakeholder entry; test vectors `090-communication-preapproval-ordering-pass` and `091-communication-preapproval-ordering-anomaly` pin the byte values and the anomaly path; `docs/regulator-pack/finra-overlay.md` (operational mapping; informative).
+
 ## 11. References
 
 Normative references:
@@ -4954,7 +4994,10 @@ Informative references:
 - 12 CFR Part 30 Appendix D — OCC Heightened Standards for Large Banks (risk-governance framework for national-bank subsidiaries above $50B in assets)
 - 12 CFR Part 364 Appendix B — FDIC Interagency Guidelines Establishing Information Security Standards
 - Federal Credit Union Act, 12 USC §1751 et seq.; 12 CFR Chapter VII — NCUA regulations and supervisory framework for federal credit unions
-- 17 CFR §240.17a-4 — SEC books-and-records retention rule (broker-dealers); §240.17a-4(f) WORM-equivalent retention discipline
+- 17 CFR §240.17a-4 — SEC books-and-records retention rule (broker-dealers). §240.17a-4(f) permits electronic records to be retained under EITHER the WORM path OR the 2022 audit-trail alternative — a complete, time-stamped audit trail that permits recreation of an original record if it is altered or deleted (SEC Release No. 34-96034, effective Jan 3 2023, compliance date May 3 2023). The chain naturally satisfies the audit-trail alternative; the element-by-element mapping is in §5.2.3.
+- FINRA Rule 4511 — general books-and-records requirements for FINRA-member broker-dealers; requires records to be preserved per the SEA 17a-3 / 17a-4 regime (including the §240.17a-4(f) audit-trail alternative) by reference. See §5.2.3 and the FINRA-examiner (SRO) stakeholder entry in §13.
+- FINRA Rule 3110 — supervision; a member firm is responsible for supervising its business activities, and remains responsible for outputs "regardless of whether generated by a human or by AI technology." Composes with the chain's §10.50 human-in-the-loop review, §10.80 three-lines-of-defense map, and §10.81 anomaly taxonomy.
+- FINRA Rule 2210 — communications with the public; retail communications distributed to more than 25 retail investors within any 30-calendar-day period require registered-principal approval before first use. See the §10.84 communication principal-preapproval ordering discipline.
 - 17 CFR Part 248 (Reg S-P) — SEC privacy of consumer financial information
 - 17 CFR §248.201 (Reg S-ID) — SEC identity theft red flags rule
 - 17 CFR §240.15l-1 (Reg BI) — SEC Regulation Best Interest for broker-dealers
@@ -5027,6 +5070,7 @@ The designated expert for each registry is named in the spec's governance docume
 | Version | Date | Change |
 |---|---|---|
 | 0.1.0-draft.1 | 2026-05-11 | Initial public-review draft (PRD-1). |
+| 0.3.0-draft (PRD-3.1) | 2026-07-02 | FINRA alignment pass. New §5.2.3 (SEA 17a-4(f) recordkeeping-rule mapping — WORM path and the settled 2022 audit-trail alternative, element-by-element onto chain primitives); corrected the WORM-only framing of §240.17a-4(f) in §11 and the §13 SEC-examiner entry; added FINRA Rule 4511 / 3110 / 2210 references in §11; new FINRA-examiner (SRO) stakeholder entry in §13; new §10.84 communication principal-preapproval ordering (Rule 2210) with `registered_principal` added to the §10.50 review-role enum and `communication_principal_preapproval_verified` added to the §10.12 marker enumeration. Additive within wire-format `v1`; no `sign_payload` byte-form change. |
 
 ## 13. Stakeholder navigation
 
@@ -5236,12 +5280,25 @@ NCUA-specific framing for federal credit union supervision under the Federal Cre
 
 SEC-specific framing for broker-dealer, investment-adviser, and registered-firm supervision under Reg S-P, Reg S-ID, Reg BI, the SEC Marketing Rule, and 17 CFR §240.17a-4 books-and-records retention.
 
-- [`docs/regulator-pack/sec-overlay.md`](../docs/regulator-pack/sec-overlay.md) — SEC overlay (Reg S-P / S-ID / BI / Marketing Rule, §240.17a-4 WORM-equivalence, subpoena and privilege interaction with §10.70)
+- [`docs/regulator-pack/sec-overlay.md`](../docs/regulator-pack/sec-overlay.md) — SEC overlay (Reg S-P / S-ID / BI / Marketing Rule, §240.17a-4(f) recordkeeping under both the WORM path and the 2022 audit-trail alternative, subpoena and privilege interaction with §10.70)
 - §1.2 epistemic scope — direct mapping to §10b-5 / §17(a) "what did the AI say?" framing
 - §5.2 best-evidence posture — anchors §240.17a-4 retention compliance
-- §10.3 append-only enforcement — anchors §240.17a-4(f) WORM-equivalence claim
+- §5.2.3 SEA 17a-4(f) recordkeeping-rule mapping — the element-by-element map of the audit-trail alternative onto chain primitives
+- §10.3 append-only enforcement — anchors the §240.17a-4(f) audit-trail-alternative "recreation if altered or deleted" element (see §5.2.3)
 - §10.70 privileged-investigation overlay — SEC subpoena interaction
 - §11 informative references — 17 CFR §240.17a-4, Reg S-P, Reg S-ID, Reg BI, Marketing Rule
+
+### FINRA examiner (SRO)
+
+FINRA is a self-regulatory organization (SRO), not a government agency; its members are SEC-registered broker-dealers, and FINRA Rule 4511 incorporates the SEA 17a-3 / 17a-4 recordkeeping regime by reference. Nothing in the chain's trust model assumes a government-agency examiner: the verifier's principal is whoever holds the seal-signing public key (§10.76), which an SRO examiner holds and uses exactly as a government examiner does. A FINRA member applies the chain under FINRA's supervisory mandate without spec amendment (see §1's applicable-agencies note).
+
+- [`docs/regulator-pack/finra-overlay.md`](../docs/regulator-pack/finra-overlay.md) — FINRA overlay (4511 / 17a-4(f), Rule 3110 supervision, Rule 2210 principal pre-approval, Reg BI recommendation lineage; the 2026 FINRA Annual Regulatory Oversight Report GenAI expectations are clearly labeled exam-signal, not rule text)
+- [`docs/regulator-pack/sec-overlay.md`](../docs/regulator-pack/sec-overlay.md) — the SEC broker-dealer overlay the FINRA overlay composes on top of
+- §5.2.3 SEA 17a-4(f) recordkeeping-rule mapping — the settled-rule anchor 4511 points to
+- §10.50 output-grounding / human-in-the-loop review — Rule 3110 supervisory-review and Reg BI human-review evidence
+- §10.84 communication principal-preapproval ordering — the Rule 2210 registered-principal pre-approval discipline
+- §10.47 / §10.48 generation four-tuple + model provenance — the 2026-report "which model version was used and when" and prompt/output-log expectations (exam-signal)
+- §14.6 / §14.8 actor and downstream-action families — the 2026-report "track and log AI agent actions and decisions" expectation (exam-signal)
 
 ### State banking commissioner
 
