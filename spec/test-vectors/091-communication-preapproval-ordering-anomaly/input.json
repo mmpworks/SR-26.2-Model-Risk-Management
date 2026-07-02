@@ -1,0 +1,42 @@
+{
+  "_about": "Input fixture for case 091-communication-preapproval-ordering-anomaly — §10.84 FINRA Rule 2210 NON-conformant arrangement. The registered-principal approval (14:00) comes AFTER the send (12:00); a verifier emits the ordering anomaly under Status: PASS (soft-enforcement).",
+  "scenario": {
+    "communication": {
+      "run_id": "anchorline-2026-q2-retail-market-commentary",
+      "seq": 1,
+      "audit.communication.audience": "retail"
+    },
+    "principal_approval": {
+      "run_id": "anchorline-principal-approval-2026-q2-commentary",
+      "seq": 2,
+      "audit.review.outcome": "approved",
+      "audit.review.role": "registered_principal",
+      "audit.review.parent_run_id": "anchorline-2026-q2-retail-market-commentary",
+      "audit.review.parent_seq": 1,
+      "audit.review.signed_review": {
+        "audit.signed_review.signed_at_utc": "2026-06-01T14:00:00Z"
+      }
+    },
+    "send": {
+      "run_id": "anchorline-send-2026-q2-commentary",
+      "seq": 3,
+      "parent_run_id": "anchorline-2026-q2-retail-market-commentary",
+      "parent_seq": 1,
+      "audit.downstream_action": {
+        "action_kind": "communication_sent",
+        "system_of_record_id": "comms-platform",
+        "change_record_id_hash": "edaff52a3b1277056341aac0481aa0c9f4e10a6a86ba39ba7763a4ec5572fcaf",
+        "applied_at_utc": "2026-06-01T12:00:00Z"
+      }
+    }
+  },
+  "expected": {
+    "verdict": "anomaly",
+    "anomaly_line": "communication principal-preapproval ordering: approval did not precede send at seq 3",
+    "status": "PASS",
+    "approval_signed_at_utc": "2026-06-01T14:00:00Z",
+    "send_applied_at_utc": "2026-06-01T12:00:00Z",
+    "canonical_byte_length": 856,
+    "canonical_sha256": "55119e927731c42671049cbf9dbe1ac0b365e6321b64e77bb1680b7314085a6e"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "_about": "Input fixture for case 090-communication-preapproval-ordering-pass — §10.84 FINRA Rule 2210 conformant arrangement. The registered-principal approval (10:00) precedes the send (12:00); a verifier emits communication_principal_preapproval_verified.",
+  "scenario": {
+    "communication": {
+      "run_id": "anchorline-2026-q2-retail-market-commentary",
+      "seq": 1,
+      "audit.communication.audience": "retail"
+    },
+    "principal_approval": {
+      "run_id": "anchorline-principal-approval-2026-q2-commentary",
+      "seq": 2,
+      "audit.review.outcome": "approved",
+      "audit.review.role": "registered_principal",
+      "audit.review.parent_run_id": "anchorline-2026-q2-retail-market-commentary",
+      "audit.review.parent_seq": 1,
+      "audit.review.signed_review": {
+        "audit.signed_review.signed_at_utc": "2026-06-01T10:00:00Z"
+      }
+    },
+    "send": {
+      "run_id": "anchorline-send-2026-q2-commentary",
+      "seq": 3,
+      "parent_run_id": "anchorline-2026-q2-retail-market-commentary",
+      "parent_seq": 1,
+      "audit.downstream_action": {
+        "action_kind": "communication_sent",
+        "system_of_record_id": "comms-platform",
+        "change_record_id_hash": "edaff52a3b1277056341aac0481aa0c9f4e10a6a86ba39ba7763a4ec5572fcaf",
+        "applied_at_utc": "2026-06-01T12:00:00Z"
+      }
+    }
+  },
+  "expected": {
+    "verdict": "marker",
+    "marker": "communication_principal_preapproval_verified",
+    "approval_signed_at_utc": "2026-06-01T10:00:00Z",
+    "send_applied_at_utc": "2026-06-01T12:00:00Z",
+    "canonical_byte_length": 856,
+    "canonical_sha256": "535f9162196fc298718678057373cc6a838eea4e4dde2cfbb9435e0d9cc75156"
+  }
+}
