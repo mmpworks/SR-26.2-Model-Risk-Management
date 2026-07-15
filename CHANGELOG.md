@@ -22,6 +22,30 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 
 ---
 
+## [0.3.0] PRD-3.2 - 2026-07-15 (state-regulator absorption)
+
+### Summary
+
+PRD-3.2 makes the spec's state-regulator absorption explicit, using the Texas Department of Banking (TDoB) as the worked example. Document version remains 0.3.0. Wire-format identifier remains v1. All additions are additive within v1 — no `sign_payload` byte-form change, no test-vector change. The spec's authority-neutral substrate already verified state-chartered chains identically to national-bank chains; this pass adds the provenance surface and the overlay depth a state regulator needs, without touching the cryptographic core.
+
+### Added
+
+- **§14.13 `audit.supervisory.*` supervisory-context provenance family (NORMATIVE when applicable).** Records charter type, primary state supervisor, federal prudential supervisor, and a dual-supervision flag so an examiner reconstructs the governing-authority context from the chain entry. Integrity-bound under the per-event MAC but institution-asserted (per §1.2 epistemic scope — the chain proves the institution recorded and did not alter the context, not that the asserted authority is correct). Emits no §10.12 marker and gates no §7 step; a per-regulator verifier profile MAY render it in examiner-facing output, presentation-only, never changing the integrity verdict. This preserves the §7 determinism contract.
+- **§10.83 state-authority conservatorship posture** with the named succession-kind example `tx_dob_conservatorship` (Texas Finance Code Title 3, Banking Commissioner as appointing authority). The US-state analog of the existing cross-border resolution-authorities table; composes with the cooperative and non-cooperative succession paths unchanged.
+
+### Changed
+
+- **`docs/regulator-pack/tx-dob-overlay.md` deepened from stub to full overlay.** Grounded in cited sources: the 7 TAC §3.24 15-day cybersecurity-incident clock (satisfiable by the interagency 36-hour notice; ordering provable via the §10.84 primitive), InTREx / URSIT / ITP examination scaffolding, the retention-window binding (IKM-registry retention ≥ 5yr to outlive the BSA window), examiner-access provenance via §10.70, a recommended shared exam-artifact-kind vocabulary for CSBS cross-bank portability, and the load-bearing "the bank signs its own evidence" trust discussion.
+- **§14.11 wire-format identifier note** and **§12 change log** updated to record the PRD-3.2 additive additions.
+
+### Unchanged
+
+- All prior normative spec text (§§0-14.12).
+- Wire-format identifier v1; the `sign_payload` byte-forms (v1.0a / v1.0b / v1.0c).
+- Every existing test vector (001-084, negatives N001-N029).
+
+---
+
 ## [0.3.0] PRD-3.1 - 2026-05-24 (reference-implementation sub-release)
 
 ### Summary
