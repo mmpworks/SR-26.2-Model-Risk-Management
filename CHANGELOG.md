@@ -22,6 +22,25 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 
 ---
 
+## [0.3.0] PRD-3.3 - 2026-07-15 (artifact retrieval / evidence-store resolution)
+
+### Summary
+
+PRD-3.3 closes a gap surfaced while working through the chain-walk material: the chain binds artifact **digests** but never normated how a digest resolves back to the artifact **bytes**. After years of generation you cannot re-hash the estate to find a record; resolution runs through a content-addressed store or a digest→locator index that today is institution-internal, unchained, and untested — the same asymmetric-evidence hole §10.23 closed for consumer-keyed retrieval. Document version remains 0.3.0; wire-format identifier remains v1; additive with no `sign_payload` or test-vector change. It is an institution-side control surface — the §7 verifier procedure is unchanged.
+
+### Added
+
+- **§10.85 Artifact retrieval index — evidence-store resolution contract (normative).** Requires a documented digest→bytes resolution path (content-addressed store OR digest→locator index) that does not require re-hashing the estate. Keys resolution on the chain coordinates `(tenant_id, run_id, seq)` plus the digest, so resolution stays correct even under a hypothetical SHA-256 collision — an operational uniqueness guarantee that preserves, and does not restate, the §1.3 second-preimage posture. Index integrity follows the §10.23 two-shape pattern: Shape 1 chain-anchored index (`audit.artifact_index.*`, recommended) vs Shape 2 periodic attestation, CC8.1-named. Retrieval correctness is self-proving (fetched bytes re-hash to the bound digest).
+- **The omission defense (red-teamed).** The chain is the authoritative population of bound digests over a CC8.1-named enumeration domain, so a "lost" artifact surfaces as an unresolvable binding. A chain-bound periodic resolvability sweep (`audit.artifact_index.sweep`) puts detection on a bounded clock rather than on examiner luck. Failure semantics have four outcomes distinguishing integrity failure (re-hash mismatch), retention failure (within-window absence), and **compliant disposal** — which MUST be a chain-bound `chain.artifact_disposed` event, closing the laundering channel where an institution relabels inconvenient missing artifacts as "disposed per schedule." The omission guarantee is scoped to sealed history (immutable digest bindings); the current window carries the §1.2 forward-only exposure.
+
+### Unchanged
+
+- All prior normative spec text (§§0-14.13) except the additive §10.85 and the §12 change-log row.
+- Wire-format identifier v1; the `sign_payload` byte-forms; the §7 verifier procedure.
+- Every existing test vector.
+
+---
+
 ## [0.3.0] PRD-3.2 - 2026-07-15 (state-regulator absorption)
 
 ### Summary
