@@ -294,7 +294,7 @@ Collectors MUST NOT filter chain-of-custody traffic by severity. Collector confi
 
 #### 4.5.2 Receiver-stamping convention (normative)
 
-Receivers MUST stamp chain-of-custody records with a non-default `SeverityNumber` so downstream filters that have not been updated for the pass-through rule still admit chain traffic by default. The reference implementation (TesseraSeal receiver) stamps:
+Receivers MUST stamp chain-of-custody records with a non-default `SeverityNumber` so downstream filters that have not been updated for the pass-through rule still admit chain traffic by default. The author's reference receiver stamps:
 
 | Field | Value | Rationale |
 |---|---|---|
@@ -381,7 +381,7 @@ The collector config above is the load-bearing artifact the SOC team's P-38 proc
 
 ### 4.6 Receiver-policy discovery (informative)
 
-The chain-of-custody-v1 spec does NOT mandate a receiver-policy discovery endpoint. The endpoint described here is implementation-specific to the Herald reference topology, where the SDK and the chain receiver run as distinct processes (the TesseraSeal / Herald.Compliance split). Other implementations may run the receiver as a library inside the SDK process and skip the network hop entirely; the new spec §4 implementation-topology framing makes this distinction explicit.
+The chain-of-custody-v1 spec does NOT mandate a receiver-policy discovery endpoint. The endpoint described here is implementation-specific to one topology, where the SDK and the chain receiver run as distinct processes. Other implementations may run the receiver as a library inside the SDK process and skip the network hop entirely; the new spec §4 implementation-topology framing makes this distinction explicit.
 
 This section documents the Herald reference shape for implementers building a similar topology and for auditors who want to understand what the SDK fetches from the receiver before traffic starts flowing.
 
@@ -427,7 +427,7 @@ Other implementations are free to use a different URL path or a different discov
 }
 ```
 
-The `actual_value` field is the value TesseraSeal reports for this tenant on this fetch — the value `QuickLogBuilder` will position when the next chain entry arrives. It sits inside the `severity_number_range` window. The SDK surfaces both the range and the actual value in operator-facing views so operators see the spec window plus the receiver's actual position.
+The `actual_value` field is the value the receiver reports for this tenant on this fetch — the value its resolver will position when the next chain entry arrives. It sits inside the `severity_number_range` window. The SDK surfaces both the range and the actual value in operator-facing views so operators see the spec window plus the receiver's actual position.
 
 **Caching.** Short TTL plus ETag-based revalidation. The Herald reference SDK uses a 15-minute default TTL; refresh calls send `If-None-Match: <etag>`. The receiver returns 304 when the ETag matches and 200 with a fresh body when the policy has changed. The SDK refreshes opportunistically — operators don't see the receiver-policy fetch on the chain emit path; the cache amortises it.
 

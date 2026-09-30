@@ -415,7 +415,7 @@ The supervisor requests:
 
 ### 12.1 SDK reproducible-build commitment
 
-Israeli megabanks operating under the INCD threat model verify the SDK and verifier supply chains explicitly. Vidimus and the reference Go verifier publish SHA-256 hashes of all released packages with GPG signatures from the release-signing key; the institution rebuilds locally and verifies match.
+Israeli megabanks operating under the INCD threat model verify the SDK and verifier supply chains explicitly. Vendor SDKs and the reference Go verifier publish SHA-256 hashes of all released packages with GPG signatures from the release-signing key; the institution rebuilds locally and verifies match.
 
 ### 12.2 Verifier escrow for tier-1 deployments
 

@@ -57,7 +57,7 @@ The chain is one processing activity among many. This template is its entry. The
 | **Data controller** | Acme Bank N.A., 100 Corporate Way, Pittsburgh PA 15222, US (EU operations: Acme Bank Europe GmbH, Mainzer Landstrasse 17, 60329 Frankfurt am Main, Germany) |
 | **Joint controller** | None |
 | **Data Protection Officer** | Maria Garcia, dpo@acmebank.eu, +49 69 1234 5678, Mainzer Landstrasse 17, 60329 Frankfurt am Main, Germany |
-| **Data processor** | Vidimus Inc., 200 Vendor Plaza, San Francisco CA 94107, US (DPA executed 2025-11-12, sub-processor schedule version 4) |
+| **Data processor** | Example Vendor Inc., 200 Vendor Plaza, San Francisco CA 94107, US (DPA executed 2025-11-12, sub-processor schedule version 4) |
 | **Categories of data subjects** | Loan applicants and account holders in Acme Bank N.A. and Acme Bank Europe GmbH; healthcare-financing patients enrolled in MedPay program |
 | **Categories of personal data** | (As above; institution adds specific fields per its privacy-by-design configuration) |
 | **Recipients** | Acme Compliance, Acme MRM, Acme Customer Service, Acme Litigation Counsel; CFPB, OCC, BaFin, ECB; external auditor `[name]`; courts under discovery |

@@ -481,7 +481,7 @@ The chain's three-layer composition provides sequential defense (parallel to `ba
 | Residual risk | Compensating control |
 |---|---|
 | HSM firmware-supply-chain compromise | Annual firmware-integrity attestation via HSM vendor (where supported) or independent auditor sign-off; HSM vendor switching threshold |
-| Vendor-code compromise | Annual code reviews of TesseraSeal source code; quarterly build reproducibility verification; verifier binary held in secure escrow (see §17.3) |
+| Vendor-code compromise | Annual code reviews of the implementation's source code; quarterly build reproducibility verification; verifier binary held in secure escrow (see §17.3) |
 | OTLP network-position compromise | Network segmentation (VLAN isolation, microsegmentation); network-based IDS for OTLP traffic; mTLS with strict cipher-suite filtering |
 
 ---

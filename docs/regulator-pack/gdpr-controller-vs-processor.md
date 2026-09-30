@@ -145,18 +145,18 @@ beyond service-delivery configuration?            ↓ No
 
 In practice, vendors offering a chain-hosting platform that the institution configures fall into the processor box. Vendors offering cross-tenant analytic services that they design and operate fall into the joint-controller box for those services. The institution may have both relationships with the same vendor — processor for the chain platform, joint controller for an analytic service — and the agreements name each scope distinctly.
 
-## Worked example — Vidimus serves Acme Bank EU
+## Worked example — Example Vendor serves Acme Bank EU
 
-Acme Bank Europe GmbH contracts with Vidimus Inc. (US-headquartered, EU subsidiary) for chain-hosting. The structure:
+Acme Bank Europe GmbH contracts with Example Vendor Inc. (US-headquartered, EU subsidiary) for chain-hosting. The structure:
 
-- **Roles.** Acme Bank Europe is sole controller. Vidimus EU is the processor.
-- **DPA.** Executed between Acme Bank Europe and Vidimus EU. Includes SCCs Module Two for the US-headquartered parent's incidental access (e.g., support escalation).
-- **Sub-processors.** Vidimus's sub-processor list includes AWS EU (Frankfurt region for Acme's tenant), an HSM service in EU, and Vidimus's US support function for incident escalation. Acme authorizes all three at DPA signing.
-- **Data location.** Acme's tenant data is stored exclusively in AWS Frankfurt; Vidimus EU operates the platform; US parent has no production access.
-- **SOC 2.** Vidimus provides annual SOC 2 Type II covering the Frankfurt platform. Acme reviews annually.
+- **Roles.** Acme Bank Europe is sole controller. Example Vendor EU is the processor.
+- **DPA.** Executed between Acme Bank Europe and Example Vendor EU. Includes SCCs Module Two for the US-headquartered parent's incidental access (e.g., support escalation).
+- **Sub-processors.** Example Vendor's sub-processor list includes AWS EU (Frankfurt region for Acme's tenant), an HSM service in EU, and Example Vendor's US support function for incident escalation. Acme authorizes all three at DPA signing.
+- **Data location.** Acme's tenant data is stored exclusively in AWS Frankfurt; Example Vendor EU operates the platform; US parent has no production access.
+- **SOC 2.** Example Vendor provides annual SOC 2 Type II covering the Frankfurt platform. Acme reviews annually.
 - **Schrems II safeguards.** EU-held encryption keys; US parent cannot decrypt EU-tenant data.
 
-Acme's RoPA entry (`gdpr-ropa-template.md`) names Vidimus EU as processor and references the DPA. Acme's DPIA documents the cross-border-transfer risk and the supplementary safeguards.
+Acme's RoPA entry (`gdpr-ropa-template.md`) names Example Vendor EU as processor and references the DPA. Acme's DPIA documents the cross-border-transfer risk and the supplementary safeguards.
 
 ## Cross-references
 

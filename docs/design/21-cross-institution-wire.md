@@ -4,7 +4,7 @@
 
 ## 1. The problem this solves
 
-Story 20 drives the design. Northbridge originates ~14,000 Fedwire transactions per month and ~280,000 ACH transactions per month. Each transaction has chain entries on the originating side; today the integrity claim ends at the institution's chain boundary. The receiving institution's chain entries — when the receiving institution also runs TesseraSeal or a compatible chain — are not bound to Northbridge's chain.
+Story 20 drives the design. Northbridge originates ~14,000 Fedwire transactions per month and ~280,000 ACH transactions per month. Each transaction has chain entries on the originating side; today the integrity claim ends at the institution's chain boundary. The receiving institution's chain entries — when the receiving institution also runs a conformant chain — are not bound to Northbridge's chain.
 
 Three questions Northbridge and a counterpart institution must answer:
 
