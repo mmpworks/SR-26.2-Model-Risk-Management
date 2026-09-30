@@ -4,7 +4,7 @@
 
 ## 1. The problem this solves
 
-Story 19 drives the design. Aerolith Compute is a US frontier-AI training laboratory — 32K-GPU training cluster in Quincy, WA; ~3,500 employees; voluntary partnership with the US AI Safety Institute (NIST AISI) Reference Evaluation Program. Inference-side TesseraSeal is in production for 11 months. The training-time chain — corpus, run, fleet attestation, weight lineage, evaluation — is not in chain at all.
+Story 19 drives the design. Aerolith Compute is a US frontier-AI training laboratory — 32K-GPU training cluster in Quincy, WA; ~3,500 employees; voluntary partnership with the US AI Safety Institute (NIST AISI) Reference Evaluation Program. An inference-side conformant chain has been in production for 11 months. The training-time chain — corpus, run, fleet attestation, weight lineage, evaluation — is not in chain at all.
 
 Five questions Aerolith and AISI must answer from the chain alone:
 

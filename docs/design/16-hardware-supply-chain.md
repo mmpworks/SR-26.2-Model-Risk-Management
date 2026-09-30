@@ -4,7 +4,7 @@
 
 ## 1. The problem this solves
 
-Story 18 drives the design. Argent Vector Defense Systems is a defense-electronics prime supplier — F-35 sustainment AI radar in production on TesseraSeal for 7 months; ~1,847 distinct line items at the integrate-level; 47 supplier-facility pins; sub-tier suppliers in Taiwan, South Korea, Malaysia. The AI-side chain is mature. The hardware-supply-chain side is not in chain at all.
+Story 18 drives the design. Argent Vector Defense Systems is a defense-electronics prime supplier — F-35 sustainment AI radar in production on a conformant chain-of-custody implementation for 7 months; ~1,847 distinct line items at the integrate-level; 47 supplier-facility pins; sub-tier suppliers in Taiwan, South Korea, Malaysia. The AI-side chain is mature. The hardware-supply-chain side is not in chain at all.
 
 Five questions Argent Vector must answer from its chain alone:
 
@@ -35,9 +35,9 @@ Verifier-mode dispatch (binding-walk vs challenge-walk) handles the practical re
 
 ## 3. Why §10.57 supports two compositions for sub-tier suppliers
 
-A sub-tier firmware supplier may or may not run a TesseraSeal-conformant chain. §10.57 supports both:
+A sub-tier firmware supplier may or may not run a chain conformant to this specification. §10.57 supports both:
 
-1. **Supplier runs TesseraSeal-conformant chain.** The institution's `audit.firmware.activate` event references the supplier's `audit.firmware.build` chain entry by ID. Cross-chain anchor; bidirectional verifiability.
+1. **Supplier runs a conformant chain.** The institution's `audit.firmware.activate` event references the supplier's `audit.firmware.build` chain entry by ID. Cross-chain anchor; bidirectional verifiability.
 2. **Supplier runs signed-engineering-attestation regime.** The institution's `audit.firmware.activate` event references the supplier's signed attestation document by hash. §10.21 cross-anchor; build-time integrity is the supplier's contractual commitment.
 
 The two compositions reflect commercial reality. Argent Vector's fourteen-of-seventeen FRU firmware artifacts are built internally; three are sub-tier-supplied. Of those three, the supplier's chain-conformance varies. The spec accommodates both without forcing supplier-side chain adoption — that's a commercial-relationship change Argent Vector commits to over twenty-four months, not a spec prerequisite.

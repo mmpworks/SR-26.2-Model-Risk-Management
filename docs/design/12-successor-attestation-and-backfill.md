@@ -18,7 +18,7 @@ Without §10.39 + §10.42, the acquirer has three bad options:
 
 ## 2. Motivating story — Northbridge / Cape Madeline
 
-The Story 14 narrative drives the design. Northbridge Federal Savings (an existing TesseraSeal customer; Story 01 was their first engagement) acquires Cape Madeline Bank & Trust. Cape Madeline ran on a competing vendor (LedgerKnot) for the prior 14 months, then had been on a baseline-diary system for the 30 months before LedgerKnot. The acquisition close is on date D; Northbridge needs to be able to answer four questions from the acquirer's chain alone after close:
+The Story 14 narrative drives the design. Northbridge Federal Savings (an institution already running a conformant chain; Story 01 was their first engagement) acquires Cape Madeline Bank & Trust. Cape Madeline ran on a competing vendor (LedgerKnot) for the prior 14 months, then had been on a baseline-diary system for the 30 months before LedgerKnot. The acquisition close is on date D; Northbridge needs to be able to answer four questions from the acquirer's chain alone after close:
 
 1. **What records did we inherit?** Answered by the §10.39 `baseline_manifest_sha256` — the canonicalized list of inherited artifacts, hash-bound on the acquirer's chain at close.
 2. **Who attested to the inheritance?** Answered by the §10.39 `dual_signatures` — both Cape Madeline's CISO and Northbridge's CISO sign the inheritance event.

@@ -33,7 +33,7 @@ Submitting for the receiving body's consideration the **FFIEC AI Chain-of-Custod
 
 ## Project posture
 
-This is an **open-source** proposed standard. All materials are licensed under Apache-2.0. The project is governed under the rules in `GOVERNANCE.md` with the explicit intent of foundation transfer (OpenSSF, CNCF, or a banking-industry consortium) once the standard is finalized and adoption is established. **No commercial product, vendor relationship, or paid-engagement basis underlies this submission.**
+This is an **open-source** proposed standard. All materials are licensed under Apache-2.0. The project is governed under the rules in `GOVERNANCE.md` with the explicit intent of foundation transfer (OpenSSF, CNCF, or a banking-industry consortium) once the standard is finalized and adoption is established. **Conflict-of-interest disclosure.** The author, Steve Muchow, is the founder of MMPWorks LLC, which develops commercial software that implements this specification, including TesseraSeal and Herald.Compliance. The specification, the conformance test vectors and the reference verifier are licensed under Apache-2.0, and conformance does not require any MMPWorks product.
 
 The reference implementation is being conducted in a separate repository and is not part of this submission. The submission stands or falls on the merit of the specification and its supporting documentation.
 

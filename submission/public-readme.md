@@ -82,7 +82,7 @@ The convergence target between PRD-N and PRD-(N+1) is *zero open gap-class findi
 
 **Open-source under Apache-2.0.** The Apache patent grant matters: the chain-of-custody primitive cannot be hostage to a future patent claim by a contributor or a downstream vendor. See [`LICENSE`](LICENSE) and [`NOTICE`](NOTICE).
 
-**No commercial product, vendor relationship, or paid-engagement basis underlies this submission.** The project is governed transparently under the rules in [`GOVERNANCE.md`](GOVERNANCE.md) with the explicit intent of foundation transfer (OpenSSF, CNCF, or a banking-industry consortium) once the specification is finalized and adoption is established.
+**Conflict-of-interest disclosure.** The author, Steve Muchow, is the founder of MMPWorks LLC, which develops commercial software that implements this specification, including TesseraSeal and Herald.Compliance. The specification, the conformance test vectors and the reference verifier are licensed under Apache-2.0, and conformance does not require any MMPWorks product. The project is governed transparently under the rules in [`GOVERNANCE.md`](GOVERNANCE.md) with the explicit intent of foundation transfer (OpenSSF, CNCF, or a banking-industry consortium) once the specification is finalized and adoption is established.
 
 ## Citation
 

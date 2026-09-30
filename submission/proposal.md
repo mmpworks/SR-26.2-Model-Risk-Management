@@ -265,7 +265,7 @@ The chain-of-custody primitive is offered as an open-source candidate standard, 
 
 The agencies have an audit-trail integrity gap in §VII.D of the AIO booklet and in the SR 26-2 / OCC 2026-13 framework's exclusion of generative and agentic AI. The chain closes that gap.
 
-The project's posture is **transparent, open-source, and foundation-transfer-bound**. No commercial product, vendor relationship, or paid-engagement basis underlies this submission. The submission stands or falls on the merit of the specification.
+The project's posture is **transparent, open-source, and foundation-transfer-bound**. **Conflict-of-interest disclosure.** The author, Steve Muchow, is the founder of MMPWorks LLC, which develops commercial software that implements this specification, including TesseraSeal and Herald.Compliance. The specification, the conformance test vectors and the reference verifier are licensed under Apache-2.0, and conformance does not require any MMPWorks product. The submission stands or falls on the merit of the specification.
 
 ---
 

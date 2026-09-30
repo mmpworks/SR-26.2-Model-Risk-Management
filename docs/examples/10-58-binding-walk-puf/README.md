@@ -2,7 +2,7 @@
 
 Worked example of the §10.58 binding-walk verifier mode for a chain entry whose `cryptographic_identity` carries `identity_kind = "puf-response"`. The verifier confirms the binding-hash structurally without challenging the component; on PASS it emits `additional_verifications: ['component_identity_binding_walk_verified']` per §10.58 + §10.12.
 
-> **Attribution.** Code in this example is extracted from TesseraSeal v1.0b, licensed under Apache 2.0. Other conformant implementations produce byte-identical output for the same inputs (verified against `spec/test-vectors/050-component-cryptographic-identity-puf-binding-walk/` once that vector lands per `spec/test-vectors/PRD-4-INDEX.md`). The implementation chosen for this example is provenance-of-code, not endorsement.
+> **Attribution.** Code in this example is extracted from the author's own implementation (MMPWorks LLC; see the conflict-of-interest disclosure in `submission/public-readme.md`), licensed under Apache 2.0. Other conformant implementations produce byte-identical output for the same inputs (verified against `spec/test-vectors/050-component-cryptographic-identity-puf-binding-walk/` once that vector lands per `spec/test-vectors/PRD-4-INDEX.md`). The implementation chosen for this example is provenance-of-code, not endorsement.
 
 ## What the example demonstrates
 

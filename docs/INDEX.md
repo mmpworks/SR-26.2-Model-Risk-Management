@@ -192,10 +192,6 @@ APAC / other jurisdictions: apac-overlay, korea-overlay, bank-of-israel-overlay,
 
 - edge-and-federated-ai, AI-safety-evaluation-overlay
 
-### Outreach
-
-- [`linkedin-project-summary.md`](linkedin-project-summary.md) — the public-facing project description and its claim guardrails. Quotes a spec version, so it is updated when the spec moves.
-
 ## Reading-order recommendations
 
 ### "I have 30 minutes; what should I read?"

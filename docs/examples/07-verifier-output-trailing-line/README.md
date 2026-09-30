@@ -2,7 +2,7 @@
 
 Worked example of §7's verifier-output discipline: the line-oriented `Status:` / `Step:` / `Reason:` / anomaly-lines form, followed by the normative `Verdict-Object: <jcs-bytes>` trailing line that carries the closed-shape machine-readable verdict object pinned in test vector 036.
 
-> **Attribution.** Code in this example is extracted from TesseraSeal v1.0b, licensed under Apache 2.0. Other conformant implementations produce byte-identical `Verdict-Object: <jcs-bytes>` trailing-line output for the same verdict-object inputs (verified against `spec/test-vectors/036-verdict-additional-verifications/`). The implementation chosen for this example is provenance-of-code, not endorsement.
+> **Attribution.** Code in this example is extracted from the author's own implementation (MMPWorks LLC; see the conflict-of-interest disclosure in `submission/public-readme.md`), licensed under Apache 2.0. Other conformant implementations produce byte-identical `Verdict-Object: <jcs-bytes>` trailing-line output for the same verdict-object inputs (verified against `spec/test-vectors/036-verdict-additional-verifications/`). The implementation chosen for this example is provenance-of-code, not endorsement.
 
 ## What the example demonstrates
 

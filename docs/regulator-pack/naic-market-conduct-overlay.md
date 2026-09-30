@@ -61,7 +61,7 @@ The engagement contract is the operational anchor; the chain binds the activity.
 The Polaris Reinsurance × Lloyd's syndicate scenario (forthcoming auditor story 15) exemplifies cross-jurisdictional NAIC + Lloyd's market-bureau audit. The key features:
 
 - Cedent: US primary insurer on a different vendor's product
-- Reinsurer: Polaris Reinsurance (Bermuda-domiciled, TesseraSeal native)
+- Reinsurer: Polaris Reinsurance (Bermuda-domiciled, runs a conformant chain natively)
 - Retrocessionaire: Lloyd's syndicate (UK-side)
 - Third-party adjuster: Marsh Adjusting Services LLC (NY-licensed, operating across all parties)
 

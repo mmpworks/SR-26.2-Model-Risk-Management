@@ -41,7 +41,7 @@ Sixty days before exam open, the EIC schedules a 60–90 minute scoping call wit
 
 - Which posture does the institution operate per spec §4.1.2 — FFIEC-conformant constants, vendor-namespaced constants, or a documented hybrid? The institution's CC8.1 control description names the choice.
 - Has the posture changed during the examination period? If yes, request the change-management record at PBC delivery.
-- Does the institution use a vendor-hosted implementation (TesseraSeal or equivalent)? If yes, expect to apply the vendor-management questions in §3.10.
+- Does the institution use a vendor-hosted implementation? If yes, expect to apply the vendor-management questions in §3.10.
 
 ### §1.2 Scope confirmation for the examination period
 
