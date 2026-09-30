@@ -28,6 +28,9 @@ out/
 # Submission PDF build outputs (regenerable from markdown source)
 submission/artifacts/*.pdf
 !submission/artifacts/.gitkeep
+# The render script is source, not output (render-pdf.yml runs it).
+!submission/build/
+!submission/build/render-pdf.sh
 
 # IDE / Agent state
 .vscode/
