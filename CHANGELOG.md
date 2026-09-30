@@ -10,6 +10,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 
 ## [Unreleased]
 
+### Added
+
+- **`submission/build/render-pdf.sh`.** This is the PDF renderer that `render-pdf.yml` calls and that `submission/README.md` and `submission-log.md` describe. It was never committed because the repo-wide `build/` ignore rule caught it, so the render check failed. It renders the submission package and the newest spec draft with pandoc and XeLaTeX. The output is byte-identical across runs: the date comes from the last commit, and the PDF trailer `/ID` is pinned to the source hash.
+
 ### Changed
 
 - **Vendor-neutral wording and conflict-of-interest disclosure.** Product names are removed from the normative spec text (`chain-of-custody-DRAFT-0.3.0.md`), and from the examiner-facing overlays and procedures:
