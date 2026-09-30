@@ -92,4 +92,4 @@ jobs:
           # Allow MMPWorks-internal bot accounts to skip the CLA
           # check. The literal username list goes here once we know
           # which bots run in the repo (Dependabot, renovate, etc.).
-          allowlist: bot*,dependabot[bot],renovate[bot]
+          allowlist: bot*,dependabot[bot],renovate[bot],Claude
