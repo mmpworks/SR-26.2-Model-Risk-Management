@@ -65,7 +65,7 @@ jobs:
           # PERSONAL_ACCESS_TOKEN is the PAT that has write access to
           # the separate signatures repository. Add it under
           # Settings → Secrets → Actions on this repository.
-          PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          PERSONAL_ACCESS_TOKEN: ${{ secrets.PATOKEN_CLA_SIGNATURES }}
         with:
           # The literal text a contributor types in a PR comment to sign.
           # Keep it short, exact, and the same across all MMPWorks repos
