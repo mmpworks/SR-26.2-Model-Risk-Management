@@ -6,8 +6,9 @@ Spec §7 (PRD-3 normative; rolled forward from PRD-4 per the PRD-3 index)
 normates verifier behavior when a v1 chain contains a top-level wire-format
 kind the verifier was not built to walk. The rule:
 
-  1. The verifier MUST NOT silently treat the unknown record as a chain
-     entry; chain-walk steps 4-9 MUST NOT execute against it.
+  1. The verifier MUST NOT silently treat the unknown record as a known
+     kind: it skips the kind's semantics. Steps 6-9 MUST still run on any
+     such record that carries a chain stamp.
   2. The verifier MUST NOT FAIL the entire run on the unknown kind alone.
   3. The verifier MUST emit an anomaly line under `Status: PASS` of the
      form `unknown wire-format kind present: <kind_string> (count: N)`.
