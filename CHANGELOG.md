@@ -8,16 +8,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 
 ---
 
-## [Unreleased]
+## [0.4.0] - 2026-11-06 (Public Review Draft, document version 0.4.0)
+
+### Headline
+
+The spec text moves to `spec/chain-of-custody-DRAFT-0.4.0.md`. The 0.3.0 draft is kept as written and marked superseded in `spec/README.md`, as 0.2.0 was at the 0.3.0 release. Section 0's version table and the document's self-references now name 0.4.0 (the table still named 0.2.0). The changes below are conformance-text changes, so the document version moves to the next draft number. Wire-format identifier `"v1"` unchanged. No byte form and no test vector changes.
 
 ### Fixed
 
-- Wording only. Statements that the IKM "never" reaches the application host now say which delivery model they describe. Model A (IKM-delivered) transports the IKM bytes to the application process. Model B (session-key-delivered) keeps them off the host (spec section 4.1.1). Touches the IKM glossary entry and the first sentence of section 4.1.1 in the 0.3.0 draft, `docs/design/` (00-overview, 01-primitives-spec, 10-glossary), `docs/q-and-a.md`, `docs/audit-procedures.md`, and `docs/control-map/CUECs.md`. The 0.2.0 draft is superseded and retained for back-reference, so it keeps its original text; this entry carries the correction. The audit procedure gains a core-dump check for Model A, because `mlock` keeps pages out of swap but not out of a core dump. No change to byte forms or test vectors.
+- Wording only. Statements that the IKM "never" reaches the application host now say which delivery model they describe. Model A (IKM-delivered) transports the IKM bytes to the application process. Model B (session-key-delivered) keeps them off the host (spec section 4.1.1). Touches the IKM glossary entry and the first sentence of section 4.1.1 in the 0.4.0 draft, `docs/design/` (00-overview, 01-primitives-spec, 10-glossary), `docs/q-and-a.md`, `docs/audit-procedures.md`, and `docs/control-map/CUECs.md`. The 0.2.0 draft is superseded and retained for back-reference, so it keeps its original text; this entry carries the correction. The audit procedure gains a core-dump check for Model A, because `mlock` keeps pages out of swap but not out of a core dump. No change to byte forms or test vectors.
 
-### Changed (spec owner rulings; document version not yet set)
+### Changed (spec owner rulings)
 
 - One IKM per tenant (section 3 stands). The lines that assumed sharing now say each tenant has its own IKM: the PRK exposure "Bounded scope" bullet in section 4.1.1, the per-region shared SDK process bullet in section 10, and `docs/design/02-chain-construction.md` section 4.0. The tenant-id uniqueness rule in section 10.1 keeps its MUST. Its stated reason is now that `tenant_id` selects the IKM at the registry and names the tenant-day a seal covers. Threat class E now says a breach reaches the one tenant that IKM is bound to.
-- Operational-event root. A v1.0c verifier recomputes the operational-event Merkle root and rejects on a mismatch when the sibling log is supplied. Otherwise it records the bound root as not walked (section 10.79 default, unchanged). Sections 4.3 and 7 step 11 now say so. Section 7 step 10 now states its population by `sign_payload_version`: `v1.0c` covers every entry except `chain_kind = "operational"`, and earlier versions cover every entry. Operational entries share the main file and its `prev_hash` chain for now, and step 10 selects by `chain_kind` only. The description of test vector 027 gains "when the sibling log is supplied"; its bytes do not change.
+- Operational-event root. A v1.0c verifier recomputes the operational-event Merkle root and rejects on a mismatch whenever the day's operational entries are available to it, which today means in the main file. It records the bound root as not walked only when they are absent, for example after a later move to a separate file. Section 10.79 (verifier default behavior), section 4.3 and section 7 step 11 now say so. Section 7 step 10 now states its population by `sign_payload_version`: `v1.0c` covers every entry except `chain_kind = "operational"`, and earlier versions cover every entry. Operational entries share the main file and its `prev_hash` chain for now, and step 10 selects by `chain_kind` only. The description of test vector 027 gains "when the day's operational entries are available"; its bytes do not change.
 - Key store roles. Section 10.5 names an IKM store and a signing store, each named separately in CC8.1. One device MAY fill both roles if CC8.1 declares it. Threat class D's "the HSM never holds the IKM" defense holds only when the two are separate devices. Corrects class D, the device-class procedure item 3 in section 10.5, `docs/design/10-glossary.md`, and `docs/design/04-hsm-custody.md`.
 
 ---
