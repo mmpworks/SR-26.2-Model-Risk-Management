@@ -12,7 +12,7 @@ failing the entire run.
 
 The rule (spec §7 step 3-4):
 
-1. The verifier MUST NOT silently treat the unknown record as a chain entry; chain-walk steps 4-9 MUST NOT execute against it.
+1. The verifier MUST NOT silently treat the unknown record as a known kind: it skips the kind's semantics. Steps 6 through 9 MUST still run on any such record that carries a chain stamp.
 2. The verifier MUST NOT FAIL the entire run on the unknown kind alone.
 3. The verifier MUST emit an anomaly line under `Status: PASS` of the form `unknown wire-format kind present: <kind_string> (count: N)`.
 4. The verifier MUST surface the anomaly in `additional_verifications` as `additional_verifications: ['unknown_kind_present']`.
@@ -59,7 +59,7 @@ A conforming verifier on the fallthrough path:
 2. Counts records by unknown kind and emits one anomaly line per distinct kind in the form `unknown wire-format kind present: <kind_string> (count: N)`.
 3. Emits the verdict object with `exit_code = 0` (PASS) and `additional_verifications = ["unknown_kind_present"]`.
 4. Recomputes Merkle root and §11 signature against the full leaf sequence (including the unknown-kind records' canonical bytes); chain integrity holds.
-5. Does NOT execute chain-walk steps 4-9 against the unknown kind.
+5. Skips the kind's semantics, and still runs steps 6-9 on any such record that carries a chain stamp.
 
 ## Composition with other cases
 

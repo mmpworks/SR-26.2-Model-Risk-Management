@@ -24,7 +24,7 @@ The institution's declared algorithm posture (out-of-band configuration the veri
 ## Expected verifier outcome
 
 ```
-Status: PASS-WITH-ANOMALY (regardless of --strict)
+Status: FAIL under --strict; PASS-WITH-ANOMALY otherwise (never a clean PASS)
 Reason: partial-coverage seal: single-algorithm signature during institution's declared dual-algorithm posture
 per_algorithm_results:
   - ed25519: PASS
@@ -33,4 +33,4 @@ per_algorithm_results:
 
 ## What this case proves
 
-The verifier correctly classifies a partial-coverage seal as a control-completeness anomaly, NOT a chain-integrity failure. The institution's IR program treats this as a posture-completeness investigation (why did the SDK not co-sign? was the institution's PQ-signing key unavailable on this seal-day?), not as a tampering investigation.
+The verifier treats a partial-coverage seal as missing a required signature under §4.3.2 AND-security: FAIL under `--strict`, and an anomaly that never reads as a clean PASS otherwise. The institution's IR program treats this as a posture-completeness investigation (why did the SDK not co-sign? was the institution's PQ-signing key unavailable on this seal-day?), not as a tampering investigation.
