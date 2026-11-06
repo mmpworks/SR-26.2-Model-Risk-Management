@@ -46,6 +46,7 @@ The spec text moves to `spec/chain-of-custody-DRAFT-0.4.0.md`. The 0.3.0 draft i
 - Unknown wire-format kinds, item 6. A record with every field of the per-entry stamp table is stamped. A partial stamp fails at step 6 with `partial chain stamp at line N`. A record with no stamp has no leaf, no MAC and no root over it, so it sits outside the verified evidence and the anomaly line `unstamped records: N` counts it.
 - Section 1.2 and threat class F. Under Model A a process compromise is also class E for that tenant. Under Model B the breach exposes session keys, a PRK during the PRK pattern, or access to HSM operations, by pattern.
 - `README.md` names document version 0.4.0 and links the 0.4.0 file. Section 12's 0.4.0 row says "each supplied file's header".
+- Section 10.12: an unknown seal `algorithm` is exit 1 at section 7 step 11 with the section 4.3.2 reason, and no longer exit 3. The field is unsigned and read before any signature check, so it must not move a forged seal out of exit 1.
 - `docs/design/02-chain-construction.md` section 4.0 step 3 says the custodian returns each served tenant's IKM. `.github/PULL_REQUEST_TEMPLATE.md` names the current document version.
 
 ---
