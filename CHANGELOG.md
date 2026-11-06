@@ -37,6 +37,10 @@ The spec text moves to `spec/chain-of-custody-DRAFT-0.4.0.md`. The 0.3.0 draft i
 - A shared SDK process is allowed only under Model B. Under Model A each tenant has its own process. Sections 10.15 and 10.77, threat class E, and `docs/design/02-chain-construction.md` section 4.0 agree.
 - The shared Model B process keeps each IKM out of the process, but a breach still holds each served tenant's session key unless HMAC operations dispatch through the HSM. Sections 10.15 and 10.77 and threat class F say so, and section 10.77's co-tenant rule names this shape as its one exception. The text does not call it tenant process isolation.
 - Section 1.3 drops the claim that the 128-bit level suits 7-year FFIEC horizons, and the phrase "NIST's 128-bit minimum-security horizon" in the same section. The 112-bit comparison does not establish either.
+- Section 1.3 states the SP 800-175B Rev. 1 section 6.1 levels: 128 bits meets the Moderate-impact floor, and High-impact needs 192.
+- Section 7 step 11: the seal's `tenant_id` and `hkdf_inputs_digest` are compared with each supplied file's header. Section 4.3.2: AND-security applies to every algorithm in the institution's declared posture, so case (b) agrees. Step 10 and section 4.2 state `(run_id, seq)` order as the byte order of the UTF-8 `run_id`, then numeric `seq`. An unknown-kind record with no chain stamp has no leaf.
+- The three-layer claim now reads "in a sealed day", says the IKM plus ledger write access is enough before the seal is signed, and names the two-layer case where one device fills both store roles (sections 0.5.1, 1.1, 1.2, 1.4, 9.1, the Q and A, the litigation guide, the vendor response).
+- The session-key TTL and class F dwell-time wording match issue #14: a refresh derives the same key, so the TTL alone does not bound the dwell time. Class F and section 1.2 say events in already-sealed days are unaffected.
 - `docs/design/02-chain-construction.md` section 4.0 step 3 says the custodian returns each served tenant's IKM. `.github/PULL_REQUEST_TEMPLATE.md` names the current document version.
 
 ---

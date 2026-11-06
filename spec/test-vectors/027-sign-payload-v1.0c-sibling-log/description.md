@@ -8,7 +8,7 @@ The v1.0c byte form extends v1.0b's 12-line form with a 13th terminal line bindi
 
 1. **Byte form of `sign_payload` (v1.0c, 13 lines).** A reconstructable byte sequence matching the §4.3 v1.0c definition, including the magic line, `sign_payload_version = "v1.0c"`, algorithm, format_version, tenant_id, seal_date, captured-event Merkle root, HKDF-inputs digest, cadence, dev_mode, key_versions_canon, kms_handle_uris_digest, and the new operational_events_log_root.
 2. **Sibling Merkle root construction.** The operational-event Merkle root is computed under RFC 6962 leaf scheme (`SHA-256(0x00 || operational_event_canonical_bytes)` for leaves; `SHA-256(0x01 || left || right)` for internal nodes), the same tree shape as the captured-event Merkle tree under §4.2, over a different leaf input.
-3. **Verifier dispatch.** A verifier reading the seal with `sign_payload_version = "v1.0c"` reconstructs the 13-line form and recomputes the operational-event Merkle root over the day's `chain_kind = "operational"` entries in the file, and confirms byte-equality with the bound `operational_events_log_root`. On mismatch, the verifier emits `operational events log root mismatch — sibling-log contents do not produce sealed root`.
+3. **Verifier dispatch.** A verifier reading the seal with `sign_payload_version = "v1.0c"` reconstructs the 13-line form and recomputes the operational-event Merkle root over the day's `chain_kind = "operational"` entries in the supplied files, and confirms byte-equality with the bound `operational_events_log_root`. On mismatch, the verifier emits `operational events log root mismatch — sibling-log contents do not produce sealed root`.
 4. **Empty-day case.** When the tenant-day produced zero operational events, `operational_events_log_root` is `SHA-256(b"")` = `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`. The signature verifies cleanly under v1.0c without operational-event content.
 
 ## Inputs
@@ -40,7 +40,7 @@ A verifier processing this vector under v1.0c-aware dispatch:
 1. Detects `sign_payload_version = "v1.0c"` and routes to the 13-line reconstruction
 2. Reconstructs the byte form per §4.3 v1.0c definition
 3. Verifies the signature against the tenant public key
-4. Recomputes the operational-events log Merkle root over the day's `chain_kind = "operational"` entries in the file
+4. Recomputes the operational-events log Merkle root over the day's `chain_kind = "operational"` entries in the supplied files
 5. Confirms byte-equality between the recomputed root and the bound `operational_events_log_root`
 6. When the roots match, emits `Status: PASS` with `additional_verifications: ['sibling_log_root_verified']`
 
