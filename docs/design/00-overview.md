@@ -293,7 +293,7 @@ Each choice is defended in detail in subsequent docs.
 
 | Auditor question | Design answer |
 |---|---|
-| Can the institution alter history without detection? | No. The HMAC chain catches in-flight tampering at re-verification on ingest. The daily Merkle seal under HSM signature catches retroactive tampering. |
+| Can the institution alter history without detection? | No. The HMAC chain catches in-flight tampering at re-verification on ingest. The daily Merkle seal under HSM signature catches retroactive tampering. Deleting a suffix of events or a whole run is a separate case: a ledger writer that holds the signing key and no IKM can delete a suffix of events or a whole run and re-sign the day's seal, and the verifier reports PASS. |
 | Can the vendor alter history without detection? | No. Same answer &mdash; the HSM is bank-operated (or per-tenant-segregated when vendor-operated), and the public key is held by the institution and the regulator. |
 | Can the examiner verify independently? | Yes. The verifier is a single static binary with no network calls. It reads the ledger and the public key only. |
 | What happens if the HSM is unavailable? | The daily seal is delayed. Captured events continue to chain (the per-event HMAC is independent of the HSM). The institution must document the seal delay and re-attempt. |
