@@ -52,7 +52,7 @@ For each control claim the institution makes, the SOC team or examiner needs a t
 
 - Confirm the IKM is held in tenant-controlled storage at FIPS 140-2 L3 protection
 - Confirm the IKM length is at least 32 bytes (spec §10.6)
-- Confirm the IKM never appears on application hosts in plaintext form (no IKM files outside HSM/KMS; no IKM in process memory dumps for Model B deployments; for Model A, confirm `mlock`-equivalent or hardware-backed key handles per spec §4.1.1)
+- Confirm no IKM is stored on application hosts in plaintext form (no IKM files outside HSM/KMS; no IKM in process memory dumps for Model B deployments; for Model A, confirm `mlock`-equivalent or hardware-backed key handles per spec §4.1.1)
 - Confirm the IKM is rotatable per documented procedure
 - Confirm production builds do NOT include the software-key adapter (`kms_handle_uri = "plaintext-dev"` MUST NOT appear in any production chain entry; the build excludes the adapter at compile time per spec §10.7)
 

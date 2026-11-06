@@ -124,7 +124,7 @@ A high-performance RPC framework using HTTP/2 and protobuf. The default OTLP tra
 ## H
 
 ### HKDF
-HMAC-based Key Derivation Function (RFC 5869). Derives session keys from a tenant master without ever exposing the master to the application host. Inputs: master (`IKM`), salt, info string; output: a fixed-length key.
+HMAC-based Key Derivation Function (RFC 5869). Derives session keys from a tenant master. In Model B the derivation runs inside the HSM and the master is never exposed to the application host; in Model A the application process derives locally from the delivered master. Inputs: master (`IKM`), salt, info string; output: a fixed-length key.
 
 ### HMAC
 Keyed Hash Message Authentication Code. A hash construction that produces a tag binding both data and a secret key. An attacker without the key cannot produce a matching tag. The chain uses HMAC-SHA-256.
@@ -191,7 +191,7 @@ The reference ingest server (`ledger/`). Receives OTLP, re-verifies the HMAC cha
 ## M
 
 ### Master key
-The per-tenant HMAC key from which session keys are derived via HKDF. Held in tenant-controlled storage (typically the same HSM that signs daily seals, in derive-mode rather than sign-mode). Never reaches the application host.
+The per-tenant HMAC key from which session keys are derived via HKDF. Held in tenant-controlled storage (typically the same HSM that signs daily seals, in derive-mode rather than sign-mode). Model B keeps it off the application host; Model A delivers it to the application process (spec §4.1.1).
 
 ### Merkle root
 The 32-byte hash at the top of an RFC 6962 binary Merkle tree built over a tenant-day's events. The artifact the HSM signs.

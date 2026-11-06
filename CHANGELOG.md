@@ -8,6 +8,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 
 ---
 
+## [Unreleased]
+
+### Fixed
+
+- Wording only. Statements that the IKM "never" reaches the application host now say which delivery model they describe. Model A (IKM-delivered) transports the IKM bytes to the application process. Model B (session-key-delivered) keeps them off the host (spec section 4.1.1). Touches the IKM glossary entry in the 0.3.0 and 0.2.0 drafts, `docs/design/` (00-overview, 01-primitives-spec, 10-glossary), `docs/q-and-a.md`, and `docs/audit-procedures.md`. No change to normative requirements, byte forms, or test vectors.
+
+---
+
 ## [0.3.0] - 2026-05-21 (Public Review Draft 3 / PRD-3)
 
 ### Headline
