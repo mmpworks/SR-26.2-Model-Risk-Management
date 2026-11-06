@@ -35,6 +35,8 @@ The spec text moves to `spec/chain-of-custody-DRAFT-0.4.0.md`. The 0.3.0 draft i
 - `timestamp_ns` is written as its full decimal digits, a stated exception to RFC 8785's number rule, with the real uint64 range (0 to 2^64 − 1). The old 2^53 − 1 limit and its year-2554 claim are removed. Vector 003 already pins nanosecond values above 2^53 as full digits, and vector 008 pins 2^53 − 1; neither changes.
 - Dual signing, case (b): under `--strict` a seal with a missing required signature now FAILS, in agreement with the AND-security rule in section 4.3.2. Non-strict reports PASS-WITH-ANOMALY and never a clean PASS. The prose of negative vector N017, its index rows, the verifier pseudocode and the finding-language row match. N017 has no byte files.
 - A shared SDK process is allowed only under Model B. Under Model A each tenant has its own process. Sections 10.15 and 10.77, threat class E, and `docs/design/02-chain-construction.md` section 4.0 agree.
+- The shared Model B process keeps each IKM out of the process, but a breach still holds each served tenant's session key unless HMAC operations dispatch through the HSM. Sections 10.15 and 10.77 and threat class F say so, and section 10.77's co-tenant rule names this shape as its one exception. The text does not call it tenant process isolation.
+- Section 1.3 drops the claim that the 128-bit level suits 7-year FFIEC horizons, and the phrase "NIST's 128-bit minimum-security horizon" in the same section. The 112-bit comparison does not establish either.
 - `docs/design/02-chain-construction.md` section 4.0 step 3 says the custodian returns each served tenant's IKM. `.github/PULL_REQUEST_TEMPLATE.md` names the current document version.
 
 ---
