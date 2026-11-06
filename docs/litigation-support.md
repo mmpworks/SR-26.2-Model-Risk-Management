@@ -46,7 +46,7 @@ The institution's expert testifies: "The cryptographic substrate is decades-old,
 
 Daubert's third factor asks for a quantified false-negative rate. The chain's threat model (spec §9) lists the conditions under which tampering would go undetected:
 
-The chain's integrity claim relies on three independent detection layers. Per-entry HMAC catches modification of any single entry. Daily Merkle root catches insertion or deletion of entries within a sealed day. HSM-backed Ed25519 signature catches forgery of the seal record itself. Hidden tampering would require simultaneous compromise of the IKM, the ledger storage, and the HSM — three separately-hardened systems with separate access controls.
+The chain's integrity claim relies on three independent detection layers. Per-entry HMAC catches modification of any single entry. Daily Merkle root catches insertion or deletion of entries within a sealed day, unless the holder of the signing key re-signs the seal. HSM-backed Ed25519 signature catches forgery of the seal record itself. Hidden forging or changing of an entry in a sealed day would require simultaneous compromise of the IKM, the ledger storage, and the HSM — three separately-hardened systems with separate access controls. Deleting a suffix of events or a whole run is a separate case: a ledger writer that holds the signing key and no IKM can delete a suffix of events or a whole run and re-sign the day's seal, and the verifier reports PASS.
 
 The institution's expert testifies: "Under the documented threat model, no known practical attack defeats all three detection layers. The false-negative rate is bounded by the cryptographic strength of HMAC-SHA-256 and Ed25519, both of which are NIST-current and not known to be broken."
 

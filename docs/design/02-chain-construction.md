@@ -138,8 +138,8 @@ At process startup, before any event is captured. Two delivery models are confor
 ```
 1. SDK reads the tenant_id from configuration (or from per-event tenant scope).
 2. SDK authenticates to the IKM custodian (HSM/KMS) via SPIFFE/SPIRE, mTLS, or HSM-issued bearer token.
-3. Custodian validates the workload identity, returns the IKM bytes over an authenticated TLS 1.3 channel.
-4. SDK derives, for each tenant the SDK serves:
+3. Custodian validates the workload identity, returns the tenant's IKM over an authenticated TLS 1.3 channel.
+4. SDK derives, for its one tenant, from that tenant's IKM:
    info_for_tenant = HKDF_INFO_BASE || b"|" || utf8(tenant_id)
    session_key     = HKDF-SHA-256(IKM=ikm, salt=HKDF_SALT, info=info_for_tenant, length=32)
    key_fingerprint = SHA-256(utf8(tenant_id) || ikm)[:16]
@@ -148,7 +148,7 @@ At process startup, before any event is captured. Two delivery models are confor
    on shutdown; honesty note in §4.3 on memory-zeroisation in GC runtimes).
 ```
 
-The IKM-delivered model is what Vidimus and most reference implementations use today. The SDK can serve any tenant whose IKM it has fetched; cache misses on a new tenant trigger a fresh derivation (microseconds).
+The IKM-delivered model is what Vidimus and most reference implementations use today. Under Model A the SDK process serves one tenant (spec §10.15); a process that serves several tenants uses Model B. A cache miss triggers a fresh derivation (microseconds).
 
 ### 4.0a Model B — Session-key-delivered (HSM-mediated, no IKM in process memory)
 

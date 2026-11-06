@@ -39,7 +39,7 @@
 | N014-botched-rotation | §7 step 8 | `key_fingerprint mismatch at seq <N>` | true | stub | §10.10 — load-bearing rotation defence |
 | N015-prev-hash-substituted | §7 step 6 | `chain link broken at seq <N>` | true | stub | §4.1 inviolate property 8 |
 | N016-prev-hash-and-payload-recomputed-by-attacker | §7 step 6 | `chain link broken at seq <N>` | true | stub | §4.1 inviolate property 8 (deep) |
-| N017-dual-algo-partial-coverage | §7 step 11 | `partial-coverage seal: single-algorithm signature during institution's declared dual-algorithm posture` | true | deferred-v1.x | §4.3.2 case (b); PASS-WITH-ANOMALY |
+| N017-dual-algo-partial-coverage | §7 step 11 | `partial-coverage seal: single-algorithm signature during institution's declared dual-algorithm posture` | true | deferred-v1.x | §4.3.2 case (b); FAIL under --strict, PASS-WITH-ANOMALY otherwise |
 | N018-dual-algo-not-in-posture | §7 step 11 | `algorithm not on institution's declared posture list at seal_date <date>` | true | deferred-v1.x | §4.3.2 case (c) |
 | N019-dual-algo-one-valid-one-invalid | §7 step 11 | `co-signed seal failure: algorithm <A> validated, algorithm <B> did not` | true | deferred-v1.x | §4.3.2 case (e); Severe |
 | N020-algorithm-key-type-mismatch | §7 step 11 | `algorithm/key-type mismatch at signature verification` | true | stub | §4.3.2 |

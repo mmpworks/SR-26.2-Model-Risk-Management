@@ -298,7 +298,7 @@ IF seal.signatures is present:
   ELIF len(algos_present) < len(algos_in_posture):
     # Case (b): partial-coverage seal
     REPORT: partial-coverage seal: single-algorithm signature during institution's declared dual-algorithm posture
-    IF strict: PASS-WITH-ANOMALY else PASS-WITH-ANOMALY (control-completeness, NOT chain-integrity)
+    IF strict: FAIL else PASS-WITH-ANOMALY (never a clean PASS)
   ELIF all(valid for (_, valid) in per_algorithm_results):
     # Case (a): both signatures present and valid
     REPORT: PASS (co-signed)

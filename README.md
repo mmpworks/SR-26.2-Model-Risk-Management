@@ -1,10 +1,10 @@
 # SR 26-2 Model Risk Management &mdash; Implementation Materials
 
-> **Status:** Public Review Draft 2 (PRD-2) &mdash; document version `0.2.0`. **This is a public-comment draft, not a finalized standard.**
+> **Status:** Public Review Draft &mdash; document version `0.4.0`. **This is a public-comment draft, not a finalized standard.**
 
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
-[![Status](https://img.shields.io/badge/status-public%20review%20draft-orange.svg)](spec/chain-of-custody-DRAFT-0.2.0.md)
-[![Spec](https://img.shields.io/badge/spec-PRD--2-informational.svg)](spec/chain-of-custody-DRAFT-0.2.0.md)
+[![Status](https://img.shields.io/badge/status-public%20review%20draft-orange.svg)](spec/chain-of-custody-DRAFT-0.4.0.md)
+[![Spec](https://img.shields.io/badge/spec-0.4.0-informational.svg)](spec/chain-of-custody-DRAFT-0.4.0.md)
 [![Anchor](https://img.shields.io/badge/anchor-SR%2026--2-blueviolet.svg)](https://www.federalreserve.gov/supervisionreg/srletters/SR2602.htm)
 
 ----
@@ -32,7 +32,7 @@ This repository contains the **specification, supporting documentation, and subm
 
 | Path | Purpose |
 |---|---|
-| [`spec/`](spec/) | The normative specification. Currently PRD-2 (`0.2.0`). |
+| [`spec/`](spec/) | The normative specification. Currently document version `0.4.0`. |
 | [`spec/test-vectors/`](spec/test-vectors/) | The conformance corpus. Positive vectors 001, 002, 003, 008, 010, 015&ndash;019; negative vectors N001 through N022. |
 | [`docs/`](docs/) | Audience-segmented supporting material &mdash; design rationale, regulator-pack overlays (FFIEC, NIST CSF 2.0, NYDFS Part 500, DORA, GDPR, HIPAA, BSA/AML, FedRAMP, APAC/Korea/Bank of Israel, CFPB), control map, SOC pack, audit procedures, incident-response playbook, customer-dispute procedures, eleven auditor-stories. |
 | [`docs/design/`](docs/design/) | The ten design documents (overview, primitives, chain construction, Merkle seal, HSM custody, OTLP wire, ledger server, verifier, test vectors, threat model, glossary). |
@@ -42,18 +42,18 @@ This repository contains the **specification, supporting documentation, and subm
 
 | If you are a&hellip; | Start with&hellip; |
 |---|---|
-| First-time reader | [`docs/management-summary.md`](docs/management-summary.md) (5 min), then [`spec/chain-of-custody-DRAFT-0.2.0.md`](spec/chain-of-custody-DRAFT-0.2.0.md) &sect;1&ndash;&sect;4 |
+| First-time reader | [`docs/management-summary.md`](docs/management-summary.md) (5 min), then [`spec/chain-of-custody-DRAFT-0.4.0.md`](spec/chain-of-custody-DRAFT-0.4.0.md) &sect;1&ndash;&sect;4 |
 | Bank examiner | [`docs/examiner-quickstart.md`](docs/examiner-quickstart.md) (5 min), [`docs/regulator-pack/handbook-mapping.md`](docs/regulator-pack/handbook-mapping.md) |
-| MRM officer / model risk manager | [`docs/MRM-COMMITTEE-BRIEF.md`](docs/MRM-COMMITTEE-BRIEF.md), [`docs/management-summary.md`](docs/management-summary.md), [`spec/chain-of-custody-DRAFT-0.2.0.md`](spec/chain-of-custody-DRAFT-0.2.0.md) &sect;1&ndash;&sect;4 |
+| MRM officer / model risk manager | [`docs/MRM-COMMITTEE-BRIEF.md`](docs/MRM-COMMITTEE-BRIEF.md), [`docs/management-summary.md`](docs/management-summary.md), [`spec/chain-of-custody-DRAFT-0.4.0.md`](spec/chain-of-custody-DRAFT-0.4.0.md) &sect;1&ndash;&sect;4 |
 | Cryptographic reviewer | [`docs/design/09-threat-model.md`](docs/design/09-threat-model.md), [`docs/design/02-chain-construction.md`](docs/design/02-chain-construction.md), [`docs/design/03-merkle-seal.md`](docs/design/03-merkle-seal.md), [`docs/design/04-hsm-custody.md`](docs/design/04-hsm-custody.md) |
-| Implementer | [`spec/chain-of-custody-DRAFT-0.2.0.md`](spec/chain-of-custody-DRAFT-0.2.0.md) end-to-end, [`spec/test-vectors/`](spec/test-vectors/) |
+| Implementer | [`spec/chain-of-custody-DRAFT-0.4.0.md`](spec/chain-of-custody-DRAFT-0.4.0.md) end-to-end, [`spec/test-vectors/`](spec/test-vectors/) |
 | Bank executive | [`docs/management-summary.md`](docs/management-summary.md), [`docs/cost-model.md`](docs/cost-model.md), [`docs/MRM-COMMITTEE-BRIEF.md`](docs/MRM-COMMITTEE-BRIEF.md) |
 
 A complete audience-by-audience navigation lives in [`docs/INDEX.md`](docs/INDEX.md) and in &sect;13 of the spec.
 
 ## How to comment
 
-Comments on PRD-2 are welcome via:
+Comments on the 0.4.0 draft are welcome via:
 
 - **GitHub issues** &mdash; tagged `spec-proposal`, `editorial`, or `errata` per the templates in [`.github/ISSUE_TEMPLATE/`](.github/ISSUE_TEMPLATE/).
 - **Pull requests** against the spec text. Spec-affecting PRs follow the process in [`GOVERNANCE.md`](GOVERNANCE.md) and require spec-editor approval and the public-comment cadence documented there.

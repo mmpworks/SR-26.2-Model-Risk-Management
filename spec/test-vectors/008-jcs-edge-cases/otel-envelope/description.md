@@ -12,7 +12,7 @@ The conformance witness for the per-field projection rules in §5's "OTel envelo
 
 3. **`parent_span_id` root case** (OTLP source is 8 zero bytes) projects to the literal string `"0000000000000000"`, NOT omitted from canonical JSON. Omission and explicit-zero produce byte-distinct canonical forms under JCS.
 
-4. **`timestamp_ns`** projected as JSON integer at the IEEE-754 safe-integer boundary. The fixture exercises `timestamp_ns = 9007199254740991` (2^53 − 1, the safe-integer max). A v1.x extension that admits values exceeding the boundary must use a string form; v1.0 conformant implementations refuse to emit values larger than 2^53 − 1.
+4. **`timestamp_ns`** projected as JSON integer at the IEEE-754 safe-integer boundary. The fixture exercises `timestamp_ns = 9007199254740991` (2^53 − 1, the safe-integer max). Above that boundary the value is still written as its full decimal digits, a stated exception to RFC 8785's number rule; the range is uint64 (§5).
 
 5. **`duration_ns`** projected as JSON integer.
 

@@ -31,7 +31,7 @@ Binds every event to a sequence-of-events for a given run. Produces evidence tha
 ### 2.3 The choice — HMAC-SHA-256 with HKDF-derived session keys
 
 - **HMAC-SHA-256** &mdash; FIPS-approved (FIPS 198-1), stdlib in every modern language, audited extensively. The auditor recognizes it without explanation.
-- **HKDF-SHA-256 (RFC 5869)** &mdash; key derivation for the per-process session key. The master key never appears on the application host. A compromised process loses its session key but not the master.
+- **HKDF-SHA-256 (RFC 5869)** &mdash; key derivation for the per-process session key. In Model B the master key never appears on the application host; in Model A the custodian delivers it to the process (spec §4.1.1). In Model B a compromised process loses its session key but not the master.
 - **prev_hash binding** &mdash; ties events into a tamper-evident sequence. Removing or inserting one event is detectable without re-running the keys.
 
 ### 2.4 The session-key lifecycle
@@ -47,7 +47,7 @@ Binds every event to a sequence-of-events for a given run. Produces evidence tha
 | Question | Answer |
 |---|---|
 | Why per-process keys instead of per-tenant? | Compromise of one process should not compromise other processes. Per-process scoping is the standard separation. |
-| What stops the master key from leaking? | The master never reaches the application host. The handshake delivers a session key derived under HKDF; the master remains in tenant-controlled storage (HSM-backed where available). |
+| What stops the master key from leaking? | In Model B the master never reaches the application host: the handshake delivers a session key derived under HKDF, and the master remains in tenant-controlled storage (HSM-backed where available). In Model A the custodian delivers the master to the application process (spec §4.1.1). |
 | What if HKDF is broken in the future? | The chain is still useful retrospectively because each event also includes its `payload_hash` under HMAC. A key compromise affects new events; sealed past events are still verifiable against the daily Merkle root. |
 | Outstanding work | The handshake protocol that delivers session keys is out of scope for v1.0 — institutions document their handshake in CC8.1 and the chain inherits the institution's existing key-delivery posture. v1.x roadmap candidates: SPIFFE/SPIRE-based delivery, or vendored HSM-token-based delivery. Either is layered onto v1.0 without breaking the wire form. |
 
