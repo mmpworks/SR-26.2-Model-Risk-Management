@@ -14,7 +14,7 @@
 ## Version impact
 
 - [ ] Document version unchanged
-- [ ] Document version increment expected (`0.2.0` → `0.3.0` or later)
+- [ ] Document version increment expected (`0.4.0` → `0.5.0` or later)
 - [ ] Wire-format identifier change (this is a major event — wire-format changes from `"v1"` to `"v2"` rebase every test vector and require a coordinated PRD)
 
 ## The reviewer's-lens summary
