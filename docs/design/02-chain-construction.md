@@ -139,7 +139,7 @@ At process startup, before any event is captured. Two delivery models are confor
 1. SDK reads the tenant_id from configuration (or from per-event tenant scope).
 2. SDK authenticates to the IKM custodian (HSM/KMS) via SPIFFE/SPIRE, mTLS, or HSM-issued bearer token.
 3. Custodian validates the workload identity, returns the IKM bytes over an authenticated TLS 1.3 channel.
-4. SDK derives, for each tenant the SDK serves:
+4. SDK derives, for each tenant the SDK serves, from that tenant's own IKM:
    info_for_tenant = HKDF_INFO_BASE || b"|" || utf8(tenant_id)
    session_key     = HKDF-SHA-256(IKM=ikm, salt=HKDF_SALT, info=info_for_tenant, length=32)
    key_fingerprint = SHA-256(utf8(tenant_id) || ikm)[:16]

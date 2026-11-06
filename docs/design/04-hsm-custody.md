@@ -51,7 +51,7 @@ RSA-2048 or RSA-3072 are still FIPS-approved and HSM-supported. Two reasons agai
 
 (Terminology note: "IKM" replaces the older "master key" term throughout the spec rework. The two names refer to the same thing — the long-lived secret a tenant's session keys are derived from. "Master key" remains acceptable in operational shorthand; the spec text uses "IKM" for precision.)
 
-- Held in tenant-controlled storage, typically the same HSM that signs the daily seals (in `derive`/`mac` mode rather than `sign` mode), or in cloud KMS with envelope encryption.
+- Held in tenant-controlled storage, typically a device separate from the one that signs the daily seals (one device MAY fill both roles if the institution declares it, spec §10.5), or in cloud KMS with envelope encryption.
 - MAY reach the application host (Model A in `02-chain-construction.md` §4.0) OR may stay in-HSM with HKDF performed inside the device (Model B in §4.0a). Spec §4.1.1 specifies both delivery models.
 - Per-tenant: one IKM per tenant. The IKM bytes plus the tenant_id together produce a per-tenant `key_fingerprint = SHA-256(utf8(tenant_id) || ikm)[:16]` that is stamped on every chain entry; the verifier asserts the looked-up IKM produces the recorded fingerprint before any MAC compute.
 - Length: minimum 32 bytes per spec §10.6 (RFC 4868).

@@ -191,7 +191,7 @@ The reference ingest server (`ledger/`). Receives OTLP, re-verifies the HMAC cha
 ## M
 
 ### Master key
-The per-tenant HMAC key from which session keys are derived via HKDF. Held in tenant-controlled storage (typically the same HSM that signs daily seals, in derive-mode rather than sign-mode). Model B keeps it off the application host; Model A delivers it to the application process (spec §4.1.1).
+The per-tenant HMAC key from which session keys are derived via HKDF. Held in the IKM store, in tenant-controlled storage (typically a device separate from the signing store; one device MAY fill both roles if the institution declares it, spec §10.5). Model B keeps it off the application host; Model A delivers it to the application process (spec §4.1.1).
 
 ### Merkle root
 The 32-byte hash at the top of an RFC 6962 binary Merkle tree built over a tenant-day's events. The artifact the HSM signs.
