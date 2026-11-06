@@ -124,7 +124,7 @@ A high-performance RPC framework using HTTP/2 and protobuf. The default OTLP tra
 ## H
 
 ### HKDF
-HMAC-based Key Derivation Function (RFC 5869). Derives session keys from a tenant master. In Model B the derivation runs inside the HSM and the master is never exposed to the application host; in Model A the application process derives locally from the delivered master. Inputs: master (`IKM`), salt, info string; output: a fixed-length key.
+HMAC-based Key Derivation Function (RFC 5869). Derives session keys from a tenant master. In Model B the derivation runs inside the HSM (or in part, per the PRK pattern) and the master is never exposed to the application host; in Model A the application process derives locally from the delivered master. Inputs: master (`IKM`), salt, info string; output: a fixed-length key.
 
 ### HMAC
 Keyed Hash Message Authentication Code. A hash construction that produces a tag binding both data and a secret key. An attacker without the key cannot produce a matching tag. The chain uses HMAC-SHA-256.

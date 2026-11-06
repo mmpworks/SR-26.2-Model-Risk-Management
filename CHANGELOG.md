@@ -12,7 +12,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 
 ### Fixed
 
-- Wording only. Statements that the IKM "never" reaches the application host now say which delivery model they describe. Model A (IKM-delivered) transports the IKM bytes to the application process. Model B (session-key-delivered) keeps them off the host (spec section 4.1.1). Touches the IKM glossary entry in the 0.3.0 and 0.2.0 drafts, `docs/design/` (00-overview, 01-primitives-spec, 10-glossary), `docs/q-and-a.md`, and `docs/audit-procedures.md`. No change to normative requirements, byte forms, or test vectors.
+- Wording only. Statements that the IKM "never" reaches the application host now say which delivery model they describe. Model A (IKM-delivered) transports the IKM bytes to the application process. Model B (session-key-delivered) keeps them off the host (spec section 4.1.1). Touches the IKM glossary entry and the first sentence of section 4.1.1 in the 0.3.0 draft, `docs/design/` (00-overview, 01-primitives-spec, 10-glossary), `docs/q-and-a.md`, `docs/audit-procedures.md`, and `docs/control-map/CUECs.md`. The 0.2.0 draft is superseded and retained for back-reference, so it keeps its original text; this entry carries the correction. The audit procedure gains a core-dump check for Model A, because `mlock` keeps pages out of swap but not out of a core dump. No change to normative requirements, byte forms, or test vectors.
 
 ---
 

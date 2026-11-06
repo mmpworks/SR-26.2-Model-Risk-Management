@@ -607,7 +607,7 @@ The discipline composes with the §4.1 length-extension audit (above): the audit
 
 #### 4.1.1 Session-key handshake (normative)
 
-Two delivery models are conformant. In both, the IKM custodian (HSM/KMS) is the only party that ever holds the IKM in cleartext.
+Two delivery models are conformant. In both, the IKM custodian generates and durably holds the IKM. In Model A the application process also holds it in cleartext, in memory. In Model B no party outside the custodian holds it.
 
 **Model A — IKM-delivered.** The custodian transports the IKM bytes to the application process over an authenticated, confidential channel. The SDK derives `session_key` locally via HKDF as specified in §4.1.
 

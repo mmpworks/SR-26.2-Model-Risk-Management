@@ -16,7 +16,7 @@ Before describing the solution shape, name the attacks. Every primitive in §3 o
 
 | Aspect | Detail |
 |---|---|
-| Adversary capability | Read and write access to the SDK's local audit storage, the OTLP bytes in flight between SDK and ledger, or the application process at runtime. Does NOT have the tenant master IKM, which lives in the bank's tenant-controlled key custody (HSM/KMS). Model B keeps the IKM off the application host; Model A delivers it to the application process (spec §4.1.1). |
+| Adversary capability | Read and write access to the SDK's local audit storage, or the OTLP bytes in flight between SDK and ledger. Does NOT have the tenant master IKM, which lives in the bank's tenant-controlled key custody (HSM/KMS). Model B keeps the IKM off the application host; Model A delivers it to the application process (spec §4.1.1). An adversary who reaches the IKM or the SDK process is a separate case (spec §1.2, classes E and F). For a day already sealed, the daily Merkle seal with its HSM signature is the defense. |
 | Adversary goal | Modify, insert, delete, reorder, or replay captured events without the verifier detecting it. |
 | Where the attack lives | Client-side &mdash; SDK, application host, network in flight to the ledger. |
 | Primitive that defends | HMAC chain at capture (§4.1). |
