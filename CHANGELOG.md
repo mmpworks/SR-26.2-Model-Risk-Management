@@ -47,6 +47,7 @@ The spec text moves to `spec/chain-of-custody-DRAFT-0.4.0.md`. The 0.3.0 draft i
 - Section 1.2 and threat class F. Under Model A a process compromise is also class E for that tenant. Under Model B the breach exposes session keys, a PRK during the PRK pattern, or access to HSM operations, by pattern.
 - `README.md` names document version 0.4.0 and links the 0.4.0 file. Section 12's 0.4.0 row says "each supplied file's header".
 - Section 10.12: an unknown seal `algorithm` is exit 1 at section 7 step 11 with the section 4.3.2 reason, and no longer exit 3. The field is unsigned and read before any signature check, so it must not move a forged seal out of exit 1.
+- Section 7 step 11, case (c): the declared algorithm posture comes from outside the seal. The seal-local source (a `declared_algorithms` field in the seal record) is removed, because no `sign_payload` form binds it and anyone who can edit the seal file can change it. Such a field MUST NOT lower the declared posture. Under `--strict`, a verifier with no posture source exits 3, because it cannot tell case (b) from case (d). Negative vector N017 already names the posture as out-of-band configuration, so its prose needs no change.
 - `docs/design/02-chain-construction.md` section 4.0 step 3 says the custodian returns each served tenant's IKM. `.github/PULL_REQUEST_TEMPLATE.md` names the current document version.
 
 ---
