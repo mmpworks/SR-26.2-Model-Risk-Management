@@ -6,7 +6,7 @@
 
 ## Purpose
 
-Verify spec §7 step 11 case (b): the institution operates dual-algorithm posture but a seal carries only one algorithm's signature. The verifier reports PASS-WITH-ANOMALY (control-completeness, NOT chain-integrity); under `--strict` STILL PASS-WITH-ANOMALY (the seal is integrity-bearing under the present algorithm; the institution's posture commitment is incomplete on this seal-day).
+Verify spec §7 step 11 case (b): the institution operates dual-algorithm posture but a seal carries only one algorithm's signature. The verifier reports PASS-WITH-ANOMALY (control-completeness, NOT chain-integrity); under `--strict` FAIL, because a required signature is missing (§4.3.2).
 
 ## Tampering recipe
 
